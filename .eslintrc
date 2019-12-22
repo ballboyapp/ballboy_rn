@@ -1,0 +1,30 @@
+{
+  "extends": ["airbnb"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "global-require": 0,
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "no-underscore-dangle": ["error",
+      {
+        "allow": [
+          "_id",
+          "_navigation",
+          "__typename",
+          "_config"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/state-in-constructor": 0,
+    // "react/sort-comp": 0,
+    "function-paren-newline": ["error", "consistent"],
+    "no-console": 0,
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["@storybook/react-native"] }]
+  },
+  "globals": {
+    "__DEV__": true,
+    "navigator": true
+  }
+}
