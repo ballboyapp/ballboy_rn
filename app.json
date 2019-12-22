@@ -1,4 +1,105 @@
 {
-  "name": "SportySpots",
-  "displayName": "SportySpots"
+  "expo": {
+    "name": "Ballboy",
+    "description": "Find and organize sport activities with ease",
+    "slug": "bb",
+    "owner": "federodes",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon2_name.png",
+    "splash": {
+      "image": "./assets/images/splash_orange.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#e59030"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "assets/**",
+      "node_modules/react-navigation/src/**/*.png",
+      "node_modules/@expo/vector-icons/fonts/*.ttf"
+    ],
+    "entryPoint": "./index.ts",
+    "ios": {
+      "bundleIdentifier": "app.ballboy.ios",
+      "buildNumber": "1.0.0",
+      "supportsTablet": false,
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "comgooglemaps",
+          "citymapper",
+          "uber",
+          "lyft",
+          "waze"
+        ]
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyArt0K_eIrs5HKboTBxrlk85G7zp95_8oA"
+      }
+    },
+    "android": {
+      "package": "app.ballboy.android",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA_ROLL"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyArt0K_eIrs5HKboTBxrlk85G7zp95_8oA"
+        }
+      },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": {
+            "scheme": "https",
+            "host": "*.ballboy.app"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "ballboy",
+            "project": "react-native",
+            "authToken": "00191bcdbf4c4dfc931955ea410d76e5c78060f6caf74612a420b6adfcedd49f"
+          }
+        }
+      ]
+    },
+    "extra": {
+      "isStorybook": false,
+      "devServerUrl": "http://192.168.1.133:3001",
+      "prodServerUrl": "https://vast-beach-90080.herokuapp.com",
+      "graphqlEndpoint": "/graphql",
+      "chatkitAuthEndpoint": "/chatkit-auth",
+      "chatkitReadOnlyUser": "readonly",
+      "chatkitInstanceLocator": "v1:us1:432b6bb2-59b0-4564-bf1b-00fd55eb0c02",
+      "cloudinaryCloudname": "dp4vo5nq4",
+      "cloudinaryApiKey": "813938713979375",
+      "cloudinaryApiSecret": "i8AT1rmfk-Q3agRHgs8nrQ5W3AI",
+      "cloudinaryUploadPreset": "default",
+      "webGoogleMapsApiKey": "AIzaSyArt0K_eIrs5HKboTBxrlk85G7zp95_8oA",
+      "rnSentryDsn": "https://b4c110f78e034f9d82068dbefb112dd9@sentry.io/1849002",
+      "webSentryDsn": "https://e5353f35606940cf97b919e868f11715@sentry.io/1848999",
+      "feedbackUrl": "https://goo.gl/forms/123",
+      "privacyUrl": "https://ballboy.app/privacy",
+      "termsUrl": "https://ballboy.app/terms"
+    }
+  }
 }

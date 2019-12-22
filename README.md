@@ -1,270 +1,126 @@
-# SportySpots
+### Getting started
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/SportySpots/cruijff.svg)](https://greenkeeper.io/)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
-[![TravisCIBadge](https://travis-ci.org/SportySpots/cruijff.svg?branch=master)](https://travis-ci.org/SportySpots/cruijff)
-Android: [![Build status](https://build.appcenter.ms/v0.1/apps/a040d989-6713-458b-8692-5cc9c14b0f0f/branches/master/badge)](https://appcenter.ms)
-[![Build status](https://build.appcenter.ms/v0.1/apps/ad2b18a6-2a59-48b8-8e73-8614df116aa8/branches/master/badge)](https://appcenter.ms)
-
-## Setting up React Native environment on Ubuntu 18.04
-
-Read the following docs before starting!! Below you'll find some extra help.
-
-* https://facebook.github.io/react-native/docs/getting-started.html
-
-* https://www.techomoro.com/how-to-install-and-setup-react-native-on-ubuntu-17-10/
-
-* https://medium.com/@chad_morrow/getting-started-with-react-native-on-ubuntu-from-scratch-f622c8677d1e
-
-### Installing Java
+Clone the repo:
 
 ```
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
-sudo apt-get install oracle-java8-set-default
+>> mkdir bb (you can call your project's folder whatever you want; bb stands for ballboy)
+>> cd bb
+>> git clone git@github.com:fede-rodes/ballboy_client.git client (this will create a 'client' folder inside 'bb')
+>> cd client
+>> yarn run install (install dependencies, please use yarn not npm!)
 ```
 
-Source: https://medium.com/@aashimad1/install-android-studio-in-ubuntu-b8aed675849f
-
-### Installing watchman
+### Install Expo CLI
 
 ```
-> sudo apt-get update
-> sudo apt-get upgrade
-> git clone https://github.com/facebook/watchman.git
-> cd watchman/
-> git checkout v4.9.0
-> sudo apt-get install -y autoconf automake build-essential python-dev libssl-dev libtool pkg-config
-> ./autogen.sh
-> ./configure
-> make
-> sudo make install
-
-> echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p && echo "fs.inotify.max_queued_events=524288" | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p && echo "fs.inotify.max_user_instances=524288" | sudo tee -a /etc/sysctl.conf
-sudo sysctl -p
+>> npm install -g expo-cli
 ```
 
-Source: https://facebook.github.io/watchman/docs/install.html#buildinstall
+[https://docs.expo.io/versions/latest/introduction/installation/](https://docs.expo.io/versions/latest/introduction/installation/)
 
-Troubleshooting:
-https://github.com/facebook/watchman/issues/163
-https://askubuntu.com/questions/716431/inotify-max-user-watches-value-resets-on-reboot-how-to-change-it-permanently
-https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached
+### Set expo environment variables
 
-### Install adb
+At the root of the project you'll find a `app.json.sample` file. Duplicate said file and re-name it to `app.json`. That's where expo keeps all the environment variables. Set your env vars under `extra` making sure `expo.extra.isStorybook` is set to `false` (more on this later).
 
-If you get ```/bin/sh: 1: adb: not found``` error, install adb:
+#### Google Maps API Keys (static map service API)
 
-```
-sudo apt-get update
-sudo apt-get install adb
-```
+- Visit [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key) and create a new project.
+- Set `ios.config.googleMapsApiKey` by enabling 'Maps Static API' for ios.
+- Set `android.config.googleMaps.apiKey` by enabling 'Maps Static API' for android.
+- Set `extra.webGoogleMapsApiKey` by enabling 'Maps Static API' for web.
 
-source: https://github.com/facebook/react-native/issues/11413
+#### Sentry (error tracking service API)
 
-### adb version mismatch
+- Visit [https://sentry.io](https://sentry.io), create an account and a new 'Organization'.
+- Set `extra.webSentryDsn` by creating a new 'React' project and getting the DSN key
+- Set `extra.rnSentryDsn` by creating a new 'React Native' project and getting the DSN key. In addition, enable the `hooks.postPublish[0].config.authToken` by following the expo-sentry docs:  [https://docs.expo.io/versions/latest/guides/using-sentry/](https://docs.expo.io/versions/latest/guides/using-sentry/)
 
-If you get the following error:
+#### Chatkit (chat service API)
 
-```
-ADB server didn't ACK
-* failed to start daemon *
-error: cannot connect to daemon`
-```
+- Visit [https://pusher.com/chatkit](https://pusher.com/chatkit), create a new account and a new Chatkit project.
+- Set `extra.chatkitInstanceLocator` from the credentials tab
+- Go to `ROLES` inside the `Console` tab and create a `readonly` role by enabling the following permissions: `room:join`, `room:leave`, `room:get`, `room:messages:get`, `room:typing_indicator:create`, `presence:subscribe`, `user:get`, `user:rooms:get`, `file:get` and `cursors:read:get`.
 
-You need to make sure that the adb version installed globally and the one used by the Android SDK match. In order to do so,
-either point or copy Android sdk adb to usr/bin to solve adb mismatch versions:
+#### Cloudinary (image host and manipulation service API)
 
-pointing (didn't test this! probably iOS)
-```
-sudo ln -sf ~/Library/Android/sdk/platform-tools/adb /usr/local/bin
-```
+- Visit [https://cloudinary.com/](https://cloudinary.com/) and create a new account.
+- From the `Dashboard` tab, grab the `Cloud name`, `API key` and `API secret` keys and set `extra.cloudinaryCloudname`, `extra.cloudinaryApiKey` and `extra.cloudinaryApiSecret` respectively.
+- Finally, go to `settings` section ([https://cloudinary.com/console/settings](https://cloudinary.com/console/settings)), move to the `Upload` tab and scroll down to `Upload presets`. Set `Upload preset name` to `default` and `Signing Mode` to `unsigned`. Hit save.
 
-copy
-```
-sudo cp ~/Android/Sdk/platform-tools/adb /usr/bin
-```
+Find out more about expo env vars:
+- [https://expo.canny.io/feature-requests/p/dotenv-support](https://expo.canny.io/feature-requests/p/dotenv-support)
+- [https://stackoverflow.com/questions/52546254/react-native-with-expo-how-to-use-a-env-local-config-file](https://stackoverflow.com/questions/52546254/react-native-with-expo-how-to-use-a-env-local-config-file)
+- [https://docs.expo.io/versions/latest/workflow/configuration/](https://docs.expo.io/versions/latest/workflow/configuration/)
+- [https://docs.expo.io/versions/latest/sdk/constants/](https://docs.expo.io/versions/latest/sdk/constants/)
 
-source: https://github.com/expo/expo-cli/issues/153
+### Run expo (React Native)
 
-### Create local.properties file inside android folder
-
-Add the following code to the local.properties field based on the location of you android sdk. Replace YOUR_USERNAME accordingly!
+- First, visit [https://vast-beach-90080.herokuapp.com/graphql](https://vast-beach-90080.herokuapp.com/graphql) in order to 'wake up' the server. I don't want to pay a single pennie for now, so the server is hosted on a Heroku-free-tire, which goes to sleep when inactive. Booting the server up takes a few minutes.
+- Start the emulator (genymotion is the emulator I use on Linux)
+- Open a new terminal and start expo:
 
 ```
-sdk.dir = /home/<YOUR_USERNAME>/Android/Sdk
+>> cd /bb/client
+>> expo start
 ```
+- Once expo is open, set `Local` as the type of `CONNECTION` on the expo dashboard and finally hit the `Run on Android (iOS) emulator` button. After a little while (could take several minutes) the app should start on the emulator.
 
-### Create .env file in root folder
+### Run expo (Web)
 
-Create a .env file from .env.example placing it in the root of the project
+- First, visit [https://vast-beach-90080.herokuapp.com/graphql](https://vast-beach-90080.herokuapp.com/graphql) in order to 'wake up' the server. I don't want to pay a single pennie for now, so the server is hosted on a Heroku-free-tire, which goes to sleep when inactive. Booting the server up takes a few minutes.
 
-### Decrypt google.json
+- Open a new terminal and start expo with the --web flag:
 
 ```
-git-crypt unlock
+>> cd /bb/client
+>> expo start --web
 ```
+- This should open a new window in your default browser with the web version of the app.
 
-### Genymotion devices
+### Deploy
 
-When creating a new device make sure to choose a device with android version >= 8.1
+[https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md](https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md)
+[https://www.freecodecamp.org/news/how-to-deploy-a-react-application-to-netlify-363b8a98a985/](https://www.freecodecamp.org/news/how-to-deploy-a-react-application-to-netlify-363b8a98a985/)
 
-## Get started
+#### Netlify
 
-### Prerequisites
+Install the Netlify CLI with `npm install netlify-cli -g`.
 
-* Node (Version: v8.9.4)
-* Yarn (Version: 1.3.2)
-* NPM (Version: 5.6.0)
-* NVM (Version: 0.33.8)
-
-### Local Development
-
-#### Setup
-
-```bash
-nvm use
-yarn reset
-```
-
-#### Run App
-
-REF: https://github.com/facebook/react-native/issues/20774
-```bash
-cd node_modules/react-native/scripts && ./ios-install-third-party.sh && cd ../../../
-cd node_modules/react-native/third-party/glog-0.3.5/ && ../../scripts/ios-configure-glog.sh && cd ../../../../
-```
-
-```bash
-yarn run react-native run-ios
-```
-
-#### Run Storybook
-
-```bash
-yarn run storybook
-```
+Then run `yarn run deploy:web`.
 
 
-### How to Run App
+### Storybook
 
-1. cd to the repo
-2. Run Build for either OS
-  * for iOS
-    * run `react-native run-ios`
-  * for Android
-    * Run Genymotion
-    * run `react-native run-android`
+[https://storybook.js.org/](https://storybook.js.org/)
 
-### Standard Compliant
+To run storybook:
+- Stop `expo` in case it's running, open the emulator in case it's closed and close the app from the emulator in case it's running;
+- Go to `app.json` and set `expo.extra.isStorybook` to `true`. This tells expo to run storybook instead of the real app.
+- Load/update stories: `yarn run storybook`. Wait until `/storybook/storyloader.ts` gets created/updated. Then stop storybook `ctrl + C` on Linux.
+- Run expo as usual: `expo start`. Storybook should open automatically on the emulator.
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-This project adheres to Standard.  Our CI enforces this, so we suggest you enable linting to keep your project compliant during development.
 
-**To Lint on Commit**
+https://pusher.com/tutorials/storybook-react-native
 
-This is implemented using [husky](https://github.com/typicode/husky). There is no additional setup needed.
 
-**Bypass Lint**
+### Icons
 
-If you have to bypass lint for a special commit that you will come back and clean (pushing something to a branch etc.) then you can bypass git hooks with adding `--no-verify` to your commit command.
+Thanks to [https://thenounproject.com](https://thenounproject.com)
 
-**Understanding Linting Errors**
 
-The linting rules are from JS Standard and React-Standard.  [Regular JS errors can be found with descriptions here](http://eslint.org/docs/rules/), while [React errors and descriptions can be found here](https://github.com/yannickcr/eslint-plugin-react).
+### TS tests config
 
-### Secrets
+https://medium.com/@ch1ll0ut1/how-to-setup-react-native-with-typescript-the-new-way-6c1f1cce6ed3
 
-This project uses [react-native-config](https://github.com/luggit/react-native-config) to expose config variables to your javascript code in React Native. You can store API keys
-and other sensitive information in a `.env` file:
 
-```env
-API_URL=https://myapi.com
-GOOGLE_MAPS_ANDROID_API_KEY=abcdefgh
-```
+### RN web navigation
 
-and access them from React Native like so:
-
-```js
-import Secrets from 'react-native-config'
-
-Secrets.API_URL  // 'https://myapi.com'
-Secrets.GOOGLE_MAPS_ANDROID_API_KEY  // 'abcdefgh'
-```
-
-Generate release key
-[React Native Official Release Documentation](http://facebook.github.io/react-native/docs/signed-apk-android.html#content)
-
-```bash
-keytool -genkey -v -keystore sportyspots-release-key.keystore -alias sportyspots-release-key-alias -keyalg RSA -keysize 2048 -validity 20000
-```
-
-Place sportyspots-release-key.keystore in android/app directory
-
-Create a gradle.properties file in ~/.gradle/
-
-Add the following to gradle.properties file
-
-```env
-SPORTYSPOTS_RELEASE_STORE_FILE=sportyspots-release-key.keystore
-SPORTYSPOTS_RELEASE_KEY_ALIAS=sportyspots-release-key-alias
-SPORTYSPOTS_RELEASE_STORE_PASSWORD=******
-SPORTYSPOTS_RELEASE_KEY_PASSWORD=******
-```
-
-The `.env` file is ignored by git keeping those secrets out of your repo.
-
-### Get started
-
-1. Copy .env.example to .env
-2. Add your config variables
-3. Follow instructions at [https://github.com/luggit/react-native-config#setup](https://github.com/luggit/react-native-config#setup)
-4. Done!
-
-### Git Crypt
-
-[Git Crypt](https://github.com/AGWA/git-crypt)
-
-[Github Reference - Associate Email with GPG Key](https://help.github.com/articles/associating-an-email-with-your-gpg-key/)
-List your keys
-
-```bash
-gpg --list-secret-keys --keyid-format LONG
-```
-
-Git crypt export symmetric key
-
-```bash
-git-crypt export-key /path/to/key/symmetric_binary_key.key
-```
-
-Convert binary key to base64 encoded string
-
-```bash
-openssl base64 -A -in symmetric_binary_key.key -out symmetric_base64.key
-```
-
-Convery base64 key to binary key
-
-```bash
-openssl base64 -d -A -in symmetric_base64_key.key -out symmetric_binary_key.key
-```
-
-### Firebase
-
-1. download google-services.json from Firebase project and add it to /android/app/
-2. enable debug mode and logs:
-```
->> adb shell setprop debug.firebase.analytics.app io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage
->> adb shell setprop log.tag.FA VERBOSE
->> adb shell setprop log.tag.FA-SVC VERBOSE
->> adb logcat -v time -s FA FA-SVC
-```
-
-This behavior persists until you explicitly disable Debug mode by executing the following command:
-```
-adb shell setprop debug.firebase.analytics.app .none.
-```
+- https://github.com/expo/web-examples/blob/29d2eeed96d936d7feb1f29e35bee684b6519dfb/docs/FEATURES.md
+- https://blog.bitsrc.io/how-to-react-native-web-app-a-happy-struggle-aea7906f4903
+- https://github.com/expo/expo/tree/master/apps
+- https://reactnavigation.org/docs/en/auth-flow.html (see also v5)
+- https://github.com/react-native-elements/react-native-elements-app/blob/master/src/views/profile/screen1.js
+- https://react-native-elements.github.io/react-native-elements-app/
+- https://blog.bitsrc.io/how-to-react-native-web-app-a-happy-struggle-aea7906f4903
+- https://github.com/inspmoore/rnw_boilerplate?source=post_page-----aea7906f4903----------------------
+- https://pickering.org/using-react-native-react-native-web-and-react-navigation-in-a-single-project-cfd4bcca16d0
