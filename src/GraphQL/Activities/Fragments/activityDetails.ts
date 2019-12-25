@@ -14,6 +14,7 @@ const activityDetailsFragment = gql`
     spot {
       ...spotDetailsFragment
     }
+    repeatFrequency
   }
   ${activityBaseFragment}
   ${spotDetailsFragment}
