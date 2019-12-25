@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import I18n from '../../../I18n';
 import Text from '../../Common/Text';
 import Block from '../../Common/Block';
@@ -16,7 +15,7 @@ const IMG_HEIGHT = 100;
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const NoGamesFound = ({ navigation }) => (
+const NoGamesFound = ({ onPress }) => (
   <View>
     <NothingFound
       imgSrc="noActivitiesIllustration"
@@ -32,16 +31,18 @@ const NoGamesFound = ({ navigation }) => (
       <RaisedButton
         variant="primary"
         label={I18n.t('noGamesFound.btnLabel')}
-        onPress={() => { navigation.navigate('PlanScreen'); }}
+        onPress={onPress}
       />
     </Block>
   </View>
 );
 
 NoGamesFound.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
+  onPress: PropTypes.func,
 };
 
-export default withNavigation(NoGamesFound);
+NoGamesFound.defaultProps = {
+  onPress: () => {},
+};
+
+export default NoGamesFound;

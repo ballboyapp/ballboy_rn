@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import styled from 'styled-components/native';
 import Block from '../../Common/Block';
-import navigation from './mocks';
 import NoGamesFound from '.';
 
 const Container = styled(Block)`
@@ -12,6 +11,6 @@ const Container = styled(Block)`
 storiesOf('Games.NoGamesFound', module)
   .add('NoGamesFound', () => (
     <Container bgColor="concrete">
-      <NoGamesFound navigation={navigation} />
+      <NoGamesFound onPress={() => {}} />
     </Container>
   ));
