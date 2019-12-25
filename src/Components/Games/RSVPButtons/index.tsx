@@ -71,8 +71,8 @@ class RSVPButtons extends React.PureComponent {
     } = this.props;
 
     const {
- status, capacity, attendeesIds, isAttendee 
-} = activity;
+      status, capacity, attendeesIds, isAttendee,
+    } = activity;
 
     const isCanceled = status === ACTIVITY_STATUSES.CANCELED;
     const isFinished = status === ACTIVITY_STATUSES.FINISHED;

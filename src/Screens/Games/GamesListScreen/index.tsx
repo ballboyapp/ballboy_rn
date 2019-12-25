@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import moment from 'moment';
+import { Platform } from 'react-native';
 import get from 'lodash/get';
 import styled from 'styled-components/native';
-// import { locationPropTypes, withLocation } from '../../../Context/Location';
 import { QueryCatchErrors } from '../../../GraphQL/QueryCatchErrors';
 import activitiesQuery from '../../../GraphQL/Activities/Queries/activities';
 import GamesList from '../../../Components/Games/GamesList';
 import NoGamesFound from '../../../Components/Games/NoGamesFound';
-// import curatedGames from './utils';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -21,14 +19,19 @@ const Container = styled.View`
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
+// TODO: use hooks
 class GamesListScreen extends React.PureComponent {
   state = {
     hasNewResults: true,
   }
 
+  handleNoResultsBtnPress = () => {
+    const { navigation } = this.props;
+    navigation.navigate(Platform.OS === 'web' ? 'PlanGameScreen' : 'PlanScreen');
+  }
+
   handleGamePress = (activity) => {
     const { navigation } = this.props;
-    console.log('HANDLE GAME PRESS !!!!');
     navigation.navigate('GameDetailsScreen', { _id: activity._id });
   }
 
@@ -66,7 +69,7 @@ class GamesListScreen extends React.PureComponent {
               <GamesList
                 activities={activities}
                 onCardPress={this.handleGamePress}
-                nothingFoundComp={NoGamesFound}
+                nothingFoundComp={() => <NoGamesFound onPress={this.handleNoResultsBtnPress} />}
                 // FlatList props
                 onRefresh={refetch}
                 refreshing={loading && hasNewResults}

@@ -5,7 +5,7 @@ Clone the repo:
 ```
 >> mkdir bb (you can call your project's folder whatever you want; bb stands for ballboy)
 >> cd bb
->> git clone git@github.com:fede-rodes/ballboy_client.git client (this will create a 'client' folder inside 'bb')
+>> git clone git@github.com:fede-rodes/ballboy_rn.git rn (this will create a 'rn' folder inside 'bb')
 >> cd client
 >> yarn run install (install dependencies, please use yarn not npm!)
 ```
