@@ -8,8 +8,8 @@
     "eject": "expo eject",
     "deploy:web": "expo build:web && cp ./_redirects ./web-build && netlify deploy --dir web-build --prod",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf node_modules/ && rm yarn.lock && yarn cache clean && yarn install",
-    "graphql:updateSchema": "get-graphql-schema http://192.168.1.131:3001/graphql > schema.graphql",
-    "graphql:updateSchemaJSON": "get-graphql-schema http://192.168.1.131:3001/graphql > schema.graphql.json --json",
+    "graphql:updateSchema": "get-graphql-schema http://192.168.43.20:3001/graphql > schema.graphql",
+    "graphql:updateSchemaJSON": "get-graphql-schema http://192.168.43.20:3001/graphql > schema.graphql.json --json",
     "prestorybook": "rnstl",
     "storybook": "start-storybook -p 7007"
   },

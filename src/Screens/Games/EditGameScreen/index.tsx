@@ -40,7 +40,6 @@ class EditGameScreen extends React.PureComponent {
     const { onLeave } = this.props;
     // Pass event up to parent component
     onLeave();
-
     // Need this for android back handler btn to work
     return true;
   }

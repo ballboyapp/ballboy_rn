@@ -320,6 +320,9 @@
           "tooLong": "Beschrijving is te lang"
         }
       },
+      "repeatFrequency": {
+        "label": "Repeat activity every week"
+      },
       "isPublic": {
         "label": "Dit is een privéactiviteit"
       }

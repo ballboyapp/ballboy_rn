@@ -13,6 +13,7 @@ storiesOf('Games.EditGameForm', module)
         variables={{ _id: '1' }}
       >
         {({ loading, error, data }) => {
+          console.log({ error, data });
           if (loading || error) return null;
 
           return <EditGameForm activity={data.activityDetails} />;

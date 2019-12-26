@@ -320,6 +320,9 @@
           "tooLong": "Descripción es muy larga"
         }
       },
+      "repeatFrequency": {
+        "label": "Repetir actividad todas las semanas"
+      },
       "isPublic": {
         "label": "Esta es una actividad privada"
       }

@@ -19,6 +19,8 @@ import Row from '../../Common/Row';
 import Divider from '../../Common/Divider';
 import TextField from '../../Common/TextField';
 import RaisedButton from '../../Common/RaisedButton';
+import SwitchWithText from '../../Common/SwitchWithText';
+import Text from '../../Common/Text';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -37,6 +39,7 @@ const getInitState = ({ activity }) => {
     spot,
     title,
     description = '',
+    repeatFrequency = 0,
   } = activity;
 
   // console.log('activity', activity);
@@ -55,6 +58,7 @@ const getInitState = ({ activity }) => {
     spot,
     title,
     description,
+    repeatFrequency,
     // isPublic: inviteMode !== 'INVITE_ONLY',
   };
 };
@@ -248,6 +252,7 @@ class EditGameForm extends React.PureComponent {
       spot,
       title,
       description,
+      repeatFrequency,
       // isPublic,
       errors,
     } = this.state;
@@ -390,14 +395,14 @@ class EditGameForm extends React.PureComponent {
             />
           </Block>
           <Divider />
-          {/* <Block>
+          <Block>
             <SwitchWithText
-              label={I18n.t('editGameForm.fields.isPublic.label')}
-              value={!isPublic}
+              label={I18n.t('editGameForm.fields.repeatFrequency.label')}
+              value={!repeatFrequency}
               disabled={disabled}
-              onChange={(value) => { this.handleChange({ fieldName: 'isPublic', value: !value }); }}
+              onChange={(value) => { this.handleChange({ fieldName: 'repeatFrequency', value: !value ? 1 : 0 }); }}
             />
-          </Block> */}
+          </Block>
         </TopLayout>
         <BottomLayout>
           <RaisedButton
