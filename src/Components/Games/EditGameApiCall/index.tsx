@@ -23,6 +23,7 @@ class EditGameApiCall extends React.PureComponent {
       spot,
       title,
       description,
+      repeatFrequency,
     } = inputFields;
 
     const dateTime = moment.utc([
@@ -41,6 +42,7 @@ class EditGameApiCall extends React.PureComponent {
       spotId: spot._id,
       title,
       description,
+      repeatFrequency,
     };
 
     console.log('variables', variables);
