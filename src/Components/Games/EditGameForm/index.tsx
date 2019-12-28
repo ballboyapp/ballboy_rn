@@ -20,7 +20,6 @@ import Divider from '../../Common/Divider';
 import TextField from '../../Common/TextField';
 import RaisedButton from '../../Common/RaisedButton';
 import SwitchWithText from '../../Common/SwitchWithText';
-import Text from '../../Common/Text';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
