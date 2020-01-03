@@ -124,8 +124,11 @@ class EditGameForm extends React.PureComponent {
     });
   }
 
+  // TODO: use prevState to pass errors or handle errors at a higher level
   handleChange = ({ fieldName, value }) => {
+    console.log('handleChange', { fieldName, value });
     const { errors } = this.state;
+
     // Update value and clear errors for the given field
     this.setState({
       [fieldName]: value,
@@ -397,9 +400,9 @@ class EditGameForm extends React.PureComponent {
           <Block>
             <SwitchWithText
               label={I18n.t('editGameForm.fields.repeatFrequency.label')}
-              value={!repeatFrequency}
+              value={!!repeatFrequency}
               disabled={disabled}
-              onChange={(value) => { this.handleChange({ fieldName: 'repeatFrequency', value: !value ? 1 : 0 }); }}
+              onChange={(value) => { this.handleChange({ fieldName: 'repeatFrequency', value: !value ? 0 : 1 }); /* Boolean => Int */ }}
             />
           </Block>
         </TopLayout>
