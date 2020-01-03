@@ -1,7 +1,7 @@
 import Constants from 'expo-constants';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Linking, Share } from 'react-native';
+import { Platform, Linking, Share } from 'react-native';
 // import firebase from 'react-native-firebase';
 import I18n from '../../../I18n';
 import RoundButton from '../../Common/RoundButton';
@@ -50,11 +50,16 @@ class ShareGameButton extends React.PureComponent {
 
     let url = shareLink;
     if (variant === 'facebook') url = `https://www.facebook.com/sharer/sharer.php?u=${shareLink}&t=${title}`;
-    else if (variant === 'whatsapp') url = `https://wa.me/?text=${message}`;
+    else if (variant === 'whatsapp') url = `https://api.whatsapp.com/send?phone=&source=&data=&text=${message}`;
     else if (variant === 'email') url = `mailto:?subject=${title}&body=${message}`;
 
     try {
-      await Linking.openURL(url);
+      // TODO: patch until https://github.com/necolas/react-native-web/pull/1432 gets merged
+      if (Platform.OS === 'web' && ['facebook', 'whatsapp'].includes(variant)) {
+        window.open(url, '_blank');
+      } else {
+        await Linking.openURL(url);
+      }
     } catch (exc) {
       console.log(exc);
     }
