@@ -14,3 +14,6 @@ app.json
 app.json.prod
 app.json.dev
 
+
+# Local Netlify folder
+.netlify
