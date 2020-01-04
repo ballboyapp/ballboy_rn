@@ -84,8 +84,7 @@
     },
     "extra": {
       "isStorybook": false,
-      "devServerUrl": "http://192.168.1.133:3001",
-      "prodServerUrl": "https://vast-beach-90080.herokuapp.com",
+      "serverUrl": "http://192.168.1.133:3001",
       "graphqlEndpoint": "/graphql",
       "chatkitAuthEndpoint": "/chatkit-auth",
       "chatkitReadOnlyUser": "readonly",
