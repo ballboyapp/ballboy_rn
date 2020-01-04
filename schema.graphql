@@ -16,6 +16,7 @@ type Activity {
   attendees: [PublicUser]
   isAttendee: Boolean
   distance: Float
+  repeatFrequency: Int
 }
 
 enum ActivityStatus {
@@ -78,8 +79,8 @@ type Mutation {
   login(email: String!): PrivateUser
   validatePasscode(email: String!, passcode: String!): AuthToken
   updateUser(username: String, gender: String, avatar: String, city: String, country: String, formattedAddress: String, coordinates: [Float]): PrivateUser
-  createActivity(sport: Sport!, dateTime: String!, duration: Int, capacity: Int, spotId: ID!, title: String!, description: String): Activity
-  updateActivity(_id: ID!, dateTime: String!, duration: Int, capacity: Int, spotId: ID!, title: String!, description: String): Activity
+  createActivity(sport: Sport!, dateTime: String!, duration: Int, capacity: Int, spotId: ID!, title: String!, description: String, repeatFrequency: Int): Activity
+  updateActivity(_id: ID!, dateTime: String!, duration: Int, capacity: Int, spotId: ID!, title: String!, description: String, repeatFrequency: Int): Activity
   cancelActivity(_id: ID!, msg: String): Activity
   addAttendee(_id: ID!): Activity
   removeAttendee(_id: ID!): Activity

@@ -24,28 +24,30 @@ At the root of the project you'll find a `app.json.sample` file. Duplicate said 
 
 #### Google Maps API Keys (static map service API)
 
-- Visit [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key) and create a new project.
-- Set `ios.config.googleMapsApiKey` by enabling 'Maps Static API' for ios.
-- Set `android.config.googleMaps.apiKey` by enabling 'Maps Static API' for android.
-- Set `extra.webGoogleMapsApiKey` by enabling 'Maps Static API' for web.
+- Visit [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key) and follow the steps to create a new project and an API key.
+- Go to `APIs & Services > Dashboard` and click on `ENABLE APIS & SERVICES` button at the top. Look for `Maps Static API`. Enable it.
+- Copy the API key and set `ios.config.googleMapsApiKey`, `android.config.googleMaps.apiKey` and `extra.webGoogleMapsApiKey` in `app.json`.
 
 #### Sentry (error tracking service API)
 
-- Visit [https://sentry.io](https://sentry.io), create an account and a new 'Organization'.
-- Set `extra.webSentryDsn` by creating a new 'React' project and getting the DSN key
+- Visit [https://sentry.io](https://sentry.io) and create an account and a new 'Organization'.
+- Set `extra.webSentryDsn` by creating a new 'React' project and getting the DSN key.
 - Set `extra.rnSentryDsn` by creating a new 'React Native' project and getting the DSN key. In addition, enable the `hooks.postPublish[0].config.authToken` by following the expo-sentry docs:  [https://docs.expo.io/versions/latest/guides/using-sentry/](https://docs.expo.io/versions/latest/guides/using-sentry/)
 
 #### Chatkit (chat service API)
 
-- Visit [https://pusher.com/chatkit](https://pusher.com/chatkit), create a new account and a new Chatkit project.
-- Set `extra.chatkitInstanceLocator` from the credentials tab
-- Go to `ROLES` inside the `Console` tab and create a `readonly` role by enabling the following permissions: `room:join`, `room:leave`, `room:get`, `room:messages:get`, `room:typing_indicator:create`, `presence:subscribe`, `user:get`, `user:rooms:get`, `file:get` and `cursors:read:get`.
+- Visit [https://pusher.com/chatkit](https://pusher.com/chatkit) and create a new account and a new Chatkit instance.
+- Set `extra.chatkitInstanceLocator` from the credentials tab.
+- Go to `Console` tab and you'll be prompted to create a new user. Set user name and ID to `admin`.
+- Click on `ROLES` inside the `Console` tab and select the `admin` role. Then, click on `assign role to user` and select the `admin` user. Assign the role.
+- Go to `ROLES` inside the `Console` tab and create a `readonly` role by enabling the following permissions (make sure the `readonly` role is selected before setting up the permissions): `room:join`, `room:leave`, `room:get`, `room:messages:get`, `room:typing_indicator:create`, `presence:subscribe`, `user:get`, `user:rooms:get`, `file:get` and `cursors:read:get`.
+- From the `ROLES`, click onassign role to user and select the `readonly` user.
 
 #### Cloudinary (image host and manipulation service API)
 
 - Visit [https://cloudinary.com/](https://cloudinary.com/) and create a new account.
 - From the `Dashboard` tab, grab the `Cloud name`, `API key` and `API secret` keys and set `extra.cloudinaryCloudname`, `extra.cloudinaryApiKey` and `extra.cloudinaryApiSecret` respectively.
-- Finally, go to `settings` section ([https://cloudinary.com/console/settings](https://cloudinary.com/console/settings)), move to the `Upload` tab and scroll down to `Upload presets`. Set `Upload preset name` to `default` and `Signing Mode` to `unsigned`. Hit save.
+- Finally, go to `settings` ([https://cloudinary.com/console/settings](https://cloudinary.com/console/settings)), move to the `Upload` tab and scroll down to `Upload presets` section. Click on `Enable unsigned uploading` and then on `edit`. Set `Upload preset name` to `default` and `Signing Mode` to `unsigned`. Save.
 
 Find out more about expo env vars:
 - [https://expo.canny.io/feature-requests/p/dotenv-support](https://expo.canny.io/feature-requests/p/dotenv-support)

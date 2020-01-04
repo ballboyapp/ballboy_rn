@@ -320,6 +320,9 @@
           "tooLong": "Beschrijving is te lang"
         }
       },
+      "repeatFrequency": {
+        "label": "Repeat activity every week"
+      },
       "isPublic": {
         "label": "Dit is een privéactiviteit"
       }
@@ -676,7 +679,7 @@
   },
 
   "shareGameButton": {
-    "msg": "Je bent uitgenodigd om mee te doen met een potje op SportySpots:",
+    "msg": "Je bent uitgenodigd voor een sportactiviteit:",
     "dialogTitle": "delen"
   },
 

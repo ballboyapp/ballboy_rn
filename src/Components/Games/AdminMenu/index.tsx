@@ -45,7 +45,7 @@ class AdminMenu extends React.PureComponent {
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
-          if (loading || error || !data) {
+          if (loading || error || !data || !data.activityDetails) {
             return null;
           }
 

@@ -11,4 +11,6 @@ npm-debug.*
 web-build/
 web-report/
 app.json
+app.json.prod
+app.json.dev
 

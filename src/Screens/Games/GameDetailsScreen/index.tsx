@@ -54,7 +54,7 @@ class GameDetailsScreen extends React.PureComponent {
         {({ loading, error, data }) => {
           if (loading) return <CenteredActivityIndicator />;
 
-          if (error || !data) {
+          if (error || !data || !data.activityDetails) {
             return (
               <NothingFoundContainer>
                 <NothingFound

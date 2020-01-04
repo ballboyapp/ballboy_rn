@@ -19,6 +19,7 @@ import Row from '../../Common/Row';
 import Divider from '../../Common/Divider';
 import TextField from '../../Common/TextField';
 import RaisedButton from '../../Common/RaisedButton';
+import SwitchWithText from '../../Common/SwitchWithText';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -37,6 +38,7 @@ const getInitState = ({ activity }) => {
     spot,
     title,
     description = '',
+    repeatFrequency = 0,
   } = activity;
 
   // console.log('activity', activity);
@@ -55,6 +57,7 @@ const getInitState = ({ activity }) => {
     spot,
     title,
     description,
+    repeatFrequency,
     // isPublic: inviteMode !== 'INVITE_ONLY',
   };
 };
@@ -121,8 +124,11 @@ class EditGameForm extends React.PureComponent {
     });
   }
 
+  // TODO: use prevState to pass errors or handle errors at a higher level
   handleChange = ({ fieldName, value }) => {
+    console.log('handleChange', { fieldName, value });
     const { errors } = this.state;
+
     // Update value and clear errors for the given field
     this.setState({
       [fieldName]: value,
@@ -248,6 +254,7 @@ class EditGameForm extends React.PureComponent {
       spot,
       title,
       description,
+      repeatFrequency,
       // isPublic,
       errors,
     } = this.state;
@@ -390,14 +397,14 @@ class EditGameForm extends React.PureComponent {
             />
           </Block>
           <Divider />
-          {/* <Block>
+          <Block>
             <SwitchWithText
-              label={I18n.t('editGameForm.fields.isPublic.label')}
-              value={!isPublic}
+              label={I18n.t('editGameForm.fields.repeatFrequency.label')}
+              value={!!repeatFrequency}
               disabled={disabled}
-              onChange={(value) => { this.handleChange({ fieldName: 'isPublic', value: !value }); }}
+              onChange={(value) => { this.handleChange({ fieldName: 'repeatFrequency', value: !value ? 0 : 1 }); /* Boolean => Int */ }}
             />
-          </Block> */}
+          </Block>
         </TopLayout>
         <BottomLayout>
           <RaisedButton

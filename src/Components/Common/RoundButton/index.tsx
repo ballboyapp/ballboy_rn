@@ -60,7 +60,7 @@ const RoundButton = ({
 RoundButton.propTypes = {
   iconSet: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
-  status: PropTypes.oneOf([
+  status: PropTypes.oneOf([ // TODO: introduce VARIANTS constant at the top
     'default',
     'primary',
     'secondary',

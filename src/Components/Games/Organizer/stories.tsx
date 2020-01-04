@@ -42,4 +42,3 @@ storiesOf('Games.Organizer', module)
   .add('Organizer M textSize', () => (
     <Container textSize="M" />
   ));
-

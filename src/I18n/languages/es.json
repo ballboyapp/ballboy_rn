@@ -320,6 +320,9 @@
           "tooLong": "Descripción es muy larga"
         }
       },
+      "repeatFrequency": {
+        "label": "Repetir actividad todas las semanas"
+      },
       "isPublic": {
         "label": "Esta es una actividad privada"
       }
@@ -676,7 +679,7 @@
   },
 
   "shareGameButton": {
-    "msg": "Has sido invitado a una actividad de SportySpots:",
+    "msg": "Has sido invitado a una actividad deportiva:",
     "dialogTitle": "compartir"
   },
 

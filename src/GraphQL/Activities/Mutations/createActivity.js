@@ -9,6 +9,7 @@ const createActivityMutation = gql`
     $spotId: ID!,
     $title: String!,
     $description: String,
+    $repeatFrequency: Int,
   ) {
     createActivity(
       sport: $sport,
@@ -18,6 +19,7 @@ const createActivityMutation = gql`
       spotId: $spotId,
       title: $title,
       description: $description,
+      repeatFrequency: $repeatFrequency,
     ) {
       _id
     }
