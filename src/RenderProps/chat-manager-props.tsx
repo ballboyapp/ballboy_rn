@@ -7,16 +7,12 @@ import Chatkit from '@pusher/chatkit-client/react-native';
 //------------------------------------------------------------------------------
 // CONSTANTS:
 //------------------------------------------------------------------------------
-const { NODE_ENV } = process.env;
 const {
-  devServerUrl,
-  prodServerUrl,
+  serverUrl,
   chatkitAuthEndpoint,
   chatkitInstanceLocator,
   chatkitReadOnlyUser,
 } = Constants.manifest.extra;
-
-const serverUrl = NODE_ENV === 'production' ? prodServerUrl : devServerUrl;
 
 //------------------------------------------------------------------------------
 // PROPS AND METHODS PROVIDER:
@@ -60,7 +56,7 @@ class ChatManagerProps extends React.PureComponent {
       chatkitUser = await chatManager.connect();
       this.setState({ chatkitUser });
     } catch (exc) {
-      console.error('exc', exc);
+      console.error('exc', exc); // TODO: catch using sentry
       this.setState({ loading: false });
       return;
     }

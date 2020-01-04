@@ -7,11 +7,7 @@ import { onError } from 'apollo-link-error';
 import { createHttpLink } from 'apollo-link-http';
 import { AsyncStorage } from 'react-native';
 
-const { NODE_ENV } = process.env;
-console.log({ __DEV__, NODE_ENV });
-const { devServerUrl, prodServerUrl, graphqlEndpoint } = Constants.manifest.extra;
-
-const serverUrl = NODE_ENV === 'production' ? prodServerUrl : devServerUrl;
+const { serverUrl, graphqlEndpoint } = Constants.manifest.extra;
 
 const httpLink = createHttpLink({
   uri: `${serverUrl}${graphqlEndpoint}`,
