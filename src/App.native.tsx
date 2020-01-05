@@ -51,9 +51,9 @@ class App extends Component {
   // }
 
   componentDidMount() {
-  //   // signals codepush that the app is ready. If this is not called, CodePush rolls back
-  //   // the last update.
-  //   // codePush.notifyAppReady();
+    //   // signals codepush that the app is ready. If this is not called, CodePush rolls back
+    //   // the last update.
+    //   // codePush.notifyAppReady();
 
     //   // create android notification channel to display notifications while app in foreground
     //   const channel = new firebase.notifications.Android

@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage } from 'react-native';
 import Chatkit from '@pusher/chatkit-client/react-native';
+import * as Sentry from 'sentry-expo';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -48,6 +49,13 @@ class ChatManagerProps extends React.PureComponent {
           authorization: userId === chatkitReadOnlyUser ? '' : (token ? `Bearer ${token}` : ''),
         },
       }),
+      logger: {
+        verbose: console.log,
+        debug: console.log,
+        info: console.log,
+        warn: console.log,
+        error: console.log,
+      },
     });
 
     let chatkitUser = null;
@@ -56,7 +64,7 @@ class ChatManagerProps extends React.PureComponent {
       chatkitUser = await chatManager.connect();
       this.setState({ chatkitUser });
     } catch (exc) {
-      console.error('exc', exc); // TODO: catch using sentry
+      Sentry.captureException(exc);
       this.setState({ loading: false });
       return;
     }
@@ -93,7 +101,7 @@ class ChatManagerProps extends React.PureComponent {
         });
         this.setState({ room });
       } catch (exc) {
-        console.error('exc', exc);
+        Sentry.captureException(exc);
       }
     }
 
@@ -108,7 +116,7 @@ class ChatManagerProps extends React.PureComponent {
       try {
         await chatkitUser.disconnect();
       } catch (exc) {
-        console.error('disconnect exc', exc);
+        Sentry.captureException(exc);
       }
     }
 
@@ -116,7 +124,7 @@ class ChatManagerProps extends React.PureComponent {
       try {
         await chatkitUser.roomSubscriptions[roomId].cancel();
       } catch (exc) {
-        console.error('unsubscribe exc', exc);
+        Sentry.captureException(exc);
       }
     }
   }
