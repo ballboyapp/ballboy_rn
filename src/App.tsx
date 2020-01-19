@@ -9,7 +9,7 @@ import { MenuProvider } from 'react-native-popup-menu';
 import styled, { ThemeProvider } from 'styled-components/native';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 // import { createAppContainer } from 'react-navigation';
-import './services/sentry';
+import ErrorsManager from './managers/errors';
 import client from './GraphQL/ApolloClient';
 import AppNavigation, { getActiveRouteName } from './Navigation/AppNavigation';
 // import createRootNavigation, { getActiveRouteName } from './Navigation/AppNavigation';
@@ -22,6 +22,8 @@ import scTheme from './Themes/scTheme'; // styled-components theme
 // import { logNavigationState } from './utils';
 // import { CodePushProvider } from './Context/CodePush';
 import LoadAssets from './Components/Common/LoadAssets';
+
+ErrorsManager.init();
 
 // TODO: clean, refactor, extract code that is also used at App.native.tsx
 //------------------------------------------------------------------------------
