@@ -17,11 +17,11 @@ const ErrorsManager = {
     Sentry.init(params);
   },
   captureException(err) {
-    console.log('ErrorsManager.captureException', err);
+    // console.log('ErrorsManager.captureException', err);
     Sentry.captureException(err);
   },
   captureMessage(msg) {
-    console.log('ErrorsManager.captureMessage', msg);
+    // console.log('ErrorsManager.captureMessage', msg);
     Sentry.captureMessage(msg);
   },
 };
