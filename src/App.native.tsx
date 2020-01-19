@@ -1,4 +1,3 @@
-import Constants from 'expo-constants';
 import React, { Component } from 'react';
 // import Crashes from 'appcenter-crashes';
 // import codePush from 'react-native-code-push';
@@ -6,9 +5,9 @@ import { ApolloProvider } from 'react-apollo';
 import { StatusBar } from 'react-native';
 // import firebase from 'react-native-firebase';
 import { MenuProvider } from 'react-native-popup-menu';
-import * as Sentry from 'sentry-expo';
 import styled, { ThemeProvider } from 'styled-components/native';
 // import { createAppContainer } from 'react-navigation';
+import './services/sentry';
 import client from './GraphQL/ApolloClient';
 import AppNavigation, { getActiveRouteName } from './Navigation/AppNavigation';
 // import createRootNavigation, { getActiveRouteName } from './Navigation/AppNavigation';
@@ -22,14 +21,7 @@ import scTheme from './Themes/scTheme'; // styled-components theme
 // import { CodePushProvider } from './Context/CodePush';
 import LoadAssets from './Components/Common/LoadAssets';
 
-const { rnSentryDsn } = Constants.manifest.extra;
-
-Sentry.init({
-  dsn: rnSentryDsn,
-  enableInExpoDevelopment: true,
-  debug: true,
-});
-
+// TODO: clean, refactor, extract code that is also used at App.tsx
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
