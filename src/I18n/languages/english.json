@@ -41,6 +41,7 @@
     "spots": "Spots",
     "activities": "Activities",
     "organize": "Organize",
+    "notifications": "Notifications",
     "profile": "Profile",
     "info": "Info"
   },
@@ -540,6 +541,16 @@
 
   "spotPickerModal": {
     "header": "Pick a spot"
+  },
+
+  "notificationsListScreen": {
+    "navigation": {
+      "title": "Notifications"
+    }
+  },
+
+  "notificationsList": {
+    "noResults": "Looks like you have no notifications"
   },
 
   "loggedOutScreen": {

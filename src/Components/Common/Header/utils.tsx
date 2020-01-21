@@ -89,6 +89,9 @@ const ROUTES = {
   PlanGameScreen: {
     title: '',
   },
+  NotificationsListScreen: {
+    title: 'notificationsListScreen.navigation.title',
+  },
   ProfileEditScreen: {
     title: 'profileScreen.navigation.title',
     rightComponent: ({ navigation }) => (

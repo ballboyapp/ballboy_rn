@@ -17,6 +17,7 @@ import {
   SpotSearchNav,
   GameSearchNav,
   PlanGameNav,
+  NotificationsNav,
   ProfileNav,
   InfoNav,
 } from './Navigators';
@@ -26,6 +27,7 @@ import DebugScreen from '../Screens/Debug/DebugScreen';
 const MainTabsNav = createBottomTabNavigator({
   SpotSearchTab: { screen: SpotSearchNav },
   GameSearchTab: { screen: GameSearchNav },
+  NotificationsTab: { screen: NotificationsNav },
   ProfileTab: { screen: ProfileNav },
   InfoTab: { screen: InfoNav },
 }, {

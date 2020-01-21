@@ -62,12 +62,10 @@ class GamesListScreen extends React.PureComponent {
             });
           };
 
-          const activities = get(data, 'activities', []);
-
           return (
             <Container testID="GameListScreen">
               <GamesList
-                activities={activities}
+                activities={get(data, 'activities', [])}
                 onCardPress={this.handleGamePress}
                 nothingFoundComp={() => <NoGamesFound onPress={this.handleNoResultsBtnPress} />}
                 // FlatList props

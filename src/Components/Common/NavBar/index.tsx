@@ -35,6 +35,14 @@ const buttons = [{
     name: 'soccer-field', // 'map-marker-radius',
   },
 }, {
+  id: 'notifications',
+  label: 'navBar.notifications',
+  route: Platform.select({ web: 'NotificationsListScreen', default: 'NotificationsTab' }),
+  icon: {
+    set: 'MaterialCommunityIcons',
+    name: 'bell',
+  },
+}, /* {
   id: 'organize',
   label: 'navBar.organize',
   route: Platform.select({ web: 'PlanGameScreen', default: 'PlanScreen' }),
@@ -42,7 +50,7 @@ const buttons = [{
     set: 'MaterialCommunityIcons',
     name: 'plus-box',
   },
-}, {
+}, */ {
   id: 'profile',
   label: 'navBar.profile',
   route: Platform.select({ web: 'ProfileEditScreen', default: 'ProfileTab' }),

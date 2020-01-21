@@ -8,6 +8,7 @@ import NavBar from '../Components/Common/NavBar';
 const FOOTER_VISIBLE_ROUTES = [
   'GamesListScreen',
   'SpotsListScreen',
+  'NotificationsListScreen',
   'ProfileEditScreen',
   'InfoScreen',
 ];
