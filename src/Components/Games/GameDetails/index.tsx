@@ -66,8 +66,6 @@ const GameDetails = ({
   const isFinished = status === ACTIVITY_STATUSES.FINISHED;
   const isFull = capacity > 0 && capacity === attendees.length;
 
-  console.log({ spot });
-
   return (
     <View style={{ flex: 1 }}>
       <SpotImages images={get(spot, 'images', [])} />

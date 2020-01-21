@@ -9,8 +9,8 @@ export const getPalette = (variant) => {
     case 'primary':
       return {
         fontColor: 'white',
-        bgColor: 'darkorchid',
-        borderColor: 'darkorchid',
+        bgColor: 'primaryGreen',
+        borderColor: 'primaryGreen',
       };
     case 'secondary':
       return {

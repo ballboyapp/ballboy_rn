@@ -11,9 +11,9 @@ const Header = ({ navigation }) => {
   const activeKey = activeRoute.key;
   const params = activeRoute.params || {};
 
-  console.log('activeRoute', JSON.stringify(activeRoute));
-  console.log('Header.navigation', navigation);
-  console.log('Header.params', params);
+  // console.log('activeRoute', JSON.stringify(activeRoute));
+  // console.log('Header.navigation', navigation);
+  // console.log('Header.params', params);
 
   const title = getTitle({ activeKey });
   const LeftComponent = getLeftComponent({ navigation, activeKey, params });

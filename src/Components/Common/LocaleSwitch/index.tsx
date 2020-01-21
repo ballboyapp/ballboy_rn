@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import moment from 'moment';
 // import styled from 'styled-components/native';
-/// import I18nNative from 'react-native-i18n';
+// / import I18nNative from 'react-native-i18n';
 // import I18n from '../../../I18n';
 // import Block from '../../../Components/Common/Block';
 import Row from '../Row';
@@ -14,20 +14,20 @@ import Text from '../Text';
 //------------------------------------------------------------------------------
 class LocaleSwitch extends React.Component {
   state = {
-    /// locale: I18nNative.locale,
+    // / locale: I18nNative.locale,
   }
 
   handleLocaleChange = (locale) => {
-    console.log('HANDLE LOCALE CHANGE', locale);
+    // console.log('HANDLE LOCALE CHANGE', locale);
     this.setState({ locale });
-    //// I18nNative.locale = locale;
+    // // I18nNative.locale = locale;
     moment.locale(locale);
   }
 
   render() {
     const { locale } = this.state;
     // Force app to re-render
-    console.log('NEW LOCALE!!!', locale);
+    // console.log('NEW LOCALE!!!', locale);
 
     return (
       <Row>

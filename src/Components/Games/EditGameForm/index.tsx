@@ -126,7 +126,7 @@ class EditGameForm extends React.PureComponent {
 
   // TODO: use prevState to pass errors or handle errors at a higher level
   handleChange = ({ fieldName, value }) => {
-    console.log('handleChange', { fieldName, value });
+    // console.log('handleChange', { fieldName, value });
     const { errors } = this.state;
 
     // Update value and clear errors for the given field

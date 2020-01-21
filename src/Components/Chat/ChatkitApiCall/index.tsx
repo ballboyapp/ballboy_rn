@@ -10,13 +10,15 @@ import sanitizeChatkitServerError from './utils';
  */
 class ChatkitApiCall extends React.PureComponent {
   handleSend = async (messages) => {
-    const { chatkitUser, roomId, onError, onSuccess } = this.props;
+    const {
+      chatkitUser, roomId, onError, onSuccess,
+    } = this.props;
 
     if (chatkitUser) {
       try {
         await chatkitUser.sendMessage({ text: messages[0].text, roomId });
       } catch (exc) {
-        console.log('Send msg exc', exc);
+        // console.log('Send msg exc', exc);
         onError({ server: [sanitizeChatkitServerError(exc)] });
         return;
       }

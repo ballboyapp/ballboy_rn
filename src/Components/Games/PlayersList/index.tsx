@@ -17,19 +17,17 @@ const Container = styled.ScrollView`
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const PlayersList = ({ players }) => {
-  console.log('PlayersList.players', players);
-  return (
-    <Container>
-      {players.map(player => (
-        <View key={player._id}>
-          <PlayerRow player={player} />
-          <Divider />
-        </View>
-      ))}
-    </Container>
-  );
-};
+const PlayersList = ({ players }) => (
+  // console.log('PlayersList.players', players);
+  <Container>
+    {players.map((player) => (
+      <View key={player._id}>
+        <PlayerRow player={player} />
+        <Divider />
+      </View>
+    ))}
+  </Container>
+);
 
 PlayersList.propTypes = {
   players: PropTypes.arrayOf(propType(publicUserFragment)),

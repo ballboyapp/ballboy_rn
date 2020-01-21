@@ -45,7 +45,7 @@ class PlanGameApiCall extends React.PureComponent {
       description,
     };
 
-    console.log('variables', variables);
+    // console.log('variables', variables);
 
     try {
       const res = await createActivity({
@@ -58,10 +58,10 @@ class PlanGameApiCall extends React.PureComponent {
           },
         },
       });
-      console.log('CREATE ACTIVITY RESPONSE', res);
+      // console.log('CREATE ACTIVITY RESPONSE', res);
       onSuccess({ activityId: res.data.createActivity._id });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

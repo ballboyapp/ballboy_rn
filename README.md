@@ -27,6 +27,7 @@ At the root of the project you'll find a `app.json.sample` file. Duplicate said 
 - Visit [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key) and follow the steps to create a new project and an API key.
 - Go to `APIs & Services > Dashboard` and click on `ENABLE APIS & SERVICES` button at the top. Look for `Maps Static API`. Enable it.
 - Copy the API key and set `ios.config.googleMapsApiKey`, `android.config.googleMaps.apiKey` and `extra.webGoogleMapsApiKey` in `app.json`.
+- Follow these steps to enable google maps in production: [https://docs.expo.io/versions/latest/sdk/map-view/?redirected](https://docs.expo.io/versions/latest/sdk/map-view/?redirected)
 
 #### Sentry (error tracking service API)
 
@@ -79,7 +80,7 @@ Find out more about expo env vars:
 ```
 - This should open a new window in your default browser with the web version of the app.
 
-### Deploy
+### Deploy (web)
 
 [https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md](https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md)
 [https://www.freecodecamp.org/news/how-to-deploy-a-react-application-to-netlify-363b8a98a985/](https://www.freecodecamp.org/news/how-to-deploy-a-react-application-to-netlify-363b8a98a985/)
@@ -90,6 +91,22 @@ Install the Netlify CLI with `npm install netlify-cli -g`.
 
 Then run `yarn run deploy:web`.
 
+### Build (android)
+
+Before building for release remember to bump the app version at app.json
+
+`expo build:android -t app-bundle`
+
+[https://docs.expo.io/versions/latest/distribution/building-standalone-apps/](https://docs.expo.io/versions/latest/distribution/building-standalone-apps/)
+
+At some point if you need to clear you keystore credentials, use:
+`expo build:android --clear-credentials`
+
+Notice: with every new release, you need to bump the `version` number, `ios.buildNumber` and `android.versionCode` (integer) at app.json before building.
+
+#### Wait for it to finish building
+
+When one of our building machines will be free, it'll start building your app. You can check how long you'll wait on Turtle status site. We'll print a url you can visit (such as `expo.io/builds/some-unique-id`) to watch your build logs. Alternatively, you can check up on it by running `expo build:status`. When it's done, you'll see the url of a .apk (Android) or .ipa (iOS) file -- this is your app. Copy and paste the link into your browser to download the file.
 
 ### Storybook
 

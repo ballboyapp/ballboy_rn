@@ -22,10 +22,10 @@ export const QueryCatchErrors = (props) => {
         try {
           if (queryResultProps.error) {
             const queryText = queryProps.query.loc && queryProps.query.loc.source.body.replace(/\n|\r/g, '');
-            console.log(
-              queryResultProps.error,
-              queryText,
-            );
+            // console.log(
+            //   queryResultProps.error,
+            //   queryText,
+            // );
             if (logErrors) {
               // TODO: use appcenter or sentry
               // Analytics.trackEvent('GraphQL error', {

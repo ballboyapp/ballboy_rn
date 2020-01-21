@@ -230,7 +230,7 @@ class PlanGameForm extends React.Component {
     Keyboard.dismiss();
 
     const { curSlide } = this.state;
-    console.log('HANDLE NEXT', { curSlide });
+    // console.log('HANDLE NEXT', { curSlide });
 
     // firebase.analytics().logEvent(`plan_activity_footer_next_btn_press_idx_${curSlide}`);
 

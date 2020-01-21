@@ -22,7 +22,7 @@ class AdminMenu extends React.PureComponent {
 
   render() {
     const { activityId } = this.props;
-    console.log('AdminMenu.activityId', activityId);
+    // console.log('AdminMenu.activityId', activityId);
 
     const OPTIONS = [
       {

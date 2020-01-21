@@ -25,11 +25,11 @@ class PasscodeFormApiCall extends React.PureComponent {
         },
       });
 
-      console.log('validatePasscode res', res);
+      // console.log('validatePasscode res', res);
 
       onSuccess({ token: res.data.validatePasscode.token });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

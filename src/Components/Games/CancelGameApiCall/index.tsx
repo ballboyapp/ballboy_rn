@@ -21,10 +21,10 @@ class CancelGameApiCall extends React.PureComponent {
         },
         // DO NOT refetch here
       });
-      console.log('CANCEL_GAME', res);
+      // console.log('CANCEL_GAME', res);
       onSuccess({ activityId });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

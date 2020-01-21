@@ -13,8 +13,6 @@ storiesOf('Games.CancelGameForm', module)
         variables={{ _id: '1' }}
       >
         {({ loading, error, data }) => {
-          console.log('error', error)
-          console.log('data', data)
           if (loading || error) return null;
 
           return <CancelGameForm activity={data.activityDetails} />;

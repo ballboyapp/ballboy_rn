@@ -1,44 +1,23 @@
-import Constants from 'expo-constants';
 import React from 'react';
-import { Platform } from 'react-native';
 import { propType } from 'graphql-anywhere';
 import styled from 'styled-components/native';
 import GoogleStaticMap from 'react-native-google-static-map';
-import get from 'lodash/get';
 import { WINDOW_WIDTH } from '../../../constants';
+import ErrorsManager from '../../../managers/errors';
 import spotDetailsFragment from '../../../GraphQL/Spots/Fragments/spotDetails';
 import Block from '../../Common/Block';
 import Row from '../../Common/Row';
 // import Spacer from '../../Common/Spacer';
 import RoundButton from '../../Common/RoundButton';
-import {
-  getSpotLocation,
-  openGoogleMapsLocation,
-  // openGoogleMapsDirections,
-} from '../utils';
+// import TestGoogleMapAPI from '../TestGoogleMapAPI';
+import { getSpotLocation, openGoogleMapsLocation /* openGoogleMapsDirections */ } from '../utils';
+import getGoogleMapsApiKey from './utils';
 
 // -----------------------------------------------------------------------------
 // CONSTANTS:
 // -----------------------------------------------------------------------------
-const googleMapsIosApiKey = get(Constants, 'manifest.ios.config.googleMapsApiKey', '');
-const googleMapsAndroidApiKey = get(Constants, 'manifest.android.config.googleMaps.apiKey', '');
-const googleMapsWebApiKey = get(Constants, 'manifest.extra.webGoogleMapsApiKey', '');
+const GOOGLE_MAPS_API_KEY = getGoogleMapsApiKey();
 
-let GOOGLE_MAPS_API_KEY;
-
-switch (Platform.OS) {
-  case 'ios':
-    GOOGLE_MAPS_API_KEY = googleMapsIosApiKey;
-    break;
-  case 'android':
-    GOOGLE_MAPS_API_KEY = googleMapsAndroidApiKey;
-    break;
-  case 'web':
-    GOOGLE_MAPS_API_KEY = googleMapsWebApiKey;
-    break;
-  default:
-    break;
-}
 // -----------------------------------------------------------------------------
 // STYLE:
 // -----------------------------------------------------------------------------
@@ -75,12 +54,14 @@ const SpotMap = ({ spot }) => {
 
   return (
     <Relative>
+      {/* <TestGoogleMapAPI /> */}
       <GoogleStaticMap
         latitude={latLng.latitude.toString()}
         longitude={latLng.longitude.toString()}
         zoom={13}
         size={{ width: parseInt(WINDOW_WIDTH, 10), height: 150 }}
         apiKey={GOOGLE_MAPS_API_KEY}
+        onError={({ nativeEvent: { error } }) => { ErrorsManager.captureException(error); }}
       />
       <Absolute>
         <Block>

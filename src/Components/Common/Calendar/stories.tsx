@@ -9,7 +9,7 @@ class Container extends React.PureComponent {
   }
 
   handleDayPress = (date) => {
-    console.log('DATE', date);
+    // console.log('DATE', date);
     this.setState({ date });
   }
 

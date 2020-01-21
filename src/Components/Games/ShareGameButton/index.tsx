@@ -61,7 +61,8 @@ class ShareGameButton extends React.PureComponent {
         await Linking.openURL(url);
       }
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
+      // TODO: catch using sentry
     }
   }
 
@@ -77,7 +78,8 @@ class ShareGameButton extends React.PureComponent {
       await Share.share(content, options);
       // firebase.analytics().logEvent('share_btn_success');
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
+      // TODO: catch using snetry
       // firebase.analytics().logEvent('share_btn_failed');
     }
   }

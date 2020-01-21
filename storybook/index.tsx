@@ -1,4 +1,3 @@
-// import '../src/polyfills';
 import '../src/prototypes';
 import './setup-faker';
 // import { AppLoading } from 'expo';

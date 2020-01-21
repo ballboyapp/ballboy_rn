@@ -17,15 +17,15 @@ class LoginEmailApiCall extends React.PureComponent {
     const { login, onError, onSuccess } = this.props;
     const { email } = inputFields;
 
-    console.log('HANDLE LOGIN', email);
+    // console.log('HANDLE LOGIN', email);
     try {
       const res = await login({
         variables: { email },
       });
-      console.log('LOGIN RESPONSE', res);
+      // console.log('LOGIN RESPONSE', res);
       onSuccess({ email });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

@@ -3,14 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage } from 'react-native';
 import Chatkit from '@pusher/chatkit-client/react-native';
-
-// import * as Sentry from 'sentry-expo';
-// import * as Sentry from '@sentry/browser';
-
-// const captureException = Platform.select({
-//   web: require('@sentry/browser').captureException,
-//   default: require('sentry-expo').captureException,
-// });
+import ErrorsManager from '../managers/errors';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -71,7 +64,7 @@ class ChatManagerProps extends React.PureComponent {
       chatkitUser = await chatManager.connect();
       this.setState({ chatkitUser });
     } catch (exc) {
-      // Sentry.captureException(exc);
+      ErrorsManager.captureException(exc);
       this.setState({ loading: false });
       return;
     }
@@ -108,7 +101,7 @@ class ChatManagerProps extends React.PureComponent {
         });
         this.setState({ room });
       } catch (exc) {
-        // Sentry.captureException(exc);
+        ErrorsManager.captureException(exc);
       }
     }
 
@@ -123,7 +116,7 @@ class ChatManagerProps extends React.PureComponent {
       try {
         await chatkitUser.disconnect();
       } catch (exc) {
-        // Sentry.captureException(exc);
+        ErrorsManager.captureException(exc);
       }
     }
 
@@ -131,7 +124,7 @@ class ChatManagerProps extends React.PureComponent {
       try {
         await chatkitUser.roomSubscriptions[roomId].cancel();
       } catch (exc) {
-        // Sentry.captureException(exc);
+        ErrorsManager.captureException(exc);
       }
     }
   }

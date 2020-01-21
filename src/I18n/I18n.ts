@@ -5,7 +5,6 @@ import moment from 'moment';
 import { LocaleConfig } from 'react-native-calendars';
 
 // Set locale based on user/phone settings
-console.log('Localization.locale', Localization.locale);
 I18n.locale = Localization.locale || 'en';
 
 // Enable fallbacks if you want `en-US` and `en-GB` to fallback to `en`
@@ -181,7 +180,7 @@ const calendarLocaleConfig = (locale) => {
   } = momentLocale._config;
 
   return {
-    monthNames: momentLocale.months().map(m => (m.toTitleCase && m.toTitleCase()) || m),
+    monthNames: momentLocale.months().map((m) => (m.toTitleCase && m.toTitleCase()) || m),
     monthNamesShort: monthsShort,
     dayNames: weekdays,
     dayNamesShort: weekdaysMin || weekdaysShort,

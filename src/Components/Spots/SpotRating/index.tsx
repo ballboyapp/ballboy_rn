@@ -30,10 +30,10 @@ class SpotRating extends React.PureComponent {
 
     try {
       const result = await api.submitRating(spotId, userId, rating);
-      console.log(result);
+      // console.log(result);
       this.setState({ userRating: rating });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
     }
   };
 
@@ -50,7 +50,7 @@ class SpotRating extends React.PureComponent {
         <Row justifyContent="space-between">
           <Rating
             rating={rating}
-            onPress={i => this.setState({ rating: i })}
+            onPress={(i) => this.setState({ rating: i })}
           />
           {/* <FlatButton
             text={I18n.t(userRating ? 'thank you' : 'submit').toUpperCase()}

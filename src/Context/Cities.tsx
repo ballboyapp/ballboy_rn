@@ -46,7 +46,8 @@ export const CitiesProvider = ({ children }) => {
   const { loading, error, data } = useQuery(citiesQuery);
 
   if (error) {
-    console.log('error', error);
+    // console.log('error', error);
+    // TODO: sentry
   }
 
   return (

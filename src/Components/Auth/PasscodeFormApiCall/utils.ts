@@ -4,15 +4,13 @@ import { curateErrors } from '../../../utils';
  * error = { passcode: ['Wrong passcode'] }
 */
 // TODO: pass errorMsg as the fieldName
-const curateFieldName = (fieldName) => {
-  return 'passcode';
-};
+const curateFieldName = (fieldName) => 'passcode';
 
 /**
  * error = { passcode: ['Wrong passcode'] }
 */
 const curateErrorMsg = (errorMsg) => {
-  console.log('errorMsg', errorMsg);
+  // console.log('errorMsg', errorMsg);
   switch (errorMsg) {
     case 'Invalid email or passcode':
       return 'passcodeForm.fields.passcode.errors.wrongPasscode'; // TODO
