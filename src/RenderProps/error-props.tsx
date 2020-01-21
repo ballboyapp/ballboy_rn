@@ -14,7 +14,8 @@ class ErrorProps extends React.PureComponent {
     if (errors && isObjectLike(errors)) {
       this.setState(() => ({ errors }));
     } else {
-      console.log('ERRORS IS NOT AN OBJECT', errors);
+      // console.log('ERRORS IS NOT AN OBJECT', errors);
+      // TODO: sentry
     }
   }
 

@@ -56,9 +56,9 @@ class SpotsList extends React.PureComponent {
         {({
           loading, data, refetch, fetchMore,
         }) => {
-          console.log({
-            loading, data, refetch, fetchMore,
-          });
+          // console.log({
+          //   loading, data, refetch, fetchMore,
+          // });
           const loadMore = () => {
             fetchMore({
               variables: {

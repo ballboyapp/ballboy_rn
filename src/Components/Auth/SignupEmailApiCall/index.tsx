@@ -19,7 +19,7 @@ class SignupEmailApiCall extends React.PureComponent {
     const { name, email } = inputFields;
 
     // TODO: change from name to username
-    console.log('HANDLE SIGNUP', name, email);
+    // console.log('HANDLE SIGNUP', name, email);
     try {
       const res = await signup({
         variables: {
@@ -28,10 +28,10 @@ class SignupEmailApiCall extends React.PureComponent {
           language: I18n.locale.substr(0, 2),
         },
       });
-      console.log('SIGNUP RESPONSE', res);
+      // console.log('SIGNUP RESPONSE', res);
       onSuccess({ email });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

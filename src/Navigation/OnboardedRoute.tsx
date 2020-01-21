@@ -24,7 +24,6 @@ class OnboardedRoute extends React.PureComponent {
     const { onNotOnboarded } = this.props;
 
     if (!loadingUser && user && !user.location) {
-      console.log('OnboardedRoute handle NOT onboarded!');
       onNotOnboarded();
     }
   }
@@ -47,8 +46,6 @@ class OnboardedRoute extends React.PureComponent {
     if (!user || !user.location) {
       return <CenteredActivityIndicator />;
     }
-
-    console.log('OnboardedRoute user and location set!');
 
     // ...Otherwise, render requested component
     return <Component {...rest} />;

@@ -16,8 +16,6 @@ const WebAppView = ({ descriptors, navigation }) => {
   const activeKey = navigation.state.routes[navigation.state.index].key;
   const descriptor = descriptors[activeKey];
 
-  console.log({ activeKey, descriptor });
-
   return (
     <View style={{ flex: 1 }}>
       <Header navigation={navigation} />

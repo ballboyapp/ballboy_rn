@@ -9,6 +9,7 @@ import Block from '../../Common/Block';
 import Row from '../../Common/Row';
 // import Spacer from '../../Common/Spacer';
 import RoundButton from '../../Common/RoundButton';
+// import TestGoogleMapAPI from '../TestGoogleMapAPI';
 import { getSpotLocation, openGoogleMapsLocation /* openGoogleMapsDirections */ } from '../utils';
 import getGoogleMapsApiKey from './utils';
 
@@ -53,6 +54,7 @@ const SpotMap = ({ spot }) => {
 
   return (
     <Relative>
+      {/* <TestGoogleMapAPI /> */}
       <GoogleStaticMap
         latitude={latLng.latitude.toString()}
         longitude={latLng.longitude.toString()}

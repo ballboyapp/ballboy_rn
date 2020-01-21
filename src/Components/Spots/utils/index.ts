@@ -6,7 +6,7 @@ import { showLocation } from 'react-native-map-link';
 // });
 const getCurrentPosition = (options = {}) => new Promise((resolve, reject) => {
   navigator.geolocation.getCurrentPosition(
-    result => resolve({
+    (result) => resolve({
       latitude: result.coords.latitude,
       longitude: result.coords.longitude,
     }),
@@ -36,7 +36,8 @@ export const openGoogleMapsLocation = async ({ latLng, title = '' }) => {
 // -----------------------------------------------------------------------------
 export const openGoogleMapsDirections = async ({ latLng, title = '' }) => {
   if (!('geolocation' in navigator)) {
-    console.log('Geolocation is not available');
+    // console.log('Geolocation is not available');
+    // TODO: sentry
     return;
   }
 
@@ -51,13 +52,14 @@ export const openGoogleMapsDirections = async ({ latLng, title = '' }) => {
   try {
     position = await getCurrentPosition(options);
   } catch (exc) {
-    console.log(
-      'Oops, we couldn\'t get your position! Make sure you GPS is enabled ;)',
-      exc,
-    );
+    // TODO: handle error msg appropriatelly
+    // console.log(
+    //   'Oops, we couldn\'t get your position! Make sure you GPS is enabled ;)',
+    //   exc,
+    // );
   }
 
-  console.log('POSITION', position);
+  // console.log('POSITION', position);
 
   // Show directions FROM the user's current position (if available) TO the
   // spot's location

@@ -9,7 +9,10 @@ import axios from 'axios';
 // CONSTANTS:
 //------------------------------------------------------------------------------
 const {
-  cloudinaryCloudname, cloudinaryUploadPreset, cloudinaryApiKey, cloudinaryApiSecret,
+  cloudinaryCloudname,
+  cloudinaryUploadPreset,
+  cloudinaryApiKey,
+  cloudinaryApiSecret,
 } = Constants.manifest.extra;
 
 // See: https://www.youtube.com/watch?v=WOTFmPkWbxo
@@ -50,7 +53,7 @@ class AvatarPickerApiCall extends React.PureComponent {
       });
     } catch (exc) {
       // TODO: add sentry
-      console.log(`Error when attaching params to axios, ${exc}`);
+      // console.log(`Error when attaching params to axios, ${exc}`);
       onError(exc);
       return;
     }
@@ -59,11 +62,11 @@ class AvatarPickerApiCall extends React.PureComponent {
     // Send the actual request
     try {
       const res = await axios.post(url, formData);
-      console.log('SUCCESS', res);
+      // console.log('SUCCESS', res);
       onSuccess(res.data.secure_url);
     } catch (exc) {
       // TODO: add sentry
-      console.log(`Error when uploading image to Cloudinary, ${exc}`);
+      // console.log(`Error when uploading image to Cloudinary, ${exc}`);
       onError(exc);
     }
   }

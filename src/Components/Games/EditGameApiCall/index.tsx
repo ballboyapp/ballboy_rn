@@ -45,7 +45,7 @@ class EditGameApiCall extends React.PureComponent {
       repeatFrequency,
     };
 
-    console.log('variables', variables);
+    // console.log('variables', variables);
 
     try {
       const res = await updateActivity({
@@ -56,10 +56,10 @@ class EditGameApiCall extends React.PureComponent {
         }],
       });
 
-      console.log('UPDATE ACTIVITY RESPONSE', res);
+      // console.log('UPDATE ACTIVITY RESPONSE', res);
       onSuccess({ activityId: res.data.updateActivity._id });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }

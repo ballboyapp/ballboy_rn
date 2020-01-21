@@ -13,20 +13,17 @@ import Avatar from '../../Common/Avatar';
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const PlayerRow = ({ player }) => {
-  console.log('PlayerRow', player);
-  // const { user, created_at: createdAt } = player;
-
-  return (
-    <Block>
-      <Row alignItems="center">
-        <Avatar user={player} size="S" />
-        <Spacer row size="L" />
-        <Text size="M">{player.profile.username}</Text>
-      </Row>
-    </Block>
-  );
-};
+const PlayerRow = ({ player }) => (
+// console.log('PlayerRow', player);
+// const { user, created_at: createdAt } = player;
+  <Block>
+    <Row alignItems="center">
+      <Avatar user={player} size="S" />
+      <Spacer row size="L" />
+      <Text size="M">{player.profile.username}</Text>
+    </Row>
+  </Block>
+);
 
 PlayerRow.propTypes = {
   player: propType(publicUserFragment).isRequired,
@@ -75,4 +72,3 @@ export default PlayerRow;
 // };
 
 // export default PlayerRow;
-

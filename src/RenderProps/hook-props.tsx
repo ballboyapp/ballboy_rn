@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Keyboard } from 'react-native';
+import ErrorsManager from '../managers/errors';
 import { disabledPropTypes } from './disabled-props';
 import { errorPropTypes } from './error-props';
 
@@ -31,6 +32,7 @@ class HookProps extends React.PureComponent {
   handleServerError = (errors) => {
     const { disabledProps, errorProps } = this.props;
     // console.log(errors);
+    ErrorsManager.captureException(errors);
     errorProps.setErrors(errors);
     disabledProps.enableBtn();
   }

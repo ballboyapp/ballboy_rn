@@ -4,15 +4,13 @@ import { curateErrors } from '../../../utils';
  * error = { email: ['This field must be unique.'] }
 */
 // TODO: pass errorMsg as the fieldName
-const curateFieldName = (fieldName) => {
-  return 'email';
-};
+const curateFieldName = (fieldName) => 'email';
 
 /**
  * error = { email: ['This field must be unique.'] }
 */
 const curateErrorMsg = (errorMsg) => {
-  console.log('errorMsg', errorMsg);
+  // console.log('errorMsg', errorMsg);
   switch (errorMsg) {
     case 'Invalid email':
       return 'loginEmailForm.fields.email.errors.notRegistered';

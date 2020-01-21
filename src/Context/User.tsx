@@ -35,10 +35,13 @@ export const UserContext = React.createContext(defaultValue);
 
 export const UserProvider = ({ children }) => (
   <Query query={privateUserQuery}>
-    {({ loading, error, data, refetch }) => {
-      console.log({ loading, error, data });
+    {({
+      loading, error, data, refetch,
+    }) => {
+      // console.log({ loading, error, data });
       if (error) {
-        console.log('error', error);
+        // console.log('error', error);
+        // TODO: sentry
       }
 
       return (
@@ -62,9 +65,9 @@ UserProvider.propTypes = {
 
 export const UserConsumer = UserContext.Consumer;
 
-export const withUser = Component => props => (
+export const withUser = (Component) => (props) => (
   <UserConsumer>
-    {userProps => <Component {...props} {...userProps} />}
+    {(userProps) => <Component {...props} {...userProps} />}
   </UserConsumer>
 );
 

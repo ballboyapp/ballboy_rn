@@ -30,10 +30,14 @@ export const addErrorHandlers = (link) => ApolloLink.from([
   onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) => {
+        // TODO: sentry
         console.log(`[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${JSON.stringify(path)}`);
       });
     }
-    if (networkError) console.log(`[Network error]: ${networkError}`);
+    if (networkError) {
+      // TODO: sentry
+      console.log(`[Network error]: ${networkError}`);
+    }
   }),
   link,
 ]);

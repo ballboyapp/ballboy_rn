@@ -63,7 +63,7 @@ export const getSpotImages = ({ images, height, width }) => {
 const routeToString = (route, depth = 0) => {
   let str = route.routeName || 'ROOT';
   if (route.routes) {
-    str += `\n${  route.routes.map((subRoute, idx) => {
+    str += `\n${route.routes.map((subRoute, idx) => {
       const isActive = (idx === route.index);
       return ' '.repeat(3 * depth) + (isActive ? ' * ' : '   ') + routeToString(subRoute, depth + 1);
     }).join('\n')}`;
@@ -87,7 +87,7 @@ const routeToString = (route, depth = 0) => {
  * errors = 'Email already in use'
 */
 export const curateErrors = (curateFieldName, curateErrorMsg) => (errors) => {
-  console.log('curateErrors.errors', errors);
+  // console.log('curateErrors.errors', errors);
   let errs = {};
 
   // TODO: pass errors to curateFieldName

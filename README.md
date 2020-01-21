@@ -27,6 +27,7 @@ At the root of the project you'll find a `app.json.sample` file. Duplicate said 
 - Visit [https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key) and follow the steps to create a new project and an API key.
 - Go to `APIs & Services > Dashboard` and click on `ENABLE APIS & SERVICES` button at the top. Look for `Maps Static API`. Enable it.
 - Copy the API key and set `ios.config.googleMapsApiKey`, `android.config.googleMaps.apiKey` and `extra.webGoogleMapsApiKey` in `app.json`.
+- Follow these steps to enable google maps in production: [https://docs.expo.io/versions/latest/sdk/map-view/?redirected](https://docs.expo.io/versions/latest/sdk/map-view/?redirected)
 
 #### Sentry (error tracking service API)
 

@@ -14,10 +14,12 @@ import activitiesQuery from '../../../GraphQL/Activities/Queries/activities';
 // TODO: move this to ActivityApiCall
 class RSVPApiCall extends React.PureComponent {
   handleUpdate = async (inputFields) => {
-    const { addAttendee, removeAttendee, onSuccess, onError } = this.props;
+    const {
+      addAttendee, removeAttendee, onSuccess, onError,
+    } = this.props;
     const { activityId, action } = inputFields;
 
-    console.log('inputFields', inputFields);
+    // console.log('inputFields', inputFields);
 
     if (!Object.values(ATTENDEE_ACTIONS).includes(action)) {
       throw new Error('Unkown action');
@@ -44,7 +46,7 @@ class RSVPApiCall extends React.PureComponent {
       // Pass event up to parent component
       onSuccess({ activityId });
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       onError(exc);
     }
   }

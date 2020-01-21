@@ -19,7 +19,7 @@ import curateErrors from './utils';
  */
 class UpdateUserApiCall extends React.PureComponent {
   handleUpdate = async (inputFields) => {
-    console.log({ inputFields });
+    // console.log({ inputFields });
     const {
       maxDistance,
       allSports,
@@ -51,7 +51,7 @@ class UpdateUserApiCall extends React.PureComponent {
       extend(variables, { avatar });
     }
 
-    console.log('HANDLE UPDATE', inputFields);
+    // console.log('HANDLE UPDATE', inputFields);
     try {
       const res = await updateUser({
         variables,
@@ -77,10 +77,10 @@ class UpdateUserApiCall extends React.PureComponent {
           },
         ],
       });
-      console.log('UPDATE RESPONSE', res);
+      // console.log('UPDATE RESPONSE', res);
       onSuccess();
     } catch (exc) {
-      console.log(exc);
+      // console.log(exc);
       const errors = curateErrors(exc.message || exc);
       onError(errors);
     }
