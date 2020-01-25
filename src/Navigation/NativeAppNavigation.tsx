@@ -21,7 +21,7 @@ import {
   ProfileNav,
   InfoNav,
 } from './Navigators';
-import NavBar from '../Components/Common/NavBar';
+import NavBar from './NavBar';
 import DebugScreen from '../Screens/Debug/DebugScreen';
 
 const MainTabsNav = createBottomTabNavigator({

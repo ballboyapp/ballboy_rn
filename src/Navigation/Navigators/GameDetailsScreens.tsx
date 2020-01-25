@@ -1,14 +1,14 @@
 import React from 'react';
 import { Alert, Keyboard } from 'react-native';
 import I18n from '../../I18n';
-import StackBackHeader from '../StackBackHeader';
+import NavBtn from '../NavBtn';
 import GameDetailsScreen from '../../Screens/Games/GameDetailsScreen';
 import CancelGameScreen from '../../Screens/Games/CancelGameScreen';
 import EditGameScreen from '../../Screens/Games/EditGameScreen';
 import SpotDetailsScreen from '../../Screens/Spots/SpotDetailsScreen';
 import GameChatScreen from '../../Screens/Games/GameChatScreen';
 import PlayersListScreen from '../../Screens/Games/PlayersListScreen';
-import AdminMenu from '../../Components/Games/AdminMenu';
+import AdminMenu from '../AdminMenu';
 import { headerTitleStyle } from './style';
 
 //------------------------------------------------------------------------------
@@ -35,16 +35,20 @@ const handleEditGameLeave = (navigation) => {
 };
 //------------------------------------------------------------------------------
 const backBtn = (navigation) => (
-  <StackBackHeader
+  <NavBtn
+    orientation="left"
+    iconSet="MaterialIcons"
+    iconName="arrow-back"
     onPress={() => { navigation.goBack(null); }}
   />
 );
 //------------------------------------------------------------------------------
 const backBtnConfirm = (navigation) => (
-  <StackBackHeader
-    onPress={() => {
-      handleEditGameLeave(navigation);
-    }}
+  <NavBtn
+    orientation="left"
+    iconSet="MaterialIcons"
+    iconName="arrow-back"
+    onPress={() => { handleEditGameLeave(navigation); }}
   />
 );
 //------------------------------------------------------------------------------

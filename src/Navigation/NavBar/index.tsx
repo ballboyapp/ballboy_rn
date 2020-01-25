@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Platform, Keyboard } from 'react-native';
 // import firebase from 'react-native-firebase';
 import styled from 'styled-components/native';
-import I18n from '../../../I18n';
-import Row from '../Row';
+import I18n from '../../I18n';
+import Row from '../../Components/Common/Row';
 import NavBarButton from '../NavBarButton';
 
 //------------------------------------------------------------------------------
@@ -35,28 +35,20 @@ const buttons = [{
     name: 'soccer-field', // 'map-marker-radius',
   },
 }, {
-  id: 'notifications',
-  label: 'navBar.notifications',
-  route: Platform.select({ web: 'NotificationsListScreen', default: 'NotificationsTab' }),
-  icon: {
-    set: 'MaterialCommunityIcons',
-    name: 'bell',
-  },
-}, /* {
-  id: 'organize',
-  label: 'navBar.organize',
-  route: Platform.select({ web: 'PlanGameScreen', default: 'PlanScreen' }),
-  icon: {
-    set: 'MaterialCommunityIcons',
-    name: 'plus-box',
-  },
-}, */ {
   id: 'profile',
   label: 'navBar.profile',
   route: Platform.select({ web: 'ProfileEditScreen', default: 'ProfileTab' }),
   icon: {
     set: 'MaterialIcons',
     name: 'account-circle',
+  },
+}, {
+  id: 'notifications',
+  label: 'navBar.notifications',
+  route: Platform.select({ web: 'NotificationsListScreen', default: 'NotificationsTab' }),
+  icon: {
+    set: 'MaterialCommunityIcons',
+    name: 'bell',
   },
 }, {
   id: 'info',

@@ -1,6 +1,6 @@
 import React from 'react';
 import I18n from '../../I18n';
-import StackBackHeader from '../StackBackHeader';
+import NavBtn from '../NavBtn';
 import LoggedOutRoute from '../LoggedOutRoute';
 import LoginScreen from '../../Screens/Auth/LoginScreen';
 // import SignupScreen from '../../Screens/Auth/SignupScreen';
@@ -17,7 +17,10 @@ const handleLoggedIn = (navigation) => {
 };
 //------------------------------------------------------------------------------
 const backBtn = (navigation) => (
-  <StackBackHeader
+  <NavBtn
+    orientation="left"
+    iconSet="MaterialIcons"
+    iconName="arrow-back"
     onPress={() => { navigation.goBack(null); }}
   />
 );

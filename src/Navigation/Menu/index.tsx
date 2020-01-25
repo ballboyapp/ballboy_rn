@@ -7,8 +7,8 @@ import {
   MenuOptions,
   MenuOption,
 } from 'react-native-popup-menu';
-import Text from '../Text';
-import HeaderBtn from '../HeaderBtn';
+import Text from '../../Components/Common/Text';
+import NavBtn from '../NavBtn';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -38,7 +38,11 @@ const Menu = ({
   <MenuNative name={menuName}>
     <MenuTrigger menuName={triggerName}>
       <View pointerEvents="none" testID={testID}>
-        <HeaderBtn iconName="more-vert" />
+        <NavBtn
+          orientation="right"
+          iconSet="MaterialIcons"
+          iconName="more-vert"
+        />
       </View>
     </MenuTrigger>
     <MenuOptions customStyles={optionsStyles}>
@@ -49,10 +53,7 @@ const Menu = ({
         onPress,
       }) => (
         <MenuOption key={id} onSelect={onPress}>
-          <Text
-            size="M"
-            color={danger ? 'red' : 'black'}
-          >
+          <Text size="M" color={danger ? 'red' : 'black'}>
             {text}
           </Text>
         </MenuOption>

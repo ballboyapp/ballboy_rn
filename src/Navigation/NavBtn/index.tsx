@@ -7,6 +7,14 @@ import Spacer from '../../Components/Common/Spacer';
 import Icon from '../../Components/Common/Icon';
 
 //------------------------------------------------------------------------------
+// CONSTANTS:
+//------------------------------------------------------------------------------
+const ORIENTATION_TYPES = {
+  left: 'left',
+  right: 'right',
+};
+
+//------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
 const Container = styled.View`
@@ -16,28 +24,26 @@ const Container = styled.View`
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const StackBackHeader = ({ onPress }) => (
+const NavBtn = ({ onPress, orientation, ...iconProps }) => (
   <Container>
     <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <Row alignItems="center">
-        <Spacer row size="M" />
-        <Icon
-          iconSet="MaterialIcons"
-          iconName="arrow-back"
-          size={24}
-          color="black"
-        />
+        {orientation === ORIENTATION_TYPES.left && <Spacer row size="M" />}
+        <Icon {...iconProps} />
+        {orientation === ORIENTATION_TYPES.right && <Spacer row size="M" />}
       </Row>
     </TouchableOpacity>
   </Container>
 );
 
-StackBackHeader.propTypes = {
+NavBtn.propTypes = {
+  orientation: PropTypes.oneOf(Object.values(ORIENTATION_TYPES)).isRequired,
   onPress: PropTypes.func,
+  ...Icon.propTypes,
 };
 
-StackBackHeader.defaultProps = {
+NavBtn.defaultProps = {
   onPress: () => {},
 };
 
-export default StackBackHeader;
+export default NavBtn;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AsyncStorage } from 'react-native';
 import { withApollo } from 'react-apollo';
-import I18n from '../../../I18n';
-import Menu from '../../Common/Menu';
+import I18n from '../../I18n';
+import Menu from '../Menu';
 
 //------------------------------------------------------------------------------
 // COMPONENT:

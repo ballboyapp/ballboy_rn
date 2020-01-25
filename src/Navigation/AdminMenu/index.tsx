@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import I18n from '../../../I18n';
-import { ACTIVITY_STATUSES } from '../../../constants';
-import activityDetailsQuery from '../../../GraphQL/Activities/Queries/activityDetails';
-import Menu from '../../Common/Menu';
+import I18n from '../../I18n';
+import { ACTIVITY_STATUSES } from '../../constants';
+import activityDetailsQuery from '../../GraphQL/Activities/Queries/activityDetails';
+import Menu from '../Menu';
 
 //------------------------------------------------------------------------------
 // COMPONENT:

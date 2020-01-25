@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
-import Colors from '../../../Themes/Colors';
-import Text from '../Text';
-import Icon from '../Icon';
+import Colors from '../../Themes/Colors';
+import Text from '../../Components/Common/Text';
+import Icon from '../../Components/Common/Icon';
 
 //------------------------------------------------------------------------------
 // STYLE:
