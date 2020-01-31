@@ -1,3 +1,11 @@
+### Intro
+
+This project has been forked from [https://github.com/SportySpots/cruijff](https://github.com/SportySpots/cruijff). Some of the changes introduced in comparison to the original project are listed below:
+
+- This project uses expo to build in 3 platforms: web, android and ios
+- It utilizes a graphql node backend
+- We rely on Cloudinary for image hosting and manipulation
+
 ### Getting started
 
 Clone the repo:
