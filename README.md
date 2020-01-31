@@ -88,6 +88,10 @@ Find out more about expo env vars:
 ```
 - This should open a new window in your default browser with the web version of the app.
 
+### Troubleshooting
+
+In case you launch the app running any of the expo commands above and you either get the app to load really slowly or get an `[Network error]: TypeError: NetworkError when attempting to fetch resource.` error in your console, then the problem is most probably caused by the server url not being reachable/configured correctly. In order to fix this, make sure that the base url of the `extra.serverUrl` variable at `app.json` matches the ip address of the expo app. You can find the expo ip address by looking at the expo console just above the QR code.
+
 ### Deploy (web)
 
 [https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md](https://github.com/expo/web-examples/blob/master/docs/DEPLOYMENT.md)
