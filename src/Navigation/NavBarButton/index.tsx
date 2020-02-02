@@ -2,9 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
+import { Badge } from 'react-native-elements';
+import { WINDOW_WIDTH } from '../../constants';
 import Colors from '../../Themes/Colors';
 import Text from '../../Components/Common/Text';
 import Icon from '../../Components/Common/Icon';
+
+//------------------------------------------------------------------------------
+// CONSTANTS:
+//------------------------------------------------------------------------------
+const NUM_BUTTONS = 5;
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -25,6 +32,7 @@ const Center = styled.View`
 const NavBarButton = ({
   btnLabel,
   icon,
+  withBadge,
   active,
   onPress,
   ...otherProps
@@ -39,6 +47,12 @@ const NavBarButton = ({
       {...otherProps}
     >
       <Center>
+        {withBadge && (
+          <Badge
+            status="error"
+            containerStyle={{ position: 'absolute', top: 4, right: WINDOW_WIDTH / (2 * NUM_BUTTONS) - 9 }}
+          />
+        )}
         <Icon
           iconSet={icon.set}
           iconName={icon.name}
@@ -63,12 +77,14 @@ NavBarButton.propTypes = {
     set: PropTypes.string,
     name: PropTypes.string,
   }).isRequired,
+  withBadge: PropTypes.bool,
   active: PropTypes.bool,
   onPress: PropTypes.func,
 };
 
 NavBarButton.defaultProps = {
   btnLabel: '',
+  withBadge: false,
   active: false,
   onPress: () => {},
 };

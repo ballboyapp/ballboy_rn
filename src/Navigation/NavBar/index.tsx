@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, Keyboard } from 'react-native';
+import { Query } from 'react-apollo';
 // import firebase from 'react-native-firebase';
 import styled from 'styled-components/native';
+import get from 'lodash/get';
 import I18n from '../../I18n';
+import unreadNotificationsCounterQuery from '../../GraphQL/NotificationsList/Queries/unreadNotificationsCounter';
 import Row from '../../Components/Common/Row';
 import NavBarButton from '../NavBarButton';
 
@@ -109,18 +112,23 @@ class NavBar extends React.Component {
     }
 
     return (
-      <StyledRow>
-        {buttons.map((btn) => (
-          <NavBarButton
-            testID={`navbarButton_${btn.id}`}
-            key={btn.id}
-            btnLabel={I18n.t(btn.label)}
-            icon={btn.icon}
-            active={this.curRoute === btn.route}
-            onPress={() => { this.handlePress(btn); }}
-          />
-        ))}
-      </StyledRow>
+      <Query query={unreadNotificationsCounterQuery}>
+        {({ loading, error, data }) => (
+          <StyledRow>
+            {buttons.map((btn) => (
+              <NavBarButton
+                testID={`navbarButton_${btn.id}`}
+                key={btn.id}
+                btnLabel={I18n.t(btn.label)}
+                icon={btn.icon}
+                withBadge={btn.id === 'notifications' && !loading && !error && get(data, 'notificationsList.unreadCounter', 0) > 0}
+                active={this.curRoute === btn.route}
+                onPress={() => { this.handlePress(btn); }}
+              />
+            ))}
+          </StyledRow>
+        )}
+      </Query>
     );
   }
 }
