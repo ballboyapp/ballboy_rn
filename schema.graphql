@@ -74,18 +74,23 @@ type Mutation {
   cancelActivity(_id: ID!, msg: String): Activity
   addAttendee(_id: ID!): Activity
   removeAttendee(_id: ID!): Activity
-  markAsRead: [Notification]
+  markAsRead: NotificationsList
 }
 
 type Notification {
   _id: ID!
-  createdBy: ID
   createdAt: Date!
-  recipientId: ID!
-  recipient: PublicUser!
   notificationType: NotificationType!
-  link: String!
+  sender: NotificationUserProfile
+  payload: String
   didRead: Boolean!
+}
+
+type NotificationsList {
+  _id: ID!
+  recipient: NotificationUserProfile!
+  unreadCounter: Int!
+  items: [Notification]!
 }
 
 enum NotificationType {
@@ -94,6 +99,13 @@ enum NotificationType {
   ACTIVITY_RECREATED
   ATTENDEE_ADDED
   ATTENDEE_REMOVED
+  NEW_MESSAGE
+}
+
+type NotificationUserProfile {
+  id: ID!
+  name: String!
+  avatarURL: String
 }
 
 type Point {
@@ -124,7 +136,7 @@ type Query {
   spotDetails(_id: ID!): Spot
   activities(sports: [Sport], distance: Float, limit: Int!, offset: Int!): [Activity]
   activityDetails(_id: ID!): Activity
-  notifications(limit: Int!, offset: Int!): [Notification]
+  notificationsList(limit: Int!, offset: Int!): NotificationsList
 }
 
 enum RespondentStatus {

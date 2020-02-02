@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { useQuery } from 'react-apollo';
 import get from 'lodash/get';
-import notificationsQuery from '../../../GraphQL/Notifications/Queries/notifications';
+import notificationsListQuery from '../../../GraphQL/NotificationsList/Queries/notificationsList';
 import Row from '../../../Components/Common/Row';
 import Spacer from '../../../Components/Common/Spacer';
-import NotificationsList from '../../../Components/Notifications/NotificationList';
+import NotificationsList from '../../../Components/Notifications/NotificationsList';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -19,14 +19,12 @@ const RowContainer = styled(Row)`
 // COMPONENT:
 //------------------------------------------------------------------------------
 const NotificationsListScreen = ({ navigation }) => {
-  const [hasNewResults, setHasNewResults] = useState(true);
-
   const params = {
-    fetchPolicy: 'cache-and-network',
+    // fetchPolicy: 'cache-and-network',
     variables: { offset: 0, limit: 10 },
   };
 
-  const queryRes = useQuery(notificationsQuery, params);
+  const queryRes = useQuery(notificationsListQuery, params);
   console.log({ queryRes });
 
   const handleNotificationPress = (notification) => {
@@ -34,35 +32,18 @@ const NotificationsListScreen = ({ navigation }) => {
   };
 
   const {
-    loading, error, data, refetch, fetchMore,
+    loading, error, data, refetch,
   } = queryRes;
-
-  const loadMore = () => {
-    fetchMore({
-      variables: {
-        offset: get(data, 'notifications.length', 0),
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult || get(fetchMoreResult, 'notifications.length', 0) === 0) {
-          setHasNewResults(false); // fix/hack for persistent loading indicator (loading never gets set to false when fetchMoreResult doesn't return new data)
-          return prev;
-        }
-        return { ...prev, notifications: [...prev.notifications, ...fetchMoreResult.notifications] };
-      },
-    });
-  };
 
   return (
     <RowContainer>
       <Spacer row size="L" />
       <NotificationsList
-        notifications={get(data, 'notifications', [])}
+        notifications={get(data, 'notificationsList.items', [])}
         onCardPress={handleNotificationPress}
         // FlatList props
         onRefresh={refetch}
-        refreshing={loading && hasNewResults}
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.1}
+        refreshing={loading}
       />
     </RowContainer>
   );

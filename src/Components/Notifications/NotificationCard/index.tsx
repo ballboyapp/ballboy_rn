@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, TouchableOpacity } from 'react-native';
+import { propType } from 'graphql-anywhere';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-// import { getSpotImages } from '../../../utils';
+import notificationFragment from '../../../GraphQL/NotificationsList/Fragments/notification';
 import Row from '../../Common/Row';
 import Spacer from '../../Common/Spacer';
 import DotSpacer from '../../Common/DotSpacer';
@@ -50,7 +51,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => { onCardPress(notification); }}
+      onPress={onCardPress}
       activeOpacity={1}
     >
       <RowContainer>
@@ -101,9 +102,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
 };
 
 NotificationCard.propTypes = {
-  notification: PropTypes.shape({
-    image: PropTypes.string,
-  }).isRequired,
+  notification: propType(notificationFragment).isRequired,
   onCardPress: PropTypes.func,
 };
 

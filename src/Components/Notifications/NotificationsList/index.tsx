@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { propType } from 'graphql-anywhere';
 import { FlatList } from 'react-native';
 import I18n from '../../../I18n';
-import notificationBaseFragment from '../../../GraphQL/Notifications/Fragments/notificationBase';
+import notificationFragment from '../../../GraphQL/NotificationsList/Fragments/notification';
 import NothingFound from '../../Common/NothingFound';
 import Divider from '../../Common/Divider';
 import NotificationCard from '../NotificationCard';
@@ -24,7 +24,7 @@ const NotificationsList = ({
     renderItem={({ item: notification }) => (
       <NotificationCard
         notification={notification}
-        onCardPress={onCardPress}
+        onCardPress={() => { onCardPress(notification); }}
       />
     )}
     ListEmptyComponent={!refreshing && (
@@ -46,7 +46,7 @@ const NotificationsList = ({
 );
 
 NotificationsList.propTypes = {
-  notifications: PropTypes.arrayOf(propType(notificationBaseFragment)),
+  notifications: PropTypes.arrayOf(propType(notificationFragment)),
   onCardPress: PropTypes.func,
   refreshing: PropTypes.bool,
 };
