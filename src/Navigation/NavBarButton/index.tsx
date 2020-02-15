@@ -50,7 +50,11 @@ const NavBarButton = ({
         {withBadge && (
           <Badge
             status="error"
-            containerStyle={{ position: 'absolute', top: 4, right: WINDOW_WIDTH / (2 * NUM_BUTTONS) - 9 }}
+            containerStyle={{
+              position: 'absolute',
+              top: 3,
+              right: WINDOW_WIDTH / (2 * NUM_BUTTONS) - 10,
+            }}
           />
         )}
         <Icon
