@@ -9,7 +9,7 @@ const notificationFragment = gql`
     sender {
       ...notificationUserProfileFragment
     }
-    payload
+    payload # BE CAREFUL this is a stringified JSON object, so you'll need to parse it!
     didRead
   }
   ${notificationUserProfileFragment}

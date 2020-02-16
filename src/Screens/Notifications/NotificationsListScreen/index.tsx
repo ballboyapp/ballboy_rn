@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { useQuery } from 'react-apollo';
 import get from 'lodash/get';
+import { NOTIFICATION_TYPES } from '../../../constants';
 import notificationsListQuery from '../../../GraphQL/NotificationsList/Queries/notificationsList';
 import Row from '../../../Components/Common/Row';
 import Spacer from '../../../Components/Common/Spacer';
@@ -27,8 +28,12 @@ const NotificationsListScreen = ({ navigation }) => {
   const queryRes = useQuery(notificationsListQuery, params);
   console.log({ queryRes });
 
-  const handleNotificationPress = (notification) => {
-    // navigation.navigate('TODO', { uuid: game.uuid });
+  const handleNotificationPress = ({ notificationType, payload }) => {
+    if (notificationType === NOTIFICATION_TYPES.NEW_MESSAGE) {
+      const { activityId, chatkitRoomId } = JSON.parse(payload);
+      // TODO: probably on native we need to move to root, then activity and finally chat screen
+      navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatkitRoomId });
+    }
   };
 
   const {
