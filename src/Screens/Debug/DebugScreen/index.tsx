@@ -6,14 +6,8 @@ import Block from '../../../Components/Common/Block';
 import Spacer from '../../../Components/Common/Spacer';
 import Text from '../../../Components/Common/Text';
 import RaisedButton from '../../../Components/Common/RaisedButton';
+import safeStringify from './utils';
 
-const safeStringify = (obj) => {
-  try {
-    return JSON.stringify(obj);
-  } catch (e) {
-    return '[Unserializable object]';
-  }
-};
 //------------------------------------------------------------------------------
 const log = [];
 const bootTime = new Date();
@@ -44,7 +38,7 @@ const DebugScreen = ({ navigation }) => (
           // eslint-disable-next-line react/no-array-index-key
           <View key={idx}>
             <Text size="S" selectable>{logTime}</Text>
-            {Object.keys(args).map(innerIdx => (
+            {Object.keys(args).map((innerIdx) => (
               <Text size="S" key={innerIdx} selectable>
                 {safeStringify(args[innerIdx])}
               </Text>

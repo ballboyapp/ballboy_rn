@@ -41,6 +41,7 @@
     "spots": "Spots",
     "activities": "Activiteiten",
     "organize": "Organiseer",
+    "notifications": "Meldingen",
     "profile": "Profiel",
     "info": "Info"
   },
@@ -540,6 +541,16 @@
 
   "spotPickerModal": {
     "header": "Kies een locatie"
+  },
+
+  "notificationsListScreen": {
+    "navigation": {
+      "title": "Meldingen"
+    }
+  },
+
+  "notificationsList": {
+    "noResults": "Het lijkt erop dat je geen meldingen hebt"
   },
 
   "loggedOutScreen": {

@@ -16,6 +16,11 @@ const Outer = styled.View`
   align-items: center;
 `;
 //------------------------------------------------------------------------------
+const MaxWidth = styled.View`
+  width: 100%;
+  max-width: 270px;
+`;
+//------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
 const NothingFound = ({
@@ -46,9 +51,11 @@ const NothingFound = ({
         <Spacer size="L" />
       </View>
     )}
-    <Text size="ML" color="link" center>
-      {text}
-    </Text>
+    <MaxWidth>
+      <Text size="ML" color="link" center>
+        {text}
+      </Text>
+    </MaxWidth>
   </Outer>
 );
 

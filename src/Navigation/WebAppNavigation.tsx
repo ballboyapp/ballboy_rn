@@ -17,6 +17,7 @@ import SpotDetailsScreen from '../Screens/Spots/SpotDetailsScreen';
 import SpotsFilterScreen from '../Screens/Spots/SpotsFilterScreen';
 import PlanGameScreen from '../Screens/Plan/PlanGameScreen';
 import ShareGameScreen from '../Screens/Plan/ShareGameScreen';
+import NotificationsListScreen from '../Screens/Notifications/NotificationsListScreen';
 import ProfileEditScreen from '../Screens/Profile/ProfileEditScreen';
 import InfoScreen from '../Screens/Info/InfoScreen';
 import LoggedOutRoute from './LoggedOutRoute';
@@ -113,6 +114,11 @@ const LOGGED_IN_ROUTES = [
     name: 'ShareGameScreen',
     screen: ShareGameScreen,
     path: 'share-activity',
+  },
+  {
+    name: 'NotificationsListScreen',
+    screen: NotificationsListScreen,
+    path: 'notifications',
   },
   {
     name: 'ProfileEditScreen',

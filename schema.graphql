@@ -58,16 +58,6 @@ enum Gender {
   TBD
 }
 
-type Keys {
-  auth: String!
-  p256dh: String!
-}
-
-input KeysInput {
-  auth: String!
-  p256dh: String!
-}
-
 enum Language {
   en
   es
@@ -84,9 +74,38 @@ type Mutation {
   cancelActivity(_id: ID!, msg: String): Activity
   addAttendee(_id: ID!): Activity
   removeAttendee(_id: ID!): Activity
-  saveSubscription(subscription: SubscriptionInput!): Subscription
-  deleteSubscription(endpoint: String!): Subscription
-  sendPushNotification: [Subscription]
+  markAsRead: NotificationsList
+}
+
+type Notification {
+  _id: ID!
+  createdAt: Date!
+  notificationType: NotificationType!
+  sender: NotificationUserProfile
+  payload: String
+  didRead: Boolean!
+}
+
+type NotificationsList {
+  _id: ID!
+  recipient: NotificationUserProfile!
+  unreadCounter: Int!
+  items: [Notification]!
+}
+
+enum NotificationType {
+  NEW_ACTIVITY
+  ACTIVITY_CANCELED
+  ACTIVITY_RECREATED
+  ATTENDEE_ADDED
+  ATTENDEE_REMOVED
+  NEW_MESSAGE
+}
+
+type NotificationUserProfile {
+  id: ID!
+  name: String!
+  avatarURL: String
 }
 
 type Point {
@@ -117,7 +136,7 @@ type Query {
   spotDetails(_id: ID!): Spot
   activities(sports: [Sport], distance: Float, limit: Int!, offset: Int!): [Activity]
   activityDetails(_id: ID!): Activity
-  subscriptions(userId: ID!): [Subscription]
+  notificationsList: NotificationsList
 }
 
 enum RespondentStatus {
@@ -145,19 +164,6 @@ type Spot {
   sports: [Sport]
   distance: Float
   activities(limit: Int!, offset: Int!): [Activity]
-}
-
-type Subscription {
-  _id: ID!
-  createdAt: Date
-  userId: ID
-  endpoint: String
-  keys: Keys
-}
-
-input SubscriptionInput {
-  endpoint: String!
-  keys: KeysInput!
 }
 
 type UserProfile {
