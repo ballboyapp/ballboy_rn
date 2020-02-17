@@ -39,6 +39,8 @@ const NotificationsList = ({
     contentContainerStyle={{
       flexGrow: 1, // centers not-found-component
       paddingVertical: 0,
+      // Center not-found-component in case no notifications were found
+      justifyContent: notifications.length === 0 ? 'center' : 'flex-start',
     }}
     refreshing={refreshing}
     {...rest}
