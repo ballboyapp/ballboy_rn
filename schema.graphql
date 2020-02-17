@@ -136,7 +136,7 @@ type Query {
   spotDetails(_id: ID!): Spot
   activities(sports: [Sport], distance: Float, limit: Int!, offset: Int!): [Activity]
   activityDetails(_id: ID!): Activity
-  notificationsList(limit: Int!, offset: Int!): NotificationsList
+  notificationsList: NotificationsList
 }
 
 enum RespondentStatus {
