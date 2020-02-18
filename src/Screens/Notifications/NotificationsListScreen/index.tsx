@@ -30,7 +30,7 @@ const NotificationsListScreen = ({ navigation }) => {
       navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatkitRoomId });
     }
 
-    if (notificationType === NOTIFICATION_TYPES.ATTENDEE_ADDED) {
+    if ([NOTIFICATION_TYPES.ATTENDEE_ADDED, NOTIFICATION_TYPES.ATTENDEE_REMOVED].includes(notificationType)) {
       const { activityId } = JSON.parse(payload);
       // TODO: probably on native we need to move to root, then activity and finally chat screen
       navigation.navigate('PlayersListScreen', { _id: activityId });
