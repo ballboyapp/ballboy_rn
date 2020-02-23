@@ -553,6 +553,19 @@
     "noResults": "Het lijkt erop dat je geen meldingen hebt"
   },
 
+  "notificationCard": {
+    "eventType": {
+      "update": "Bijwerken",
+      "message": "Bericht"
+    },
+    "eventDescription": {
+      "attendingActivity": "Hij wees naar",
+      "leftActivity": "stapte uit",
+      "leftMessage": "heeft een bericht achtergelaten",
+      "activityRecreated": "activiteit automatisch opnieuw gemaakt"
+    }
+  },
+
   "loggedOutScreen": {
     "navigation": {
       "title": "Aanmelden"

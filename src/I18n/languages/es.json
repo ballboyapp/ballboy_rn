@@ -553,6 +553,19 @@
     "noResults": "Parece que no tienes notificaciones"
   },
 
+  "notificationCard": {
+    "eventType": {
+      "update": "Actualización",
+      "message": "Mensaje"
+    },
+    "eventDescription": {
+      "attendingActivity": "se apuntó a",
+      "leftActivity": "se desapuntó de",
+      "leftMessage": "dejó un mensaje en",
+      "activityRecreated": "actividad recreada automaticamente"
+    }
+  },
+
   "loggedOutScreen": {
     "navigation": {
       "title": "Regístrate"

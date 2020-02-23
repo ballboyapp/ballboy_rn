@@ -6,6 +6,7 @@ export const getNotificationIcon = (notificationType: string): string => {
       return 'forum';
     case NOTIFICATION_TYPES.ATTENDEE_ADDED:
     case NOTIFICATION_TYPES.ATTENDEE_REMOVED:
+    case NOTIFICATION_TYPES.ACTIVITY_RECREATED:
       return 'message-alert';
     default:
       throw new Error('Unknown notificationType');
@@ -28,6 +29,11 @@ export const getNotificationTypeText = (notificationType: string): [string, stri
       return [
         'notificationCard.eventType.update',
         'notificationCard.eventDescription.leftActivity',
+      ];
+    case NOTIFICATION_TYPES.ACTIVITY_RECREATED:
+      return [
+        'notificationCard.eventType.update',
+        'notificationCard.eventDescription.activityRecreated',
       ];
     default:
       throw new Error('Unknown notificationType');

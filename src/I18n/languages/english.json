@@ -561,7 +561,8 @@
     "eventDescription": {
       "attendingActivity": "is attending",
       "leftActivity": "left",
-      "leftMessage": "left a message on"
+      "leftMessage": "left a message on",
+      "activityRecreated": "activity recreated automatically"
     }
   },
 
