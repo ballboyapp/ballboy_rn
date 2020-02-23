@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 import { useQuery } from 'react-apollo';
 import get from 'lodash/get';
@@ -28,18 +29,32 @@ const NotificationsListScreen = ({ navigation }) => {
     const { activityId, chatkitRoomId } = JSON.parse(payload);
 
     if (notificationType === NOTIFICATION_TYPES.NEW_MESSAGE) {
-      // TODO: probably on native we need to move to root, then activity and finally chat screen
-      navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatkitRoomId });
+      if (Platform.OS === 'web') {
+        navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatkitRoomId });
+      } else {
+        navigation.navigate('GameSearchTab');
+        navigation.navigate('GameDetailsScreen', { _id: activityId });
+        navigation.navigate('GameChatScreen', { _id: activityId });
+      }
     }
 
     if ([NOTIFICATION_TYPES.ATTENDEE_ADDED, NOTIFICATION_TYPES.ATTENDEE_REMOVED].includes(notificationType)) {
-      // TODO: probably on native we need to move to root, then activity and finally chat screen
-      navigation.navigate('PlayersListScreen', { _id: activityId });
+      if (Platform.OS === 'web') {
+        navigation.navigate('PlayersListScreen', { _id: activityId });
+      } else {
+        navigation.navigate('GameSearchTab');
+        navigation.navigate('GameDetailsScreen', { _id: activityId });
+        navigation.navigate('PlayersListScreen', { _id: activityId });
+      }
     }
 
     if (notificationType === NOTIFICATION_TYPES.ACTIVITY_RECREATED) {
-      // TODO: probably on native we need to move to root, then activity and finally chat screen
-      navigation.navigate('GameDetailsScreen', { _id: activityId });
+      if (Platform.OS === 'web') {
+        navigation.navigate('GameDetailsScreen', { _id: activityId });
+      } else {
+        navigation.navigate('GameSearchTab');
+        navigation.navigate('GameDetailsScreen', { _id: activityId });
+      }
     }
   };
 
