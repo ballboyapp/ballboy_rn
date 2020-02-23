@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { propType } from 'graphql-anywhere';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Image } from 'react-native';
 import styled from 'styled-components/native';
+import moment from 'moment';
+import I18n from '../../../I18n';
 import notificationFragment from '../../../GraphQL/NotificationsList/Fragments/notification';
 import Row from '../../Common/Row';
 import Spacer from '../../Common/Spacer';
 import DotSpacer from '../../Common/DotSpacer';
 import Text from '../../Common/Text';
 import Icon from '../../Common/Icon';
+import { getNotificationIcon, getNotificationTypeText } from './utils';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -46,8 +49,14 @@ const Right = styled.View`
 // COMPONENT:
 //------------------------------------------------------------------------------
 const NotificationCard = ({ notification, onCardPress }) => {
-  // const { image } = notification;
-  // const imgs = getSpotImages({ images: [image], height: CARD_HEIGHT, width: IMG_WIDTH });
+  const {
+    createdAt, notificationType, sender, payload,
+  } = notification;
+
+  const { activityTitle } = JSON.parse(payload);
+
+  const iconName = getNotificationIcon(notificationType);
+  const [eventType, eventDescription] = getNotificationTypeText(notificationType);
 
   return (
     <TouchableOpacity
@@ -59,42 +68,42 @@ const NotificationCard = ({ notification, onCardPress }) => {
           <Row alignItems="center">
             <Icon
               iconSet="MaterialCommunityIcons"
-              iconName="message-alert"
+              iconName={iconName}
               size={18}
               color="link"
             />
             <Spacer row size="ML" />
             <Text size="S" color="dusk">
-              Update
+              {I18n.t(eventType)}
             </Text>
             <DotSpacer row size="M" />
             <Text size="S" color="dusk">
-              1 hour ago
+              {moment(createdAt).fromNow()}
             </Text>
           </Row>
           <Spacer size="S" />
           <Row alignItems="center">
             <Text size="SSM" semibold>
-              Sezayi
+              {sender.name}
             </Text>
             <Spacer row size="S" />
             <Text size="SSM">
-              attended
+              {I18n.t(eventDescription)}
             </Text>
             <Spacer row size="S" />
             <Text size="SSM" semibold>
-              Soccer Rocker
+              {activityTitle || ''}
             </Text>
           </Row>
         </Left>
         <Right>
-          {/* <Image
-            source={{ uri: imgs[0] }}
+          <Image
+            source={{ uri: sender.avatarURL }}
             style={{
               height: CARD_HEIGHT,
               width: IMG_WIDTH,
             }}
-          /> */}
+          />
         </Right>
       </RowContainer>
     </TouchableOpacity>

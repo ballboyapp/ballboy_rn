@@ -553,6 +553,18 @@
     "noResults": "Looks like you have no notifications"
   },
 
+  "notificationCard": {
+    "eventType": {
+      "update": "Update",
+      "message": "Message"
+    },
+    "eventDescription": {
+      "attendingActivity": "is attending",
+      "leftActivity": "left",
+      "leftMessage": "left a message on"
+    }
+  },
+
   "loggedOutScreen": {
     "navigation": {
       "title": "Sign up"
