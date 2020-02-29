@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
-import { useQuery } from 'react-apollo';
+import { useQuery, useMutation } from 'react-apollo';
 import get from 'lodash/get';
 import moment from 'moment';
 import { NOTIFICATION_TYPES } from '../../../constants';
 import notificationsListQuery from '../../../GraphQL/NotificationsList/Queries/notificationsList';
+import markAsReadMutation from '../../../GraphQL/NotificationsList/Mutations/markAsRead';
 import Row from '../../../Components/Common/Row';
 import Spacer from '../../../Components/Common/Spacer';
 import NotificationsList from '../../../Components/Notifications/NotificationsList';
@@ -23,7 +24,16 @@ const RowContainer = styled(Row)`
 //------------------------------------------------------------------------------
 const NotificationsListScreen = ({ navigation }) => {
   const queryRes = useQuery(notificationsListQuery);
-  console.log({ queryRes });
+  const [markAsRead] = useMutation(markAsReadMutation);
+
+  // Fire markAsRead mutation when component mounts
+  useEffect(() => {
+    markAsRead({
+      refetchQueries: [{
+        query: notificationsListQuery,
+      }],
+    });
+  }, []);
 
   const handleNotificationPress = ({ notificationType, payload }) => {
     const { activityId, chatkitRoomId } = JSON.parse(payload);
