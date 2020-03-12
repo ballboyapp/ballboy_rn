@@ -13,8 +13,7 @@ import PropTypes from 'prop-types';
 const loadResourcesAsync = async () => {
   await Promise.all([
     Asset.loadAsync([
-      require('../../../../assets/images/logo.png'),
-      require('../../../../assets/images/illustration-wizard-1.png'),
+      require('../../../../assets/images/icon.png'),
       require('../../../../assets/images/illustration-wizard-2.png'),
       require('../../../../assets/images/illustration-wizard-3.png'),
       require('../../../../assets/images/illustration-share-location.png'),
