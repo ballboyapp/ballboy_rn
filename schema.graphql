@@ -166,6 +166,10 @@ type Spot {
   activities(limit: Int!, offset: Int!): [Activity]
 }
 
+type Subscription {
+  notificationAdded: NotificationsList
+}
+
 type UserProfile {
   _id: ID!
   username: String

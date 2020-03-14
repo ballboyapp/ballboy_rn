@@ -1,6 +1,6 @@
 import { MockList } from 'graphql-tools';
 import faker from 'faker';
-import { SPORTS, ACTIVITY_STATUSES } from '../constants';
+import { SPORTS, ACTIVITY_STATUSES, NOTIFICATION_TYPES } from '../constants';
 
 const mocks = {
   Query: () => ({
@@ -18,7 +18,7 @@ const mocks = {
   }),
   Spot: () => ({
     images: [
-      'https://cdn.pixabay.com/photo/2016/04/15/20/28/football-1331838_1280.jpg'
+      'https://cdn.pixabay.com/photo/2016/04/15/20/28/football-1331838_1280.jpg',
     ],
     sports: Object.values(SPORTS),
   }),
@@ -26,6 +26,14 @@ const mocks = {
     const d = new Date();
     return d.toISOString();
   },
+  Notification: () => ({
+    notificationType: NOTIFICATION_TYPES.NEW_MESSAGE,
+    payload: JSON.stringify({
+      activityId: '123',
+      chatkitRoomId: '123',
+    }),
+    didRead: false,
+  }),
 };
 
 export default mocks;

@@ -11,8 +11,8 @@
     "build:android": "rm ./app.json && cp ./app.json.prod ./app.json && expo build:android --clear-credentials -t app-bundle",
     "update:android": "rm ./app.json && cp ./app.json.prod ./app.json && expo publish",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf node_modules/ && rm yarn.lock && yarn cache clean && yarn install",
-    "graphql:updateSchema": "get-graphql-schema http://192.168.1.128:3001/graphql > schema.graphql",
-    "graphql:updateSchemaJSON": "get-graphql-schema http://192.168.1.128:3001/graphql > schema.graphql.json --json",
+    "graphql:updateSchema": "get-graphql-schema http://192.168.1.130:3001/graphql > schema.graphql",
+    "graphql:updateSchemaJSON": "get-graphql-schema http://192.168.1.130:3001/graphql > schema.graphql.json --json",
     "prestorybook": "rnstl",
     "storybook": "start-storybook -p 7007"
   },
