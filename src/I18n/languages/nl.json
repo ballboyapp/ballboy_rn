@@ -51,7 +51,8 @@
     "appVersion": "Versie",
     "feedback": "Help ons de app te verbeteren",
     "privacy": "Privacy informatie",
-    "terms": "Algemene voorwaarden"
+    "terms": "Algemene voorwaarden",
+    "logout": "Uitloggen"
   },
 
   "profileScreen": {

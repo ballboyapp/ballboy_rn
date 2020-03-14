@@ -51,7 +51,8 @@
     "appVersion": "Version",
     "feedback": "Ayúdanos a mejorar la aplicación",
     "privacy": "Información sobre privacidad",
-    "terms": "Términos y condiciones"
+    "terms": "Términos y condiciones",
+    "logout": "Cerrar sesión"
   },
 
   "profileScreen": {

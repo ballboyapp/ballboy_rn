@@ -128,7 +128,7 @@ const LOGGED_IN_ROUTES = [
   {
     name: 'SettingsScreen',
     screen: SettingsScreen,
-    path: 'about',
+    path: 'settings',
   },
 ];
 
