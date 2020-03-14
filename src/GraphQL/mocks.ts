@@ -2,13 +2,15 @@ import { MockList } from 'graphql-tools';
 import faker from 'faker';
 import { SPORTS, ACTIVITY_STATUSES, NOTIFICATION_TYPES } from '../constants';
 
+const PLACEHOLDER_IMG = 'https://cdn.pixabay.com/photo/2016/04/15/20/28/football-1331838_1280.jpg';
+
 const mocks = {
   Query: () => ({
     spots: () => new MockList([3, 5]),
     activities: () => new MockList([10, 15]),
   }),
   UserProfile: () => ({
-    avatar: 'https://cdn.pixabay.com/photo/2016/04/15/20/28/football-1331838_1280.jpg',
+    avatar: PLACEHOLDER_IMG,
   }),
   Activity: () => ({
     attendeesIds: () => new MockList(5),
@@ -17,9 +19,7 @@ const mocks = {
     status: ACTIVITY_STATUSES.ACTIVE,
   }),
   Spot: () => ({
-    images: [
-      'https://cdn.pixabay.com/photo/2016/04/15/20/28/football-1331838_1280.jpg',
-    ],
+    images: [PLACEHOLDER_IMG],
     sports: Object.values(SPORTS),
   }),
   Date: () => {
@@ -28,6 +28,9 @@ const mocks = {
   },
   Notification: () => ({
     notificationType: NOTIFICATION_TYPES.NEW_MESSAGE,
+    sender: {
+      avatarURL: PLACEHOLDER_IMG,
+    },
     payload: JSON.stringify({
       activityId: '123',
       chatkitRoomId: '123',

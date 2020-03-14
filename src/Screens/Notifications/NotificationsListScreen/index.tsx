@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Platform } from 'react-native';
-import styled from 'styled-components/native';
 import { useQuery, useMutation } from 'react-apollo';
 import get from 'lodash/get';
 import moment from 'moment';
 import { NOTIFICATION_TYPES } from '../../../constants';
 import notificationsListQuery from '../../../GraphQL/NotificationsList/Queries/notificationsList';
 import markAsReadMutation from '../../../GraphQL/NotificationsList/Mutations/markAsRead';
-import Row from '../../../Components/Common/Row';
-import Spacer from '../../../Components/Common/Spacer';
 import NotificationsList from '../../../Components/Notifications/NotificationsList';
 
-//------------------------------------------------------------------------------
-// STYLE:
-//------------------------------------------------------------------------------
-const RowContainer = styled(Row)`
-  flex: 1;
-  background-color: ${({ theme }) => theme.colors.white};
-`;
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
@@ -73,17 +63,14 @@ const NotificationsListScreen = ({ navigation }) => {
   } = queryRes;
 
   return (
-    <RowContainer>
-      <Spacer row size="L" />
-      <NotificationsList
-        notifications={get(data, 'notificationsList.items', [])
-          .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)))}
-        onCardPress={handleNotificationPress}
+    <NotificationsList
+      notifications={get(data, 'notificationsList.items', [])
+        .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)))}
+      onCardPress={handleNotificationPress}
         // FlatList props
-        onRefresh={refetch}
-        refreshing={loading}
-      />
-    </RowContainer>
+      onRefresh={refetch}
+      refreshing={loading}
+    />
   );
 };
 

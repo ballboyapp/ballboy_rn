@@ -18,6 +18,7 @@ import { getNotificationIcon, getNotificationTypeText } from './utils';
 //------------------------------------------------------------------------------
 const CARD_HEIGHT = 80;
 const IMG_WIDTH = 75;
+const IMG_PADDING = 16;
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
@@ -27,24 +28,16 @@ const RowContainer = styled(Row)`
 `;
 //------------------------------------------------------------------------------
 const Left = styled.View`
-  flex: 1;
-  padding: 8px 8px 8px 0;
-  overflow: hidden;
+  height: ${CARD_HEIGHT}px;
+  width: ${IMG_WIDTH}px;
+  padding: ${IMG_PADDING}px;
 `;
 //------------------------------------------------------------------------------
 const Right = styled.View`
-  height: ${CARD_HEIGHT}px;
-  width: ${IMG_WIDTH}px;
+  flex: 1;
+  padding: 8px 0 8px 0;
+  overflow: hidden;
 `;
-//------------------------------------------------------------------------------
-// const Title = styled(Text.S)`
-//   color: ${Colors.dusk}
-// `;
-// //------------------------------------------------------------------------------
-// const Bold = styled(Text.SSM)`
-//   font-weight: 500;
-//   line-height: 18px;
-// `;
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
@@ -65,6 +58,15 @@ const NotificationCard = ({ notification, onCardPress }) => {
     >
       <RowContainer>
         <Left>
+          <Image
+            source={{ uri: sender.avatarURL }}
+            style={{
+              height: CARD_HEIGHT - 2 * IMG_PADDING,
+              width: IMG_WIDTH - 2 * IMG_PADDING,
+            }}
+          />
+        </Left>
+        <Right>
           <Row alignItems="center">
             <Icon
               iconSet="MaterialCommunityIcons"
@@ -95,15 +97,6 @@ const NotificationCard = ({ notification, onCardPress }) => {
               {activityTitle || ''}
             </Text>
           </Row>
-        </Left>
-        <Right>
-          <Image
-            source={{ uri: sender.avatarURL }}
-            style={{
-              height: CARD_HEIGHT,
-              width: IMG_WIDTH,
-            }}
-          />
         </Right>
       </RowContainer>
     </TouchableOpacity>

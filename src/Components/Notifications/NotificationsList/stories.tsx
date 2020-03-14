@@ -5,12 +5,14 @@ import get from 'lodash/get';
 import notificationsListQuery from '../../../GraphQL/NotificationsList/Queries/notificationsList';
 import NotificationsList from '.';
 
+const Container = () => {
+  const { loading, error, data } = useQuery(notificationsListQuery);
+
+  if (loading || error) return null;
+
+  return <NotificationsList notifications={get(data, 'notificationsList.items', [])} />;
+};
+
 storiesOf('Notifications.NotificationsList', module)
-  .add('NotificationsList', () => {
-    const { loading, error, data } = useQuery(notificationsListQuery);
-
-    if (loading || error) return null;
-
-    return <NotificationsList notifications={get(data, 'notificationsList.items', [])} />;
-  })
+  .add('NotificationsList', () => <Container />)
   .add('NotificationsList no items', () => <NotificationsList />);
