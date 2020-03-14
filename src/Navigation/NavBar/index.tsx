@@ -122,6 +122,7 @@ class NavBar extends React.Component {
                 btnLabel={I18n.t(btn.label)}
                 icon={btn.icon}
                 withBadge={btn.id === 'notifications' && !loading && !error && get(data, 'notificationsList.unreadCounter', 0) > 0}
+                badgeCounter={get(data, 'notificationsList.unreadCounter', 0)}
                 active={this.curRoute === btn.route}
                 onPress={() => { this.handlePress(btn); }}
               />

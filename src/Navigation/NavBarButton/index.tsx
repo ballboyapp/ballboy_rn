@@ -12,6 +12,7 @@ import Icon from '../../Components/Common/Icon';
 // CONSTANTS:
 //------------------------------------------------------------------------------
 const NUM_BUTTONS = 5;
+const BUTTON_WIDTH = WINDOW_WIDTH / NUM_BUTTONS;
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -33,6 +34,7 @@ const NavBarButton = ({
   btnLabel,
   icon,
   withBadge,
+  badgeCounter,
   active,
   onPress,
   ...otherProps
@@ -50,10 +52,11 @@ const NavBarButton = ({
         {withBadge && (
           <Badge
             status="error"
+            value={badgeCounter}
             containerStyle={{
               position: 'absolute',
-              top: 3,
-              right: WINDOW_WIDTH / (2 * NUM_BUTTONS) - 10,
+              top: 0,
+              left: BUTTON_WIDTH / 2,
             }}
           />
         )}
@@ -82,6 +85,7 @@ NavBarButton.propTypes = {
     name: PropTypes.string,
   }).isRequired,
   withBadge: PropTypes.bool,
+  badgeCounter: PropTypes.number,
   active: PropTypes.bool,
   onPress: PropTypes.func,
 };
@@ -89,6 +93,7 @@ NavBarButton.propTypes = {
 NavBarButton.defaultProps = {
   btnLabel: '',
   withBadge: false,
+  badgeCounter: 0,
   active: false,
   onPress: () => {},
 };
