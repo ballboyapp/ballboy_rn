@@ -112,7 +112,10 @@ class NavBar extends React.Component {
     }
 
     return (
-      <Query query={unreadNotificationsCounterQuery}>
+      <Query
+        query={unreadNotificationsCounterQuery}
+        pollInterval={1000 * 30} // milliseconds
+      >
         {({ loading, error, data }) => (
           <StyledRow>
             {buttons.map((btn) => (
