@@ -110,8 +110,8 @@ const ROUTES = {
       <UserMenu navigation={navigation} />
     ),
   },
-  InfoScreen: {
-    title: 'infoScreen.title',
+  SettingsScreen: {
+    title: 'settingsScreen.title',
   },
 };
 
@@ -120,7 +120,7 @@ export const FOOTER_VISIBLE_ROUTES = [
   'SpotsListScreen',
   'NotificationsListScreen',
   'ProfileEditScreen',
-  'InfoScreen',
+  'SettingsScreen',
 ];
 
 export const getTitle = ({ activeKey }): string => (

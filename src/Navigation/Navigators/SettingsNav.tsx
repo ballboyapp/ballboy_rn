@@ -1,21 +1,21 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import I18n from '../../I18n';
-import InfoScreen from '../../Screens/Info/InfoScreen';
+import SettingsScreen from '../../Screens/Settings/SettingsScreen';
 import { headerTitleStyle } from './style';
 
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const InfoNav = createStackNavigator({
-  InfoScreen: {
-    screen: InfoScreen,
+const SettingsNav = createStackNavigator({
+  SettingsScreen: {
+    screen: SettingsScreen,
     navigationOptions: () => ({
-      headerTitle: I18n.t('infoScreen.title'),
+      headerTitle: I18n.t('settingsScreen.title'),
       headerTitleStyle,
     }),
   },
 }, {
-  initialRouteName: 'InfoScreen',
+  initialRouteName: 'SettingsScreen',
 });
 
-export default InfoNav;
+export default SettingsNav;

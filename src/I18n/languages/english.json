@@ -43,11 +43,11 @@
     "organize": "Organize",
     "notifications": "Notifications",
     "profile": "Profile",
-    "info": "Info"
+    "settings": "Settings"
   },
 
-  "infoScreen": {
-    "title": "Info",
+  "settingsScreen": {
+    "title": "Settings",
     "appVersion": "Version",
     "feedback": "Help us to improve the app",
     "privacy": "Privacy info",

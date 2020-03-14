@@ -54,12 +54,12 @@ const buttons = [{
     name: 'bell',
   },
 }, {
-  id: 'info',
-  label: 'navBar.info',
-  route: Platform.select({ web: 'InfoScreen', default: 'InfoTab' }),
+  id: 'settings',
+  label: 'navBar.settings',
+  route: Platform.select({ web: 'SettingsScreen', default: 'SettingsTab' }),
   icon: {
     set: 'MaterialIcons',
-    name: 'info',
+    name: 'settings',
   },
 }];
 //------------------------------------------------------------------------------

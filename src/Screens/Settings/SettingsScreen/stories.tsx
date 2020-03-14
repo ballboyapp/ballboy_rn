@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import navigation from './mocks';
-import InfoScreen from '.';
+import SettingsScreen from '.';
 
-storiesOf('Screens.Info', module)
-  .add('InfoScreen', () => (
-    <InfoScreen
+storiesOf('Screens.Settings', module)
+  .add('SettingsScreen', () => (
+    <SettingsScreen
       navigation={navigation}
     />
   ));
