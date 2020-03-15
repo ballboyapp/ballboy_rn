@@ -24,7 +24,7 @@ const IMG_PADDING = 16;
 //------------------------------------------------------------------------------
 const RowContainer = styled(Row)`
   height: ${CARD_HEIGHT}px;
-  background-color: ${({ theme, highlight }) => theme.colors[highlight ? 'silver' : 'white']};
+  background-color: ${({ theme, highlight }) => theme.colors[highlight ? 'notifBg' : 'white']};
 `;
 //------------------------------------------------------------------------------
 const Left = styled.View`

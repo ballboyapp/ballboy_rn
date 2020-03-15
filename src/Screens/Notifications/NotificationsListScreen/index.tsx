@@ -13,7 +13,9 @@ import NotificationsList from '../../../Components/Notifications/NotificationsLi
 // COMPONENT:
 //------------------------------------------------------------------------------
 const NotificationsListScreen = ({ navigation }) => {
-  const queryRes = useQuery(notificationsListQuery);
+  const queryRes = useQuery(notificationsListQuery, {
+    pollInterval: 1000 * 10, // milliseconds
+  });
   const [markAsRead] = useMutation(markAsReadMutation);
 
   // Fire markAsRead mutation when component gets mounted or focused (native)

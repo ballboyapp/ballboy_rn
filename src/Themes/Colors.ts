@@ -46,6 +46,7 @@ const colors = {
   whatsapp: '#25d366',
   darkorchid: 'darkorchid',
   dodgerblue: 'dodgerblue',
+  notifBg: 'rgb(237, 242, 250)',
 };
 
 export default colors;
