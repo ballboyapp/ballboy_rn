@@ -79,7 +79,7 @@ const NotificationsListScreen = ({ navigation }) => {
       notifications={get(data, 'notificationsList.items', [])
         .sort((a, b) => moment(b.createdAt).diff(moment(a.createdAt)))}
       onCardPress={handleNotificationPress}
-        // FlatList props
+      // FlatList props
       onRefresh={refetch}
       refreshing={loading}
     />

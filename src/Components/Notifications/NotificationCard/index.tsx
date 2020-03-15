@@ -24,7 +24,7 @@ const IMG_PADDING = 16;
 //------------------------------------------------------------------------------
 const RowContainer = styled(Row)`
   height: ${CARD_HEIGHT}px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme, highlight }) => theme.colors[highlight ? 'silver' : 'white']};
 `;
 //------------------------------------------------------------------------------
 const Left = styled.View`
@@ -43,7 +43,7 @@ const Right = styled.View`
 //------------------------------------------------------------------------------
 const NotificationCard = ({ notification, onCardPress }) => {
   const {
-    createdAt, notificationType, sender, payload,
+    createdAt, notificationType, sender, payload, didRead,
   } = notification;
 
   const { activityTitle } = JSON.parse(payload);
@@ -56,7 +56,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
       onPress={onCardPress}
       activeOpacity={1}
     >
-      <RowContainer>
+      <RowContainer highlight={!didRead}>
         <Left>
           <Image
             source={{ uri: sender.avatarURL }}
