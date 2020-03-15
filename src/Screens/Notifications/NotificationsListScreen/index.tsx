@@ -16,14 +16,26 @@ const NotificationsListScreen = ({ navigation }) => {
   const queryRes = useQuery(notificationsListQuery);
   const [markAsRead] = useMutation(markAsReadMutation);
 
-  // Fire markAsRead mutation when component mounts
+  // Fire markAsRead mutation when component gets mounted or focused (native)
+  const mutate = () => markAsRead({
+    refetchQueries: [{
+      query: notificationsListQuery,
+    }],
+  });
+
+  // Fire on first render
   useEffect(() => {
-    markAsRead({
-      refetchQueries: [{
-        query: notificationsListQuery,
-      }],
-    });
+    mutate();
   }, []);
+
+  // Fire on focus (native)
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('didFocus', () => {
+      mutate();
+    });
+
+    return unsubscribe.remove;
+  }, [navigation]);
 
   const handleNotificationPress = ({ notificationType, payload }) => {
     const { activityId, chatkitRoomId } = JSON.parse(payload);
@@ -77,6 +89,7 @@ const NotificationsListScreen = ({ navigation }) => {
 NotificationsListScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    addListener: PropTypes.func.isRequired,
   }).isRequired,
 };
 
