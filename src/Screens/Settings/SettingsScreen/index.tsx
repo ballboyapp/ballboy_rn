@@ -24,10 +24,14 @@ const { feedbackUrl, privacyUrl, termsUrl } = extra;
 //------------------------------------------------------------------------------
 const SettingsScreen = ({ navigation, client }) => {
   const handleLogout = async () => {
-    // Remove token from async storage and reset apollo store
-    await AsyncStorage.removeItem('x-auth-token');
-    await client.resetStore();
-    navigation.navigate('SplashScreen');
+    try {
+      // Remove token from async storage and reset apollo store
+      await AsyncStorage.removeItem('x-auth-token');
+      await client.resetStore();
+      navigation.navigate('SplashScreen');
+    } catch (exc) {
+      console.log(exc);
+    }
   };
 
   return (
@@ -40,17 +44,17 @@ const SettingsScreen = ({ navigation, client }) => {
       <Spacer size="XXL" />
       <Divider />
       {!!feedbackUrl && (
-      <View>
-        <Block midHeigh>
-          <LinkOpenURL
-            text={I18n.t('settingsScreen.feedback')}
-            href={feedbackUrl}
-            iconSet="MaterialIcons"
-            iconName="chat"
-          />
-        </Block>
-        <Divider />
-      </View>
+        <View>
+          <Block midHeigh>
+            <LinkOpenURL
+              text={I18n.t('settingsScreen.feedback')}
+              href={feedbackUrl}
+              iconSet="MaterialIcons"
+              iconName="chat"
+            />
+          </Block>
+          <Divider />
+        </View>
       )}
       <Block midHeigh>
         <LinkOpenURL

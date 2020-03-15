@@ -34,8 +34,8 @@ const buttons = [{
   label: 'navBar.spots',
   route: Platform.select({ web: 'SpotsListScreen', default: 'SpotSearchTab' }),
   icon: {
-    set: 'MaterialCommunityIcons',
-    name: 'soccer-field', // 'map-marker-radius',
+    set: 'MaterialIcons',
+    name: 'place', // 'map-marker-radius',
   },
 }, {
   id: 'profile',
@@ -116,22 +116,26 @@ class NavBar extends React.Component {
         query={unreadNotificationsCounterQuery}
         pollInterval={1000 * 10} // milliseconds
       >
-        {({ loading, error, data }) => (
-          <StyledRow>
-            {buttons.map((btn) => (
-              <NavBarButton
-                testID={`navbarButton_${btn.id}`}
-                key={btn.id}
-                btnLabel={I18n.t(btn.label)}
-                icon={btn.icon}
-                withBadge={btn.id === 'notifications' && !loading && !error && get(data, 'notificationsList.unreadCounter', 0) > 0}
-                badgeCounter={get(data, 'notificationsList.unreadCounter', 0)}
-                active={this.curRoute === btn.route}
-                onPress={() => { this.handlePress(btn); }}
-              />
-            ))}
-          </StyledRow>
-        )}
+        {({ loading, error, data }) => {
+          if (error) return null;
+
+          return (
+            <StyledRow>
+              {buttons.map((btn) => (
+                <NavBarButton
+                  testID={`navbarButton_${btn.id}`}
+                  key={btn.id}
+                  btnLabel={I18n.t(btn.label)}
+                  icon={btn.icon}
+                  withBadge={btn.id === 'notifications' && !loading && get(data, 'notificationsList.unreadCounter', 0) > 0}
+                  badgeCounter={get(data, 'notificationsList.unreadCounter', 0)}
+                  active={this.curRoute === btn.route}
+                  onPress={() => { this.handlePress(btn); }}
+                />
+              ))}
+            </StyledRow>
+          );
+        }}
       </Query>
     );
   }
