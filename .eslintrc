@@ -1,6 +1,9 @@
 {
   "extends": ["airbnb"],
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks"
+  ],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "global-require": 0,
@@ -21,7 +24,9 @@
     // "react/sort-comp": 0,
     "function-paren-newline": ["error", "consistent"],
     "no-console": 0,
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["@storybook/react-native"] }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["@storybook/react-native"] }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "globals": {
     "__DEV__": true,
