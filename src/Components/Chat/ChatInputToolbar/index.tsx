@@ -5,7 +5,7 @@ import Colors from '../../../Themes/Colors';
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
-const ChatInputToolbar = props => (
+const ChatInputToolbar = (props) => (
   <InputToolbar
     {...props}
     containerStyle={{
