@@ -19,7 +19,7 @@ import PlanGameScreen from '../Screens/Plan/PlanGameScreen';
 import ShareGameScreen from '../Screens/Plan/ShareGameScreen';
 import NotificationsListScreen from '../Screens/Notifications/NotificationsListScreen';
 import ProfileEditScreen from '../Screens/Profile/ProfileEditScreen';
-import InfoScreen from '../Screens/Info/InfoScreen';
+import SettingsScreen from '../Screens/Settings/SettingsScreen';
 import LoggedOutRoute from './LoggedOutRoute';
 import LoggedInRoute from './LoggedInRoute';
 import NotOnboardedRoute from './NotOnboardedRoute';
@@ -126,9 +126,9 @@ const LOGGED_IN_ROUTES = [
     path: 'profile-edit',
   },
   {
-    name: 'InfoScreen',
-    screen: InfoScreen,
-    path: 'about',
+    name: 'SettingsScreen',
+    screen: SettingsScreen,
+    path: 'settings',
   },
 ];
 

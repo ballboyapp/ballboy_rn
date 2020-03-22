@@ -85,6 +85,9 @@ const GameChatScreen = ({ user, navigation }) => {
                           <GiftedChat
                             user={user}
                             messages={get(chatHandler, 'messages.length', 0) > 0 ? chatHandler.messages : noMessages}
+                            messagesContainerStyle={{
+                              overflowY: 'scroll', // required for web to avoid overflow
+                            }}
                             renderAvatarOnTop
                             isAnimated
                             alignTop

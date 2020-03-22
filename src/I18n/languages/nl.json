@@ -43,15 +43,16 @@
     "organize": "Organiseer",
     "notifications": "Meldingen",
     "profile": "Profiel",
-    "info": "Info"
+    "settings": "Instellingen"
   },
 
-  "infoScreen": {
-    "title": "Info",
+  "settingsScreen": {
+    "title": "Instellingen",
     "appVersion": "Versie",
     "feedback": "Help ons de app te verbeteren",
     "privacy": "Privacy informatie",
-    "terms": "Algemene voorwaarden"
+    "terms": "Algemene voorwaarden",
+    "logout": "Uitloggen"
   },
 
   "profileScreen": {
@@ -551,6 +552,19 @@
 
   "notificationsList": {
     "noResults": "Het lijkt erop dat je geen meldingen hebt"
+  },
+
+  "notificationCard": {
+    "eventType": {
+      "update": "Bijwerken",
+      "message": "Bericht"
+    },
+    "eventDescription": {
+      "attendingActivity": "Hij wees naar",
+      "leftActivity": "stapte uit",
+      "leftMessage": "heeft een bericht achtergelaten",
+      "activityRecreated": "activiteit automatisch opnieuw gemaakt"
+    }
   },
 
   "loggedOutScreen": {

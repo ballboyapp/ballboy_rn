@@ -43,15 +43,16 @@
     "organize": "Organiza",
     "notifications": "Notificaciones",
     "profile": "Perfil",
-    "info": "Info"
+    "settings": "Ajustes"
   },
 
-  "infoScreen": {
-    "title": "Información",
+  "settingsScreen": {
+    "title": "Ajustes",
     "appVersion": "Version",
     "feedback": "Ayúdanos a mejorar la aplicación",
     "privacy": "Información sobre privacidad",
-    "terms": "Términos y condiciones"
+    "terms": "Términos y condiciones",
+    "logout": "Cerrar sesión"
   },
 
   "profileScreen": {
@@ -551,6 +552,19 @@
 
   "notificationsList": {
     "noResults": "Parece que no tienes notificaciones"
+  },
+
+  "notificationCard": {
+    "eventType": {
+      "update": "Actualización",
+      "message": "Mensaje"
+    },
+    "eventDescription": {
+      "attendingActivity": "se apuntó a",
+      "leftActivity": "se desapuntó de",
+      "leftMessage": "dejó un mensaje en",
+      "activityRecreated": "actividad recreada automaticamente"
+    }
   },
 
   "loggedOutScreen": {

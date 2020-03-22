@@ -135,12 +135,12 @@ function loadStories() {
 	require('../src/Screens/Games/GameDetailsScreen/stories');
 	require('../src/Screens/Games/GamesListScreen/stories');
 	require('../src/Screens/Games/PlayersListScreen/stories');
-	require('../src/Screens/Info/InfoScreen/stories');
 	require('../src/Screens/Notifications/NotificationsListScreen/stories');
 	require('../src/Screens/Onboarding/OnboardingScreen/stories');
 	require('../src/Screens/Plan/PlanGameScreen/stories');
 	require('../src/Screens/Plan/ShareGameScreen/stories');
 	require('../src/Screens/Profile/ProfileEditScreen/stories');
+	require('../src/Screens/Settings/SettingsScreen/stories');
 	require('../src/Screens/Splash/SplashScreen/stories');
 	require('../src/Screens/Spots/SpotsFilterScreen/stories');
 	require('../src/Screens/Spots/SpotsListScreen/stories');
@@ -278,12 +278,12 @@ const stories = [
 	'../src/Screens/Games/GameDetailsScreen/stories',
 	'../src/Screens/Games/GamesListScreen/stories',
 	'../src/Screens/Games/PlayersListScreen/stories',
-	'../src/Screens/Info/InfoScreen/stories',
 	'../src/Screens/Notifications/NotificationsListScreen/stories',
 	'../src/Screens/Onboarding/OnboardingScreen/stories',
 	'../src/Screens/Plan/PlanGameScreen/stories',
 	'../src/Screens/Plan/ShareGameScreen/stories',
 	'../src/Screens/Profile/ProfileEditScreen/stories',
+	'../src/Screens/Settings/SettingsScreen/stories',
 	'../src/Screens/Splash/SplashScreen/stories',
 	'../src/Screens/Spots/SpotsFilterScreen/stories',
 	'../src/Screens/Spots/SpotsListScreen/stories'

@@ -49,13 +49,13 @@ class ChatManagerProps extends React.PureComponent {
           authorization: userId === chatkitReadOnlyUser ? '' : (token ? `Bearer ${token}` : ''),
         },
       }),
-      logger: {
-        verbose: console.log,
-        debug: console.log,
-        info: console.log,
-        warn: console.log,
-        error: console.log,
-      },
+      // logger: {
+      //   verbose: console.log,
+      //   debug: console.log,
+      //   info: console.log,
+      //   warn: console.log,
+      //   error: console.log,
+      // },
     });
 
     let chatkitUser = null;

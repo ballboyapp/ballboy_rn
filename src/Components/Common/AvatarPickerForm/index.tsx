@@ -110,7 +110,7 @@ class AvatarPickerForm extends React.PureComponent {
     const { avatar, errors } = this.state;
 
     // Set user based on state values
-    const usr = { ...user, profile: { avatar } };
+    const usr = { ...user, profile: { ...user.profile, avatar } };
 
     // Apply translation and concatenate field errors (string)
     const avatarErrors = ErrorHandling.getFieldErrors(errors, 'avatar', I18n.t);

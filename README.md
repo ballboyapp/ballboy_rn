@@ -107,6 +107,8 @@ Then run `yarn run deploy:web`.
 
 Before building for release remember to bump the app version at app.json
 
+then run `yarn run build:android`
+
 `expo build:android -t app-bundle`
 
 [https://docs.expo.io/versions/latest/distribution/building-standalone-apps/](https://docs.expo.io/versions/latest/distribution/building-standalone-apps/)

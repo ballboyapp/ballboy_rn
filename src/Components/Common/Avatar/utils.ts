@@ -1,9 +1,10 @@
 import get from 'lodash/get';
+import { object } from 'prop-types';
 
 export const userToInitials = (user) => {
   const username = get(user, 'profile.username', '').trim();
 
-  if (!username.length > 0) {
+  if (username.length <= 0) {
     return '?'; // unknown user
   }
 
@@ -28,13 +29,25 @@ export const userToInitials = (user) => {
 //   return user.name.substr(0, 2);
 // };
 
-
-const SMALL_AVATAR_SIZE = 40;
-const LARGE_AVATAR_SIZE = 80;
+export const AVATAR_SIZES = {
+  S: 'S',
+  M: 'M',
+  L: 'L',
+};
 
 export const getSize = (size) => {
-  if (!size || !['S', 'L'].includes(size)) {
+  if (size == null) {
     throw new Error('Size is required');
   }
-  return size === 'S' ? SMALL_AVATAR_SIZE : LARGE_AVATAR_SIZE;
+
+  switch (size) {
+    case AVATAR_SIZES.S:
+      return 40;
+    case AVATAR_SIZES.M:
+      return 50;
+    case AVATAR_SIZES.L:
+      return 80;
+    default:
+      throw new Error(`Unknown avatar size ${size}`);
+  }
 };

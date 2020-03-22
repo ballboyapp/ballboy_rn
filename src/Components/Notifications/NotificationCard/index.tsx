@@ -3,98 +3,93 @@ import PropTypes from 'prop-types';
 import { propType } from 'graphql-anywhere';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+import moment from 'moment';
+import I18n from '../../../I18n';
 import notificationFragment from '../../../GraphQL/NotificationsList/Fragments/notification';
 import Row from '../../Common/Row';
 import Spacer from '../../Common/Spacer';
 import DotSpacer from '../../Common/DotSpacer';
 import Text from '../../Common/Text';
 import Icon from '../../Common/Icon';
+import Avatar from '../../Common/Avatar';
+import { getNotificationIcon, getNotificationTypeText } from './utils';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
 //------------------------------------------------------------------------------
 const CARD_HEIGHT = 80;
-const IMG_WIDTH = 75;
+const IMG_WIDTH = Avatar.size('M');
+const IMG_PADDING = 16;
+
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
 const RowContainer = styled(Row)`
   height: ${CARD_HEIGHT}px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme, highlight }) => theme.colors[highlight ? 'notifBg' : 'white']};
 `;
 //------------------------------------------------------------------------------
 const Left = styled.View`
-  flex: 1;
-  padding: 8px 8px 8px 0;
-  overflow: hidden;
+  height: ${CARD_HEIGHT}px;
+  width: ${IMG_WIDTH + 2 * IMG_PADDING}px;
+  padding: ${IMG_PADDING}px;
 `;
 //------------------------------------------------------------------------------
 const Right = styled.View`
-  height: ${CARD_HEIGHT}px;
-  width: ${IMG_WIDTH}px;
+  flex: 1;
+  padding: 8px 0 8px 0;
+  overflow: hidden;
 `;
-//------------------------------------------------------------------------------
-// const Title = styled(Text.S)`
-//   color: ${Colors.dusk}
-// `;
-// //------------------------------------------------------------------------------
-// const Bold = styled(Text.SSM)`
-//   font-weight: 500;
-//   line-height: 18px;
-// `;
 //------------------------------------------------------------------------------
 // COMPONENT:
 //------------------------------------------------------------------------------
 const NotificationCard = ({ notification, onCardPress }) => {
-  // const { image } = notification;
-  // const imgs = getSpotImages({ images: [image], height: CARD_HEIGHT, width: IMG_WIDTH });
+  const {
+    createdAt, notificationType, sender, payload, didRead,
+  } = notification;
+
+  const { activityTitle } = JSON.parse(payload);
+
+  const iconName = getNotificationIcon(notificationType);
+  const [eventType, eventDescription] = getNotificationTypeText(notificationType);
 
   return (
     <TouchableOpacity
       onPress={onCardPress}
       activeOpacity={1}
     >
-      <RowContainer>
+      <RowContainer alignItems="flex-end" highlight={!didRead}>
         <Left>
-          <Row alignItems="center">
-            <Icon
-              iconSet="MaterialCommunityIcons"
-              iconName="message-alert"
-              size={18}
-              color="link"
-            />
-            <Spacer row size="ML" />
-            <Text size="S" color="dusk">
-              Update
-            </Text>
-            <DotSpacer row size="M" />
-            <Text size="S" color="dusk">
-              1 hour ago
-            </Text>
-          </Row>
-          <Spacer size="S" />
-          <Row alignItems="center">
-            <Text size="SSM" semibold>
-              Sezayi
-            </Text>
-            <Spacer row size="S" />
-            <Text size="SSM">
-              attended
-            </Text>
-            <Spacer row size="S" />
-            <Text size="SSM" semibold>
-              Soccer Rocker
-            </Text>
-          </Row>
+          <Avatar
+            user={{
+              _id: sender.id,
+              profile: {
+                avatar: sender.avatarURL,
+                username: sender.name,
+              },
+            }}
+            size="M"
+          />
         </Left>
         <Right>
-          {/* <Image
-            source={{ uri: imgs[0] }}
-            style={{
-              height: CARD_HEIGHT,
-              width: IMG_WIDTH,
-            }}
-          /> */}
+          <Row alignItems="center">
+            <Text size="SM" semibold>
+              {sender.name}
+            </Text>
+            <Spacer row size="S" />
+            <Text size="SM">
+              {I18n.t(eventDescription)}
+            </Text>
+            <Spacer row size="S" />
+            <Text size="SM" semibold>
+              {activityTitle || ''}
+            </Text>
+          </Row>
+          <Row alignItems="center">
+            <Text size="SSM" color="dusk">
+              {moment(createdAt).fromNow()}
+            </Text>
+          </Row>
         </Right>
       </RowContainer>
     </TouchableOpacity>

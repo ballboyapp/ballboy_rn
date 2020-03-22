@@ -5,4 +5,4 @@ export { default as GameSearchNav } from './GameSearchNav';
 export { default as PlanGameNav } from './PlanGameNav';
 export { default as NotificationsNav } from './NotificationsNav';
 export { default as ProfileNav } from './ProfileNav';
-export { default as InfoNav } from './InfoNav';
+export { default as SettingsNav } from './SettingsNav';

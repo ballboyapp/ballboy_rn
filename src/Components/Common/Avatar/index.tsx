@@ -7,7 +7,7 @@ import themeImages from '../../../Themes/Images';
 import { getImageUrl } from '../../../utils';
 import publicUserFragment from '../../../GraphQL/Users/Fragments/publicUser';
 import Text from '../Text';
-import { userToInitials, getSize } from './utils';
+import { AVATAR_SIZES, userToInitials, getSize } from './utils';
 
 //------------------------------------------------------------------------------
 // AUX FUNCTIONS:
@@ -116,7 +116,7 @@ Avatar.size = getSize;
 Avatar.propTypes = {
   user: propType(publicUserFragment),
   text: PropTypes.string,
-  size: PropTypes.oneOf(['S', 'L']).isRequired,
+  size: PropTypes.oneOf(Object.values(AVATAR_SIZES)).isRequired,
 };
 
 Avatar.defaultProps = {

@@ -43,15 +43,16 @@
     "organize": "Organize",
     "notifications": "Notifications",
     "profile": "Profile",
-    "info": "Info"
+    "settings": "Settings"
   },
 
-  "infoScreen": {
-    "title": "Info",
+  "settingsScreen": {
+    "title": "Settings",
     "appVersion": "Version",
     "feedback": "Help us to improve the app",
     "privacy": "Privacy info",
-    "terms": "Terms and conditions"
+    "terms": "Terms and conditions",
+    "logout": "Log out"
   },
 
   "profileScreen": {
@@ -551,6 +552,19 @@
 
   "notificationsList": {
     "noResults": "Looks like you have no notifications"
+  },
+
+  "notificationCard": {
+    "eventType": {
+      "update": "Update",
+      "message": "Message"
+    },
+    "eventDescription": {
+      "attendingActivity": "is attending",
+      "leftActivity": "left",
+      "leftMessage": "left a message on",
+      "activityRecreated": "activity recreated automatically"
+    }
   },
 
   "loggedOutScreen": {
