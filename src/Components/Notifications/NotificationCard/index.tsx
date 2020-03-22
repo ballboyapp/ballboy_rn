@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { propType } from 'graphql-anywhere';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import moment from 'moment';
 import I18n from '../../../I18n';
@@ -11,14 +11,16 @@ import Spacer from '../../Common/Spacer';
 import DotSpacer from '../../Common/DotSpacer';
 import Text from '../../Common/Text';
 import Icon from '../../Common/Icon';
+import Avatar from '../../Common/Avatar';
 import { getNotificationIcon, getNotificationTypeText } from './utils';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
 //------------------------------------------------------------------------------
 const CARD_HEIGHT = 80;
-const IMG_WIDTH = 75;
+const IMG_WIDTH = Avatar.size('M');
 const IMG_PADDING = 16;
+
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ const RowContainer = styled(Row)`
 //------------------------------------------------------------------------------
 const Left = styled.View`
   height: ${CARD_HEIGHT}px;
-  width: ${IMG_WIDTH}px;
+  width: ${IMG_WIDTH + 2 * IMG_PADDING}px;
   padding: ${IMG_PADDING}px;
 `;
 //------------------------------------------------------------------------------
@@ -56,45 +58,48 @@ const NotificationCard = ({ notification, onCardPress }) => {
       onPress={onCardPress}
       activeOpacity={1}
     >
-      <RowContainer highlight={!didRead}>
+      <RowContainer alignItems="flex-end" highlight={!didRead}>
         <Left>
-          <Image
-            source={{ uri: sender.avatarURL }}
-            style={{
-              height: CARD_HEIGHT - 2 * IMG_PADDING,
-              width: IMG_WIDTH - 2 * IMG_PADDING,
+          <Avatar
+            user={{
+              _id: sender.id,
+              profile: {
+                avatar: sender.avatarURL,
+                username: sender.name,
+              },
             }}
+            size="M"
           />
         </Left>
         <Right>
           <Row alignItems="center">
-            <Icon
+            <Text size="SM" semibold>
+              {sender.name}
+            </Text>
+            <Spacer row size="S" />
+            <Text size="SM">
+              {I18n.t(eventDescription)}
+            </Text>
+            <Spacer row size="S" />
+            <Text size="SM" semibold>
+              {activityTitle || ''}
+            </Text>
+          </Row>
+          <Spacer size="S" />
+          <Row alignItems="center">
+            {/* <Icon
               iconSet="MaterialCommunityIcons"
               iconName={iconName}
               size={18}
               color="link"
             />
             <Spacer row size="ML" />
-            <Text size="S" color="dusk">
+            <Text size="SSM" color="dusk">
               {I18n.t(eventType)}
             </Text>
-            <DotSpacer row size="M" />
-            <Text size="S" color="dusk">
+            <DotSpacer row size="M" /> */}
+            <Text size="SSM" color="dusk">
               {moment(createdAt).fromNow()}
-            </Text>
-          </Row>
-          <Spacer size="S" />
-          <Row alignItems="center">
-            <Text size="SSM" semibold>
-              {sender.name}
-            </Text>
-            <Spacer row size="S" />
-            <Text size="SSM">
-              {I18n.t(eventDescription)}
-            </Text>
-            <Spacer row size="S" />
-            <Text size="SSM" semibold>
-              {activityTitle || ''}
             </Text>
           </Row>
         </Right>
