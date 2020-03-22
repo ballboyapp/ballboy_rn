@@ -85,19 +85,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
               {activityTitle || ''}
             </Text>
           </Row>
-          <Spacer size="S" />
           <Row alignItems="center">
-            {/* <Icon
-              iconSet="MaterialCommunityIcons"
-              iconName={iconName}
-              size={18}
-              color="link"
-            />
-            <Spacer row size="ML" />
-            <Text size="SSM" color="dusk">
-              {I18n.t(eventType)}
-            </Text>
-            <DotSpacer row size="M" /> */}
             <Text size="SSM" color="dusk">
               {moment(createdAt).fromNow()}
             </Text>
