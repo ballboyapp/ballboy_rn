@@ -10,7 +10,7 @@ const activityDetailsFragment = gql`
     description
     capacity
     shareLink
-    chatkitRoomId
+    chatRoomId
     spot {
       ...spotDetailsFragment
     }

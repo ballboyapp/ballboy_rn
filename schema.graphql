@@ -11,7 +11,7 @@ type Activity {
   status: ActivityStatus
   capacity: Int
   shareLink: String
-  chatkitRoomId: String
+  chatRoomId: String
   attendeesIds: [ID]
   attendees: [PublicUser]
   isAttendee: Boolean
@@ -29,6 +29,17 @@ enum ActivityStatus {
 type AuthToken {
   _id: ID!
   token: String!
+}
+
+type ChatRoom {
+  _id: ID
+  messages: [Message]
+}
+
+type ChatRoomUserProfile {
+  id: ID!
+  name: String!
+  avatarURL: String
 }
 
 type City {
@@ -64,6 +75,13 @@ enum Language {
   nl
 }
 
+type Message {
+  _id: ID!
+  createdAt: Date!
+  sender: ChatRoomUserProfile
+  text: String!
+}
+
 type Mutation {
   signup(username: String!, email: String!, language: Language!): PrivateUser
   login(email: String!): PrivateUser
@@ -75,6 +93,7 @@ type Mutation {
   addAttendee(_id: ID!): Activity
   removeAttendee(_id: ID!): Activity
   markAsRead: NotificationsList
+  sendMessage(roomId: ID!, text: String!): Message
 }
 
 type Notification {
@@ -87,10 +106,10 @@ type Notification {
 }
 
 type NotificationsList {
-  _id: ID!
-  recipient: NotificationUserProfile!
-  unreadCounter: Int!
-  items: [Notification]!
+  _id: ID
+  recipient: NotificationUserProfile
+  unreadCounter: Int
+  items: [Notification]
 }
 
 enum NotificationType {
@@ -137,6 +156,7 @@ type Query {
   activities(sports: [Sport], distance: Float, limit: Int!, offset: Int!): [Activity]
   activityDetails(_id: ID!): Activity
   notificationsList: NotificationsList
+  chatRoom(roomId: ID!): ChatRoom
 }
 
 enum RespondentStatus {
@@ -164,10 +184,6 @@ type Spot {
   sports: [Sport]
   distance: Float
   activities(limit: Int!, offset: Int!): [Activity]
-}
-
-type Subscription {
-  notificationAdded: NotificationsList
 }
 
 type UserProfile {

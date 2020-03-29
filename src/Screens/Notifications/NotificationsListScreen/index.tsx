@@ -40,11 +40,11 @@ const NotificationsListScreen = ({ navigation }) => {
   }, [navigation]);
 
   const handleNotificationPress = ({ notificationType, payload }) => {
-    const { activityId, chatkitRoomId } = JSON.parse(payload);
+    const { activityId, chatRoomId } = JSON.parse(payload);
 
     if (notificationType === NOTIFICATION_TYPES.NEW_MESSAGE) {
       if (Platform.OS === 'web') {
-        navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatkitRoomId });
+        navigation.navigate('GameChatScreen', { _id: activityId, roomId: chatRoomId });
       } else {
         navigation.navigate('GameSearchTab');
         navigation.navigate('GameDetailsScreen', { _id: activityId });
