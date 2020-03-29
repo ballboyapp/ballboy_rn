@@ -46,6 +46,28 @@ const GameChatScreen = ({ user, navigation }) => {
   // console.log('ROOM ID', roomId);
   // console.log('I18N LOCALE', I18n.locale.substr(0, 2));
 
+  const messages = get(data, 'chatRoom.messages', []).map(({
+    _id, sender, text, createdAt,
+  }) => ({
+    _id,
+    user: {
+      _id: sender.id,
+      name: sender.name ? sender.name.split(' ')[0] : '',
+      avatar: sender.avatarURL,
+    },
+    text,
+    createdAt: new Date(createdAt),
+  }))
+    .reverse();
+
+  const noMessages = [{
+    _id: '1',
+    text: I18n.t('chatInputField.noMessages'),
+    createdAt: new Date(),
+    system: true,
+    // Any additional custom parameters are passed through
+  }];
+
   return (
     <FormProps>
       {({
@@ -56,28 +78,6 @@ const GameChatScreen = ({ user, navigation }) => {
         handleSuccess,
       }) => {
         const serverErrors = errors ? ErrorHandling.getFieldErrors(errors, 'server') : '';
-
-        const messages = get(data, 'chatRoom.messages', []).map(({
-          _id, sender, text, createdAt,
-        }) => ({
-          _id,
-          user: {
-            _id: sender.id,
-            name: sender.name ? sender.name.split(' ')[0] : '',
-            avatar: sender.avatarURL,
-          },
-          text,
-          createdAt: new Date(createdAt),
-        }))
-          .reverse();
-
-        const noMessages = [{
-          _id: '1',
-          text: I18n.t('chatInputField.noMessages'),
-          createdAt: new Date(),
-          system: true,
-          // Any additional custom parameters are passed through
-        }];
 
         return (
           <ChatRoomApiCall
