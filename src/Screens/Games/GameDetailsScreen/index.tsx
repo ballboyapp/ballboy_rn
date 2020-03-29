@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Query } from 'react-apollo';
 import styled from 'styled-components/native';
 import I18n from '../../../I18n';
@@ -74,7 +74,7 @@ class GameDetailsScreen extends React.PureComponent {
                 activity={activityDetails}
                 onSpotPress={this.handleSpotPress}
                 onChatPress={() => {
-                  this.handleChatPress({ roomId: activityDetails.chatkitRoomId });
+                  this.handleChatPress({ roomId: activityDetails.chatRoomId });
                 }}
                 onAttendeesPress={this.handleAttendeesPress}
               />

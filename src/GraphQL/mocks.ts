@@ -33,7 +33,7 @@ const mocks = {
     },
     payload: JSON.stringify({
       activityId: '123',
-      chatkitRoomId: '123',
+      chatRoomId: '123',
     }),
     didRead: false,
   }),

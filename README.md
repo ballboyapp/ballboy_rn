@@ -43,15 +43,6 @@ At the root of the project you'll find a `app.json.sample` file. Duplicate said 
 - Set `extra.webSentryDsn` by creating a new 'React' project and getting the DSN key.
 - Set `extra.rnSentryDsn` by creating a new 'React Native' project and getting the DSN key. In addition, enable the `hooks.postPublish[0].config.authToken` by following the expo-sentry docs:  [https://docs.expo.io/versions/latest/guides/using-sentry/](https://docs.expo.io/versions/latest/guides/using-sentry/)
 
-#### Chatkit (chat service API)
-
-- Visit [https://pusher.com/chatkit](https://pusher.com/chatkit) and create a new account and a new Chatkit instance.
-- Set `extra.chatkitInstanceLocator` from the credentials tab.
-- Go to `Console` tab and you'll be prompted to create a new user. Set user name and ID to `admin`.
-- Click on `ROLES` inside the `Console` tab and select the `admin` role. Then, click on `assign role to user` and select the `admin` user. Assign the role.
-- Go to `ROLES` inside the `Console` tab and create a `readonly` role by enabling the following permissions (make sure the `readonly` role is selected before setting up the permissions): `room:join`, `room:leave`, `room:get`, `room:messages:get`, `room:typing_indicator:create`, `presence:subscribe`, `user:get`, `user:rooms:get`, `file:get` and `cursors:read:get`.
-- From the `ROLES`, click onassign role to user and select the `readonly` user.
-
 #### Cloudinary (image host and manipulation service API)
 
 - Visit [https://cloudinary.com/](https://cloudinary.com/) and create a new account.
