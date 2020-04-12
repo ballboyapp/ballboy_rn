@@ -96,6 +96,8 @@ class EditGameScreen extends React.PureComponent {
                 }
               };
 
+              const contentContainerStyle = Platform.OS === 'web' ? { flex: 1 } : {};
+
               return (
                 <View style={{ flex: 1 }}>
                   <EditGameApiCall
@@ -107,6 +109,7 @@ class EditGameScreen extends React.PureComponent {
                         extraHeight={100}
                         enableOnAndroid
                         keyboardShouldPersistTaps="handled"
+                        contentContainerStyle={contentContainerStyle}
                       >
                         <EditGameForm
                           activity={activityDetails}
@@ -117,19 +120,19 @@ class EditGameScreen extends React.PureComponent {
                           onClientErrorHook={handleClientError}
                           onSuccessHook={updateGame}
                         />
+                        <ImageModal
+                          modalComponent="ConfirmModal"
+                          src={themeImages.activitySuccessVisual}
+                          title={I18n.t('editGameScreen.editSuccessModal.title')}
+                          subtitle={I18n.t('editGameScreen.editSuccessModal.subtitle')}
+                          visible={editDoneModal.isVisible}
+                          okBtnLabel={I18n.t('editGameScreen.editSuccessModal.okBtnLabel')}
+                          onClose={handleModalClose}
+                          onOk={handleModalClose}
+                        />
                       </KeyboardAwareScrollView>
                     )}
                   </EditGameApiCall>
-                  <ImageModal
-                    modalComponent="ConfirmModal"
-                    src={themeImages.activitySuccessVisual}
-                    title={I18n.t('editGameScreen.editSuccessModal.title')}
-                    subtitle={I18n.t('editGameScreen.editSuccessModal.subtitle')}
-                    visible={editDoneModal.isVisible}
-                    okBtnLabel={I18n.t('editGameScreen.editSuccessModal.okBtnLabel')}
-                    onClose={handleModalClose}
-                    onOk={handleModalClose}
-                  />
                 </View>
               );
             }}
