@@ -120,19 +120,19 @@ class EditGameScreen extends React.PureComponent {
                           onClientErrorHook={handleClientError}
                           onSuccessHook={updateGame}
                         />
-                        <ImageModal
-                          modalComponent="ConfirmModal"
-                          src={themeImages.activitySuccessVisual}
-                          title={I18n.t('editGameScreen.editSuccessModal.title')}
-                          subtitle={I18n.t('editGameScreen.editSuccessModal.subtitle')}
-                          visible={editDoneModal.isVisible}
-                          okBtnLabel={I18n.t('editGameScreen.editSuccessModal.okBtnLabel')}
-                          onClose={handleModalClose}
-                          onOk={handleModalClose}
-                        />
                       </KeyboardAwareScrollView>
                     )}
                   </EditGameApiCall>
+                  <ImageModal
+                    modalComponent="ConfirmModal"
+                    src={themeImages.activitySuccessVisual}
+                    title={I18n.t('editGameScreen.editSuccessModal.title')}
+                    subtitle={I18n.t('editGameScreen.editSuccessModal.subtitle')}
+                    visible={editDoneModal.isVisible}
+                    okBtnLabel={I18n.t('editGameScreen.editSuccessModal.okBtnLabel')}
+                    onClose={handleModalClose}
+                    onOk={handleModalClose}
+                  />
                 </View>
               );
             }}
