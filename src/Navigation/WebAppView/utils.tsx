@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBtn from '../NavBtn';
-import UserMenu from '../UserMenu';
+// import UserMenu from '../UserMenu';
 import AdminMenu from '../AdminMenu';
 
 const BackBtn = ({ navigation, screen, params = {} }) => (
@@ -106,9 +106,9 @@ const ROUTES = {
   },
   ProfileEditScreen: {
     title: 'profileScreen.navigation.title',
-    rightComponent: ({ navigation }) => (
-      <UserMenu navigation={navigation} />
-    ),
+    // rightComponent: ({ navigation }) => (
+    //   <UserMenu navigation={navigation} />
+    // ),
   },
   SettingsScreen: {
     title: 'settingsScreen.title',
