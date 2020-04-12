@@ -37,7 +37,7 @@ const NotificationsListScreen = ({ navigation }) => {
     });
 
     return unsubscribe.remove;
-  }, [navigation]);
+  }, []);
 
   const handleNotificationPress = ({ notificationType, payload }) => {
     const { activityId, chatRoomId } = JSON.parse(payload);
@@ -48,7 +48,7 @@ const NotificationsListScreen = ({ navigation }) => {
       } else {
         navigation.navigate('GameSearchTab');
         navigation.navigate('GameDetailsScreen', { _id: activityId });
-        navigation.navigate('GameChatScreen', { _id: activityId });
+        // navigation.navigate('GameChatScreen', { _id: activityId });
       }
     }
 
@@ -58,7 +58,7 @@ const NotificationsListScreen = ({ navigation }) => {
       } else {
         navigation.navigate('GameSearchTab');
         navigation.navigate('GameDetailsScreen', { _id: activityId });
-        navigation.navigate('PlayersListScreen', { _id: activityId });
+        // navigation.navigate('PlayersListScreen', { _id: activityId });
       }
     }
 

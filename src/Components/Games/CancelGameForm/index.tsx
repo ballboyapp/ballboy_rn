@@ -120,14 +120,17 @@ class CancelGameForm extends React.PureComponent {
       return;
     }
 
+    const successArgs = {
+      activityId: activity._id,
+      chatRoomId: activity.chatRoomId,
+      ...pick(this.state, Object.keys(INIT_STATE)),
+    };
+
     // Display confirm alert
     if (Platform.OS === 'web') {
       const res = window.confirm(I18n.t('cancelGameForm.confirmAlert.body'));
       if (res) {
-        onSuccessHook({
-          activityId: activity._id,
-          ...pick(this.state, Object.keys(INIT_STATE)),
-        });
+        onSuccessHook(successArgs);
         return;
       }
       onClientCancelHook();
@@ -150,10 +153,7 @@ class CancelGameForm extends React.PureComponent {
             onPress: () => {
               // Pass event up to parent component. onSuccessHook 'disabled'
               // value back to 'false' so that the user can re-submit the form
-              onSuccessHook({
-                activityId: activity._id,
-                ...pick(this.state, Object.keys(INIT_STATE)),
-              });
+              onSuccessHook(successArgs);
             },
           },
         ],

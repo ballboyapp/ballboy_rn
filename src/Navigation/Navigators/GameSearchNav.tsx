@@ -28,6 +28,9 @@ const GameSearchNav = createStackNavigator({
   },
 }, {
   initialRouteName: 'GamesListScreen',
+  navigationOptions: ({ navigation }) => ({
+    tabBarVisible: navigation.state.index <= 0,
+  }),
 });
 
 export default GameSearchNav;
