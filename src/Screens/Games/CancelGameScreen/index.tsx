@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, View } from 'react-native';
 import { Query } from 'react-apollo';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ACTIVITY_STATUSES } from '../../../constants';
 import { addModelState } from '../../../utils';
 import I18n from '../../../I18n';
@@ -53,6 +54,7 @@ class CancelGameScreen extends React.PureComponent {
             variables={{ _id: this.activityId }}
             fetchPolicy="network-only"
           >
+            {/* eslint-disable-next-line */}
             {({
               loading, error, data, refetch,
             }) => {
@@ -93,16 +95,22 @@ class CancelGameScreen extends React.PureComponent {
                     }}
                   >
                     {({ cancelActivity }) => (
-                      <CancelGameForm
-                        activity={activityDetails}
-                        disabled={disabled}
-                        errors={errors}
-                        onBeforeHook={handleBefore}
-                        onClientCancelHook={handleClientCancel}
-                        onClientErrorHook={handleClientError}
-                        onSuccessHook={cancelActivity}
-                        onAttendeesPress={this.handleAttendeesPress}
-                      />
+                      <KeyboardAwareScrollView
+                        extraHeight={110}
+                        enableOnAndroid
+                        keyboardShouldPersistTaps="handled"
+                      >
+                        <CancelGameForm
+                          activity={activityDetails}
+                          disabled={disabled}
+                          errors={errors}
+                          onBeforeHook={handleBefore}
+                          onClientCancelHook={handleClientCancel}
+                          onClientErrorHook={handleClientError}
+                          onSuccessHook={cancelActivity}
+                          onAttendeesPress={this.handleAttendeesPress}
+                        />
+                      </KeyboardAwareScrollView>
                     )}
                   </CancelGameApiCall>
                   <ImageModal

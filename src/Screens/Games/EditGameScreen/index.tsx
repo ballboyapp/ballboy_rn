@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Platform, View, BackHandler } from 'react-native';
 import { Query } from 'react-apollo';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ACTIVITY_STATUSES } from '../../../constants';
 import { addModelState } from '../../../utils';
 import I18n from '../../../I18n';
@@ -66,6 +67,7 @@ class EditGameScreen extends React.PureComponent {
             variables={{ _id: activityId }}
             fetchPolicy="network-only"
           >
+            {/* eslint-disable-next-line */}
             {({ loading, error, data }) => {
               if (loading) {
                 return <CenteredActivityIndicator />;
@@ -101,15 +103,21 @@ class EditGameScreen extends React.PureComponent {
                     onSuccess={() => { handleSuccess(editDoneModal.show); }}
                   >
                     {({ updateGame }) => (
-                      <EditGameForm
-                        activity={activityDetails}
-                        disabled={disabled}
-                        errors={errors}
-                        onBeforeHook={handleBefore}
-                        onClientCancelHook={handleClientCancel}
-                        onClientErrorHook={handleClientError}
-                        onSuccessHook={updateGame}
-                      />
+                      <KeyboardAwareScrollView
+                        extraHeight={100}
+                        enableOnAndroid
+                        keyboardShouldPersistTaps="handled"
+                      >
+                        <EditGameForm
+                          activity={activityDetails}
+                          disabled={disabled}
+                          errors={errors}
+                          onBeforeHook={handleBefore}
+                          onClientCancelHook={handleClientCancel}
+                          onClientErrorHook={handleClientError}
+                          onSuccessHook={updateGame}
+                        />
+                      </KeyboardAwareScrollView>
                     )}
                   </EditGameApiCall>
                   <ImageModal
