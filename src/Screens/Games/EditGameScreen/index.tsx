@@ -96,6 +96,8 @@ class EditGameScreen extends React.PureComponent {
                 }
               };
 
+              const contentContainerStyle = Platform.OS === 'web' ? { flex: 1 } : {};
+
               return (
                 <View style={{ flex: 1 }}>
                   <EditGameApiCall
@@ -107,6 +109,7 @@ class EditGameScreen extends React.PureComponent {
                         extraHeight={100}
                         enableOnAndroid
                         keyboardShouldPersistTaps="handled"
+                        contentContainerStyle={contentContainerStyle}
                       >
                         <EditGameForm
                           activity={activityDetails}

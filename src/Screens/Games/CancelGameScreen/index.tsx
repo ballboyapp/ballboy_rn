@@ -85,6 +85,8 @@ class CancelGameScreen extends React.PureComponent {
                 }
               };
 
+              const contentContainerStyle = Platform.OS === 'web' ? { flex: 1 } : {};
+
               return (
                 <View style={{ flex: 1 }}>
                   <CancelGameApiCall
@@ -99,6 +101,7 @@ class CancelGameScreen extends React.PureComponent {
                         extraHeight={110}
                         enableOnAndroid
                         keyboardShouldPersistTaps="handled"
+                        contentContainerStyle={contentContainerStyle}
                       >
                         <CancelGameForm
                           activity={activityDetails}
