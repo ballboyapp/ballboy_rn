@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'react-apollo';
 import { compose } from 'recompose';
 import cancelActivityMutation from '../../../GraphQL/Activities/Mutations/cancelActivity';
+import chatRoomQuery from '../../../GraphQL/ChatRooms/Queries/chatRoom';
 import curateErrors from './utils';
 
 //------------------------------------------------------------------------------
@@ -11,7 +12,7 @@ import curateErrors from './utils';
 class CancelGameApiCall extends React.PureComponent {
   handleCancel = async (inputFields) => {
     const { cancelActivity, onSuccess, onError } = this.props;
-    const { activityId, cancelMsg } = inputFields;
+    const { activityId, chatRoomId, cancelMsg } = inputFields;
 
     try {
       const res = await cancelActivity({
@@ -19,7 +20,11 @@ class CancelGameApiCall extends React.PureComponent {
           _id: activityId,
           msg: cancelMsg,
         },
-        // DO NOT refetch here
+        // DO NOT refetch activity here
+        refetchQueries: [{
+          query: chatRoomQuery,
+          variables: { roomId: chatRoomId },
+        }],
       });
       // console.log('CANCEL_GAME', res);
       onSuccess({ activityId });

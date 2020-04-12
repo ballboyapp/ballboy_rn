@@ -69,7 +69,7 @@ const NavBarButton = ({
         <Text
           size="S"
           color={baseColor}
-          semibold={active}
+          semibold
         >
           {btnLabel}
         </Text>
