@@ -1,41 +1,20 @@
 import { NOTIFICATION_TYPES } from '../../../constants';
 
-export const getNotificationIcon = (notificationType: string): string => {
+const getNotificationTypeText = (notificationType: string): string => {
   switch (notificationType) {
     case NOTIFICATION_TYPES.NEW_MESSAGE:
-      return 'forum';
+      return 'notificationCard.eventDescription.leftMessage';
     case NOTIFICATION_TYPES.ATTENDEE_ADDED:
+      return 'notificationCard.eventDescription.attendingActivity';
     case NOTIFICATION_TYPES.ATTENDEE_REMOVED:
+      return 'notificationCard.eventDescription.leftActivity';
     case NOTIFICATION_TYPES.ACTIVITY_RECREATED:
-      return 'message-alert';
+      return 'notificationCard.eventDescription.activityRecreated';
+    case NOTIFICATION_TYPES.NEW_ACTIVITY:
+      return '';
     default:
-      throw new Error('Unknown notificationType');
+      throw new Error(`Unknown notificationType ${notificationType}`);
   }
 };
 
-export const getNotificationTypeText = (notificationType: string): [string, string] => {
-  switch (notificationType) {
-    case NOTIFICATION_TYPES.NEW_MESSAGE:
-      return [
-        'notificationCard.eventType.message',
-        'notificationCard.eventDescription.leftMessage',
-      ];
-    case NOTIFICATION_TYPES.ATTENDEE_ADDED:
-      return [
-        'notificationCard.eventType.update',
-        'notificationCard.eventDescription.attendingActivity',
-      ];
-    case NOTIFICATION_TYPES.ATTENDEE_REMOVED:
-      return [
-        'notificationCard.eventType.update',
-        'notificationCard.eventDescription.leftActivity',
-      ];
-    case NOTIFICATION_TYPES.ACTIVITY_RECREATED:
-      return [
-        'notificationCard.eventType.update',
-        'notificationCard.eventDescription.activityRecreated',
-      ];
-    default:
-      throw new Error('Unknown notificationType');
-  }
-};
+export default getNotificationTypeText;
