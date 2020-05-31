@@ -1,4 +1,5 @@
 import I18n from 'i18n-js';
+import { LANGUAGES } from '../constants';
 
 const missingTranslationRegex = /^\[missing ".*" translation\]$/;
 
@@ -28,7 +29,14 @@ const translateOrFallback = (initialMsg, ...rest) => {
   return localMsg;
 };
 
+const getValidLocale = () => {
+  const lang = I18n.locale.substr(0, 2);
+
+  return Object.values(LANGUAGES).includes(lang) ? lang : LANGUAGES.EN;
+};
+
 export default {
   ...I18n,
   t: translateOrFallback,
+  getValidLocale,
 };
