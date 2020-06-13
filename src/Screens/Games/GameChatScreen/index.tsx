@@ -28,7 +28,7 @@ import ChatSend from '../../../Components/Chat/ChatSend';
 const Relative = styled.View`
   flex: 1; /* full height */
   position: relative;
-  background-color: ${({ theme }) => theme.colors.concrete};
+  background-color: ${({ theme }) => theme.colors.notifBg};
 `;
 //------------------------------------------------------------------------------
 // COMPONENT:

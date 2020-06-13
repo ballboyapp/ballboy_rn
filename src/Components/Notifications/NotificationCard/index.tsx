@@ -69,7 +69,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
           />
         </Left>
         <Right>
-          <Text size="SM" numberOfLines={2}>
+          <Text size="SM" numberOfLines={1}>
             <Text size="SM" semibold>
               {`${sender.name} `}
             </Text>
