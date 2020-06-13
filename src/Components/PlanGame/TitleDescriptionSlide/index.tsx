@@ -13,10 +13,10 @@ import TextField from '../../Common/TextField';
 export const TITLE_MAX_CHARS = 80;
 export const DESCRIPTION_MAX_CHARS = 2000;
 
-export const getInitState = username => ({
-  title: username ? I18n.t('titleDescriptionSlide.fields.title.defaultValue', { username: username.split(' ')[0] }) : '',
+export const INTI_STATE = {
+  title: '',
   description: '',
-});
+};
 
 export const INIT_ERRORS = {
   title: [],
@@ -109,7 +109,7 @@ TitleDescriptionSlide.propTypes = {
 };
 
 TitleDescriptionSlide.defaultProps = {
-  ...cloneDeep(getInitState()),
+  ...cloneDeep(INTI_STATE),
   errors: cloneDeep(INIT_ERRORS),
   onChange: () => {},
 };

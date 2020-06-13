@@ -459,7 +459,7 @@
         "suffix": "",
         "label": "Title",
         "placeholder": "Title",
-        "defaultValue": "%{username}'s game",
+        "defaultValue": "%{sport} @ %{spotName}",
         "errors": {
           "required": "Title is required",
           "tooShort": "",

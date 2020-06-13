@@ -4,6 +4,7 @@ import { Keyboard, FlatList } from 'react-native';
 // import firebase from 'react-native-firebase';
 import cloneDeep from 'lodash/cloneDeep';
 import pick from 'lodash/pick';
+import get from 'lodash/get';
 import styled from 'styled-components/native';
 import ErrorHandling from 'error-handling-utils';
 import { WINDOW_WIDTH, WINDOW_HEIGHT } from '../../../constants';
@@ -20,7 +21,7 @@ import SpotSlide, {
   INIT_ERRORS as SPOT_INIT_ERRORS,
 } from '../SpotSlide';
 import TitleDescriptionSlide, {
-  getInitState as titleDescriptionGetInitState,
+  INTI_STATE as TITLE_DESCRIPTION_INIT_STATE,
   INIT_ERRORS as TITLE_DESCRIPTION_INIT_ERRORS,
 } from '../TitleDescriptionSlide';
 
@@ -51,13 +52,12 @@ const SLIDES = [
   },
 ];
 
-let INIT_STATE;
 
-const getInitState = (username) => ({
+const INIT_STATE = {
   ...cloneDeep(SPORT_DATE_TIME_INIT_STATE),
   ...cloneDeep(SPOT_INIT_STATE),
-  ...cloneDeep(titleDescriptionGetInitState(username)),
-});
+  ...cloneDeep(TITLE_DESCRIPTION_INIT_STATE),
+};
 
 const INIT_ERRORS = {
   ...cloneDeep(SPORT_DATE_TIME_INIT_ERRORS),
@@ -82,10 +82,6 @@ const FlexOne = styled.View`
 class PlanGameForm extends React.Component {
   constructor(props) {
     super(props);
-
-    const { username } = props;
-
-    INIT_STATE = getInitState(username);
 
     this.state = {
       curSlide: 0,
@@ -120,6 +116,11 @@ class PlanGameForm extends React.Component {
     this.setState({
       [fieldName]: value,
       errors: ErrorHandling.clearErrors(errors, fieldName),
+    }, () => {
+      if (['sport', 'spot'].includes(fieldName)) {
+        const { sport, spot } = this.state;
+        this.setState({ title: I18n.t('titleDescriptionSlide.fields.title.defaultValue', { sport, spotName: get(spot, 'spotname', '') }) });
+      }
     });
   }
 
