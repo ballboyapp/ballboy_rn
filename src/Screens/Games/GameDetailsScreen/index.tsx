@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Query } from 'react-apollo';
 import styled from 'styled-components/native';
 import I18n from '../../../I18n';
 import activityDetailsQuery from '../../../GraphQL/Activities/Queries/activityDetails';
 import CenteredActivityIndicator from '../../../Components/Common/CenteredActivityIndicator';
+import Block from '../../../Components/Common/Block';
 import NothingFound from '../../../Components/Common/NothingFound';
 import GameDetails from '../../../Components/Games/GameDetails';
+import RSVP from '../../../Components/Games/RSVP';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -69,16 +71,24 @@ class GameDetailsScreen extends React.PureComponent {
           const { activityDetails } = data;
 
           return (
-            <Container testID="gameDetails">
-              <GameDetails
-                activity={activityDetails}
-                onSpotPress={this.handleSpotPress}
-                onChatPress={() => {
-                  this.handleChatPress({ roomId: activityDetails.chatRoomId });
-                }}
-                onAttendeesPress={this.handleAttendeesPress}
-              />
-            </Container>
+            <View style={{ flex: 1 }}>
+              <Container
+                testID="gameDetails"
+                styeContentContainer={{ flex: 1 }}
+              >
+                <GameDetails
+                  activity={activityDetails}
+                  onSpotPress={this.handleSpotPress}
+                  onChatPress={() => {
+                    this.handleChatPress({ roomId: activityDetails.chatRoomId });
+                  }}
+                  onAttendeesPress={this.handleAttendeesPress}
+                />
+              </Container>
+              <Block>
+                <RSVP activity={activityDetails} />
+              </Block>
+            </View>
           );
         }}
       </Query>
