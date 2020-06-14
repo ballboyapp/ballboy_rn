@@ -14,6 +14,7 @@ const TextField = React.forwardRef(({
   label,
   style,
   disabled,
+  multiline,
   ...rest
 }, ref) => {
   const {
@@ -41,6 +42,8 @@ const TextField = React.forwardRef(({
       activeLineWidth={1}
       inputContainerPadding={14}
       disabled={disabled}
+      multiline={multiline}
+      height={multiline ? 80 : 'auto'}
       style={{
         fontSize: Fonts[size].fontSize,
         fontWeight: 'normal',
@@ -60,6 +63,7 @@ TextField.propTypes = {
   label: PropTypes.string,
   style: PropTypes.object, // eslint-disable-line
   disabled: PropTypes.bool,
+  multiline: PropTypes.bool,
   // Plus all props from react-native-material-textfield
 };
 
@@ -69,6 +73,7 @@ TextField.defaultProps = {
   label: '',
   style: {},
   disabled: false,
+  multiline: false,
 };
 
 export default TextField;
