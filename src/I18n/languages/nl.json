@@ -567,7 +567,8 @@
       "attendingActivity": "Hij wees naar",
       "leftActivity": "stapte uit",
       "leftMessage": "heeft een bericht achtergelaten",
-      "activityRecreated": "activiteit automatisch opnieuw gemaakt"
+      "activityRecreated": "activiteit automatisch opnieuw gemaakt",
+      "activityCanceled": "heeft de activiteit geannuleerd"
     }
   },
 

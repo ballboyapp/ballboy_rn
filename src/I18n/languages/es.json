@@ -567,7 +567,8 @@
       "attendingActivity": "se apuntó a",
       "leftActivity": "se desapuntó de",
       "leftMessage": "dejó un mensaje en",
-      "activityRecreated": "actividad recreada automaticamente"
+      "activityRecreated": "actividad recreada automaticamente",
+      "activityCanceled": "canceló la actividad"
     }
   },
 

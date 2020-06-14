@@ -21,6 +21,7 @@ import ClickableAttendees from '../ClickableAttendees';
 import OpenSpots from '../OpenSpots';
 import RSVP from '../RSVP';
 import ShareGameButtons from '../ShareGameButtons';
+import getMsg from './utils';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -66,31 +67,17 @@ const GameDetails = ({
   const isFinished = status === ACTIVITY_STATUSES.FINISHED;
   const isFull = capacity > 0 && capacity === attendees.length;
 
+  const { msg, msgStatus } = getMsg({ isFinished, isCanceled, isFull });
+
   return (
     <View style={{ flex: 1 }}>
       <SpotImages images={get(spot, 'images', [])} />
       <Container>
-        {isCanceled && (
+        {msg != null && status != null && (
         <Block>
           <AlertMsg
-            value={I18n.t('gameDetails.cancelMsg')}
-            status="error"
-          />
-        </Block>
-        )}
-        {isFinished && (
-        <Block>
-          <AlertMsg
-            value={I18n.t('gameDetails.finishMsg')}
-            status="error"
-          />
-        </Block>
-        )}
-        {isFull && (
-        <Block>
-          <AlertMsg
-            value={I18n.t('gameDetails.fullMsg')}
-            status="success"
+            value={I18n.t(msg)}
+            status={msgStatus}
           />
         </Block>
         )}

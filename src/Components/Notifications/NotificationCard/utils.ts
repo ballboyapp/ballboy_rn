@@ -12,8 +12,11 @@ const getNotificationTypeText = (notificationType: string): string => {
       return 'notificationCard.eventDescription.activityRecreated';
     case NOTIFICATION_TYPES.NEW_ACTIVITY:
       return '';
+    case NOTIFICATION_TYPES.ACTIVITY_CANCELED:
+      return 'notificationCard.eventDescription.activityCanceled';
     default:
-      throw new Error(`Unknown notificationType ${notificationType}`);
+      console.log(`Unknown notificationType ${notificationType}`);
+      return '';
   }
 };
 

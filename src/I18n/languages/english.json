@@ -567,7 +567,8 @@
       "attendingActivity": "is attending",
       "leftActivity": "left",
       "leftMessage": "left a message on",
-      "activityRecreated": "activity recreated automatically"
+      "activityRecreated": "activity recreated automatically",
+      "activityCanceled": "canceled the activity"
     }
   },
 
