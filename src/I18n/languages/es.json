@@ -203,6 +203,10 @@
     "openSpots": "Plazas disponibles",
     "fullMsg": "No hay plazas disponibles",
     "join": "Te apuntas?",
+    "spotsLeft": {
+      "one": " %{count} plaza disponible",
+      "other": " %{count} plazas disponibles"
+    },
     "edit": "Editar presencia",
     "share": "Compartir con amigos"
   },

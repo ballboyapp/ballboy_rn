@@ -86,13 +86,34 @@ const GameDetails = ({
           />
         </Block>
         )}
+        {isFull && (
+        <Block>
+          <AlertMsg
+            value={I18n.t('gameDetails.fullMsg')}
+            status="success"
+          />
+        </Block>
+        )}
         <Block>
           <GameProperties
             activity={activity}
             onSpotPress={onSpotPress}
           />
         </Block>
-        <SpotMapWithLinkFallback spot={spot} />
+        <RSVP
+          activity={activity}
+          joinLabel={() => (
+            <Label>
+              {I18n.t('gameDetails.join')}
+              {hasCapacity && (
+                <Text size="M" regular>
+                  {I18n.t('gameDetails.spotsLeft', { count: capacity - attendees.length })}
+                </Text>
+              )}
+            </Label>
+          )}
+          editPresenceLabel={() => <Label>{I18n.t('gameDetails.edit')}</Label>}
+        />
         <Block>
           <Label>{I18n.t('gameDetails.organizer')}</Label>
           <Organizer
@@ -100,25 +121,26 @@ const GameDetails = ({
             description={description}
           />
         </Block>
+        {attendees.length > 0 && (
+          <Block>
+            <Label>{`${I18n.t('gameDetails.attending')} (${attendees.length}${hasCapacity ? `/${capacity}` : ''})`}</Label>
+            <ClickableAttendees
+              attendees={attendees}
+              onAttendeesPress={onAttendeesPress}
+            />
+          </Block>
+        )}
+        <Block>
+          <ChatWithGroup onChatPress={onChatPress} />
+        </Block>
         {!!description && description.length > 0 && (
         <Block>
           <Label>{I18n.t('gameDetails.description')}</Label>
           <DescriptionReadMore description={description} />
         </Block>
         )}
-        <Block>
-          <ChatWithGroup onChatPress={onChatPress} />
-        </Block>
-        {attendees.length > 0 && (
-        <Block>
-          <Label>{I18n.t('gameDetails.attending')}</Label>
-          <ClickableAttendees
-            attendees={attendees}
-            onAttendeesPress={onAttendeesPress}
-          />
-        </Block>
-        )}
-        {hasCapacity && (
+        <SpotMapWithLinkFallback spot={spot} />
+        {/* {hasCapacity && (
         <Block>
           <Label>{I18n.t('gameDetails.openSpots')}</Label>
           <OpenSpots activity={activity} />
@@ -128,12 +150,7 @@ const GameDetails = ({
             </Text>
           )}
         </Block>
-        )}
-        <RSVP
-          activity={activity}
-          joinLabel={() => <Label>{I18n.t('gameDetails.join')}</Label>}
-          editPresenceLabel={() => <Label>{I18n.t('gameDetails.edit')}</Label>}
-        />
+        )} */}
         <Block key="share">
           <Label>{I18n.t('gameDetails.share')}</Label>
           <ShareGameButtons shareLink={shareLink} />

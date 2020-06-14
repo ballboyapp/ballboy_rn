@@ -201,8 +201,12 @@
     "description": "Description",
     "attending": "Attending",
     "openSpots": "Open spots",
-    "fullMsg": "No open spots available",
-    "join": "Do you join?",
+    "fullMsg": "The activity is full",
+    "join": "Are you joining?",
+    "spotsLeft": {
+      "one": " %{count} spot left",
+      "other": " %{count} spots left"
+    },
     "edit": "Edit presence",
     "share": "Share with friends"
   },

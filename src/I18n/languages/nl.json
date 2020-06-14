@@ -203,6 +203,10 @@
     "openSpots": "Open plekken",
     "fullMsg": "Geen open plekken beschikbaar",
     "join": "Doe je mee?",
+    "spotsLeft": {
+      "one": " %{count} plek over",
+      "other": " %{count} plaatsen over"
+    },
     "edit": "Wijzigen aanwezigheid",
     "share": "Delen"
   },
