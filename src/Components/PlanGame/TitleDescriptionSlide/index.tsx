@@ -47,7 +47,7 @@ class TitleDescriptionSlide extends React.PureComponent {
           placeholder={I18n.t('titleDescriptionSlide.fields.title.placeholder')}
           value={title}
           error={titleErrors}
-          multiline
+          // multiline
           characterRestriction={TITLE_MAX_CHARS}
           onChangeText={(value) => { onChange({ fieldName: 'title', value }); }}
           theme="white"
