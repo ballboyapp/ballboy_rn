@@ -43,7 +43,7 @@ const TextField = React.forwardRef(({
       inputContainerPadding={14}
       disabled={disabled}
       multiline={multiline}
-      height={multiline ? 80 : 'auto'}
+      height={multiline ? 80 : 1.5 * Fonts.M.fontSize}
       style={{
         fontSize: Fonts[size].fontSize,
         fontWeight: 'normal',

@@ -78,7 +78,6 @@ class RSVPButtons extends React.PureComponent {
     if (isAttendee) {
       return (
         <RaisedButton
-          style={{ flex: 1 }}
           variant="warning"
           label={I18n.t('rsvpButtons.unattendingBtnLabel')}
           disabled={disabled || isDiabled}
@@ -90,7 +89,6 @@ class RSVPButtons extends React.PureComponent {
     // When user status is NOT 'attending', display the join button
     return (
       <RaisedButton
-        style={{ flex: 1 }}
         variant="primary"
         label={I18n.t('rsvpButtons.attendingBtnLabel')}
         disabled={disabled || isDiabled}
