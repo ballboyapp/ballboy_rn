@@ -119,7 +119,12 @@ class PlanGameForm extends React.Component {
     }, () => {
       if (['sport', 'spot'].includes(fieldName)) {
         const { sport, spot } = this.state;
-        this.setState({ title: I18n.t('titleDescriptionSlide.fields.title.defaultValue', { sport, spotName: get(spot, 'spotname', '') }) });
+        this.setState({
+          title: I18n.t('titleDescriptionSlide.fields.title.defaultValue', {
+            sport: I18n.t(sport),
+            spotName: get(spot, 'spotname', ''),
+          }),
+        });
       }
     });
   }
