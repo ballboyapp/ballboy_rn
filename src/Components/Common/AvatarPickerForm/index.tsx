@@ -23,7 +23,6 @@ class AvatarPickerForm extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    console.log(props);
     const avatar = get(props, 'user.profile.avatar', '');
 
     // Initialize state based on current user data
