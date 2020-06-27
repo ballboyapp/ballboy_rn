@@ -73,14 +73,14 @@ class RSVPButtons extends React.PureComponent {
     const isFull = capacity > 0 && capacity === attendeesIds.length;
 
     // Disable buttons if activity is full or canceled
-    const isDiabled = isCanceled || isFinished || (isFull && !isAttendee);
+    const isDisabled = isCanceled || isFinished || (isFull && !isAttendee);
 
     if (isAttendee) {
       return (
         <RaisedButton
           variant="warning"
           label={I18n.t('rsvpButtons.unattendingBtnLabel')}
-          disabled={disabled || isDiabled}
+          disabled={disabled || isDisabled}
           onPress={this.openAlert}
         />
       );
@@ -91,7 +91,7 @@ class RSVPButtons extends React.PureComponent {
       <RaisedButton
         variant="primary"
         label={I18n.t('rsvpButtons.attendingBtnLabel')}
-        disabled={disabled || isDiabled}
+        disabled={disabled || isDisabled}
         onPress={() => {
           this.handlePress({ action: ATTENDEE_ACTIONS.ADD });
         }}
