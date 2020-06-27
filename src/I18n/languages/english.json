@@ -201,8 +201,12 @@
     "description": "Description",
     "attending": "Attending",
     "openSpots": "Open spots",
-    "fullMsg": "No open spots available",
-    "join": "Do you join?",
+    "fullMsg": "The activity is full",
+    "join": "Are you joining?",
+    "spotsLeft": {
+      "one": " %{count} spot left",
+      "other": " %{count} spots left"
+    },
     "edit": "Edit presence",
     "share": "Share with friends"
   },
@@ -459,7 +463,7 @@
         "suffix": "",
         "label": "Title",
         "placeholder": "Title",
-        "defaultValue": "%{username}'s game",
+        "defaultValue": "%{sport} @ %{spotName}",
         "errors": {
           "required": "Title is required",
           "tooShort": "",
@@ -563,7 +567,8 @@
       "attendingActivity": "is attending",
       "leftActivity": "left",
       "leftMessage": "left a message on",
-      "activityRecreated": "activity recreated automatically"
+      "activityRecreated": "activity recreated automatically",
+      "activityCanceled": "canceled the activity"
     }
   },
 

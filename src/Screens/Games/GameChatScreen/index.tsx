@@ -5,7 +5,6 @@ import styled from 'styled-components/native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import ErrorHandling from 'error-handling-utils';
 import get from 'lodash/get';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../../../I18n';
 import { withUser, userPropTypes } from '../../../Context/User';
 import FormProps from '../../../RenderProps/form-props';
@@ -28,7 +27,7 @@ import ChatSend from '../../../Components/Chat/ChatSend';
 const Relative = styled.View`
   flex: 1; /* full height */
   position: relative;
-  background-color: ${({ theme }) => theme.colors.concrete};
+  background-color: ${({ theme }) => theme.colors.notifBg};
 `;
 //------------------------------------------------------------------------------
 // COMPONENT:
@@ -86,51 +85,44 @@ const GameChatScreen = ({ user, navigation }) => {
             onError={handleServerError}
           >
             {({ sendMessage }) => (
-              <KeyboardAwareScrollView
-                extraHeight={70}
-                enableOnAndroid
-                keyboardShouldPersistTaps="handled"
-                contentContainerStyle={{ flex: 1 }}
-              >
-                <Relative>
-                  {loading && <AbsoluteCenteredActivityIndicator />}
-                  <GiftedChat
-                    user={user}
-                    messages={messages.length > 0 ? messages : noMessages}
-                    messagesContainerStyle={{ overflowY: 'scroll' }} // required for web to avoid overflow
-                    renderAvatarOnTop
-                    isAnimated
-                    alignTop
-                    renderUsernameOnMessage
-                    renderBubble={(props) => <ChatBubble {...props} />}
-                    renderDay={(props) => <ChatDay {...props} locale={I18n.locale.substr(0, 2)} />}
-                    renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
-                    minInputToolbarHeight={50}
-                    renderSystemMessage={(props) => <ChatSystemMessage {...props} />}
-                    maxComposerHeight={70}
-                    keyboardShouldPersistTaps="never"
-                    renderComposer={(props) => <ChatComposer {...props} />}
-                    placeholder={I18n.t('chatInputField.placeholder')}
-                    textInputProps={{ editable: !disabled }}
-                    renderSend={(props) => <ChatSend {...props} disabled={disabled} />}
-                    alwaysShowSend
-                    onSend={(messages) => {
-                      handleBefore(); // set disable props to true
-                      sendMessage(messages);
-                    }}
+              <Relative>
+                {loading && <AbsoluteCenteredActivityIndicator />}
+                <GiftedChat
+                  user={user}
+                  messages={messages.length > 0 ? messages : noMessages}
+                  messagesContainerStyle={{ overflowY: 'scroll' }} // required for web to avoid overflow
+                  renderAvatarOnTop
+                  isAnimated
+                  alignTop
+                  renderUsernameOnMessage
+                  renderBubble={(props) => <ChatBubble {...props} />}
+                  renderDay={(props) => <ChatDay {...props} locale={I18n.locale.substr(0, 2)} />}
+                  renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
+                  minInputToolbarHeight={50}
+                  renderSystemMessage={(props) => <ChatSystemMessage {...props} />}
+                  maxComposerHeight={70}
+                  keyboardShouldPersistTaps="never"
+                  renderComposer={(props) => <ChatComposer {...props} />}
+                  placeholder={I18n.t('chatInputField.placeholder')}
+                  textInputProps={{ editable: !disabled }}
+                  renderSend={(props) => <ChatSend {...props} disabled={disabled} />}
+                  alwaysShowSend
+                  onSend={(messages) => {
+                    handleBefore(); // set disable props to true
+                    sendMessage(messages);
+                  }}
                     // Display server side errors if any
-                    renderChatFooter={() => (
-                      serverErrors.length > 0 ? (
-                        <Row>
-                          <Spacer row size="ML" />
-                          <Text color="error">{serverErrors}</Text>
-                        </Row>
-                      ) : null
-                    )}
-                  />
-                  <Spacer size="ML" />
-                </Relative>
-              </KeyboardAwareScrollView>
+                  renderChatFooter={() => (
+                    serverErrors.length > 0 ? (
+                      <Row>
+                        <Spacer row size="ML" />
+                        <Text color="error">{serverErrors}</Text>
+                      </Row>
+                    ) : null
+                  )}
+                />
+                <Spacer size="ML" />
+              </Relative>
             )}
           </ChatRoomApiCall>
         );

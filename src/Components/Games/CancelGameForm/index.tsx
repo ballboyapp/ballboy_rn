@@ -242,13 +242,3 @@ CancelGameForm.defaultProps = {
 };
 
 export default CancelGameForm;
-
-// false && [
-//   <Divider key="divider-alert-warning" />,
-//   <Block key="alert-warning">
-//     <AlertMsg
-//       value={I18n.t('cancelGameForm.alertMsg')}
-//       status="warning"
-//     />
-//   </Block>,
-// ]

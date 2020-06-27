@@ -5,6 +5,7 @@ import get from 'lodash/get';
 import styled from 'styled-components/native';
 import { QueryCatchErrors } from '../../../GraphQL/QueryCatchErrors';
 import spotDetailsQuery from '../../../GraphQL/Spots/Queries/spotDetails';
+import CenteredActivityIndicator from '../../../Components/Common/CenteredActivityIndicator';
 import SpotDetails from '../../../Components/Spots/SpotDetails';
 import GamesList from '../../../Components/Games/GamesList';
 
@@ -47,7 +48,9 @@ class SpotDetailsScreen extends React.PureComponent {
         variables={variables}
         fetchPolicy="cache-and-network"
       >
-        {({ loading, data, refetch, fetchMore }) => {
+        {({
+          loading, data, refetch, fetchMore,
+        }) => {
           const loadMore = () => {
             fetchMore({
               variables: {
@@ -58,7 +61,8 @@ class SpotDetailsScreen extends React.PureComponent {
                   this.setState({ hasNewResults: false }); // fix/hack for persistent loading indicator (loading never gets set to false when fetchMoreResult doesn't return new data)
                   return prev;
                 }
-                return Object.assign({}, prev, {
+                return {
+                  ...prev,
                   spotDetails: {
                     ...prev.spotDetails,
                     activities: [
@@ -66,10 +70,12 @@ class SpotDetailsScreen extends React.PureComponent {
                       ...fetchMoreResult.spotDetails.activities,
                     ],
                   },
-                });
+                };
               },
             });
           };
+
+          if (loading && !hasNewResults) return <CenteredActivityIndicator />;
 
           if (!data || !data.spotDetails) {
             return null;
@@ -116,4 +122,3 @@ SpotDetailsScreen.propTypes = {
 };
 
 export default SpotDetailsScreen;
-

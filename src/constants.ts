@@ -11,6 +11,12 @@ export const WINDOW_WIDTH = Platform.select({
 
 export const WINDOW_HEIGHT = WH;
 
+export const LANGUAGES = {
+  EN: 'en',
+  ES: 'es',
+  NL: 'nl',
+};
+
 export const SPORTS = {
   FOOTBALL: 'FOOTBALL',
   // VOLLEYBALL: 'VOLLEYBALL',

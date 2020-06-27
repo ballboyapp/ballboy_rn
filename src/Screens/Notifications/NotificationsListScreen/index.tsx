@@ -62,7 +62,7 @@ const NotificationsListScreen = ({ navigation }) => {
       }
     }
 
-    if (notificationType === NOTIFICATION_TYPES.ACTIVITY_RECREATED) {
+    if ([NOTIFICATION_TYPES.ACTIVITY_RECREATED, NOTIFICATION_TYPES.ACTIVITY_CANCELED].includes(notificationType)) {
       if (Platform.OS === 'web') {
         navigation.navigate('GameDetailsScreen', { _id: activityId });
       } else {

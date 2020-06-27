@@ -203,6 +203,10 @@
     "openSpots": "Open plekken",
     "fullMsg": "Geen open plekken beschikbaar",
     "join": "Doe je mee?",
+    "spotsLeft": {
+      "one": " %{count} plek over",
+      "other": " %{count} plaatsen over"
+    },
     "edit": "Wijzigen aanwezigheid",
     "share": "Delen"
   },
@@ -459,7 +463,7 @@
         "suffix": "",
         "label": "Titel",
         "placeholder": "Titel",
-        "defaultValue": "%{username}'s game",
+        "defaultValue": "%{sport} @ %{spotName}",
         "errors": {
           "required": "Titel is vereist",
           "tooShort": "",
@@ -563,7 +567,8 @@
       "attendingActivity": "Hij wees naar",
       "leftActivity": "stapte uit",
       "leftMessage": "heeft een bericht achtergelaten",
-      "activityRecreated": "activiteit automatisch opnieuw gemaakt"
+      "activityRecreated": "activiteit automatisch opnieuw gemaakt",
+      "activityCanceled": "heeft de activiteit geannuleerd"
     }
   },
 

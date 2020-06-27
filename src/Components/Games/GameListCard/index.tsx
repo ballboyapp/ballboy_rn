@@ -8,7 +8,7 @@ import { ACTIVITY_STATUSES } from '../../../constants';
 import Fonts from '../../../Themes/Fonts';
 import activityFragment from '../../../GraphQL/Activities/Fragments/activity';
 import Colors from '../../../Themes/Colors';
-// import I18n from '../../../I18n';
+import I18n from '../../../I18n';
 // import themeIcons from '../../../Themes/Icons';
 import Text from '../../Common/Text';
 import Divider from '../../Common/Divider';
@@ -107,7 +107,7 @@ const GameListCard = ({ activity }) => {
             {title}
           </Text>
           <Spacer size="M" />
-          <Tag status="success" value={sport.toTitleCase()} />
+          <Tag status="success" value={I18n.t(sport).toTitleCase()} />
           <Spacer size="M" />
           <Row>
             <Icon

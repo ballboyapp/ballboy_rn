@@ -203,6 +203,10 @@
     "openSpots": "Plazas disponibles",
     "fullMsg": "No hay plazas disponibles",
     "join": "Te apuntas?",
+    "spotsLeft": {
+      "one": " %{count} plaza disponible",
+      "other": " %{count} plazas disponibles"
+    },
     "edit": "Editar presencia",
     "share": "Compartir con amigos"
   },
@@ -459,7 +463,7 @@
         "suffix": "",
         "label": "Título",
         "placeholder": "Título",
-        "defaultValue": "%{username}'s game",
+        "defaultValue": "%{sport} en %{spotName}",
         "errors": {
           "required": "Título es requerido",
           "tooShort": "",
@@ -563,7 +567,8 @@
       "attendingActivity": "se apuntó a",
       "leftActivity": "se desapuntó de",
       "leftMessage": "dejó un mensaje en",
-      "activityRecreated": "actividad recreada automaticamente"
+      "activityRecreated": "actividad recreada automaticamente",
+      "activityCanceled": "canceló la actividad"
     }
   },
 

@@ -25,7 +25,7 @@ class SignupEmailApiCall extends React.PureComponent {
         variables: {
           username: name,
           email,
-          language: I18n.locale.substr(0, 2),
+          language: I18n.getValidLocale(),
         },
       });
       // console.log('SIGNUP RESPONSE', res);

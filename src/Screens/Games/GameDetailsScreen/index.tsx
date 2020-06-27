@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
 import { Query } from 'react-apollo';
 import styled from 'styled-components/native';
 import I18n from '../../../I18n';
 import activityDetailsQuery from '../../../GraphQL/Activities/Queries/activityDetails';
+import { TopLayout, BottomLayout } from '../../../Components/Layouts/FixedBottomLayout';
 import CenteredActivityIndicator from '../../../Components/Common/CenteredActivityIndicator';
 import NothingFound from '../../../Components/Common/NothingFound';
 import GameDetails from '../../../Components/Games/GameDetails';
+import RSVP from '../../../Components/Games/RSVP';
 
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
-const Container = styled(ScrollView)`
-  background-color: ${({ theme }) => theme.colors.concrete};
+const FlexOne = styled.View`
+  flex: 1;
 `;
 //------------------------------------------------------------------------------
 const NothingFoundContainer = styled.View`
@@ -69,16 +70,21 @@ class GameDetailsScreen extends React.PureComponent {
           const { activityDetails } = data;
 
           return (
-            <Container testID="gameDetails">
-              <GameDetails
-                activity={activityDetails}
-                onSpotPress={this.handleSpotPress}
-                onChatPress={() => {
-                  this.handleChatPress({ roomId: activityDetails.chatRoomId });
-                }}
-                onAttendeesPress={this.handleAttendeesPress}
-              />
-            </Container>
+            <FlexOne>
+              <TopLayout>
+                <GameDetails
+                  activity={activityDetails}
+                  onSpotPress={this.handleSpotPress}
+                  onChatPress={() => {
+                    this.handleChatPress({ roomId: activityDetails.chatRoomId });
+                  }}
+                  onAttendeesPress={this.handleAttendeesPress}
+                />
+              </TopLayout>
+              <BottomLayout>
+                <RSVP activity={activityDetails} />
+              </BottomLayout>
+            </FlexOne>
           );
         }}
       </Query>

@@ -8,11 +8,9 @@ import I18n from '../../../I18n';
 import notificationFragment from '../../../GraphQL/NotificationsList/Fragments/notification';
 import Row from '../../Common/Row';
 import Spacer from '../../Common/Spacer';
-import DotSpacer from '../../Common/DotSpacer';
 import Text from '../../Common/Text';
-import Icon from '../../Common/Icon';
 import Avatar from '../../Common/Avatar';
-import { getNotificationIcon, getNotificationTypeText } from './utils';
+import getNotificationTypeText from './utils';
 
 //------------------------------------------------------------------------------
 // CONSTANTS:
@@ -37,7 +35,7 @@ const Left = styled.View`
 //------------------------------------------------------------------------------
 const Right = styled.View`
   flex: 1;
-  padding: 8px 0 8px 0;
+  padding: 8px 8px 8px 0;
   overflow: hidden;
 `;
 //------------------------------------------------------------------------------
@@ -50,8 +48,7 @@ const NotificationCard = ({ notification, onCardPress }) => {
 
   const { activityTitle } = JSON.parse(payload);
 
-  const iconName = getNotificationIcon(notificationType);
-  const [eventType, eventDescription] = getNotificationTypeText(notificationType);
+  const eventDescription = getNotificationTypeText(notificationType);
 
   return (
     <TouchableOpacity
@@ -72,19 +69,17 @@ const NotificationCard = ({ notification, onCardPress }) => {
           />
         </Left>
         <Right>
-          <Row alignItems="center">
+          <Text size="SM" numberOfLines={1}>
             <Text size="SM" semibold>
-              {sender.name}
+              {`${sender.name} `}
             </Text>
-            <Spacer row size="S" />
             <Text size="SM">
-              {I18n.t(eventDescription)}
+              {`${I18n.t(eventDescription)} `}
             </Text>
-            <Spacer row size="S" />
             <Text size="SM" semibold>
               {activityTitle || ''}
             </Text>
-          </Row>
+          </Text>
           <Row alignItems="center">
             <Text size="SSM" color="dusk">
               {moment(createdAt).fromNow()}

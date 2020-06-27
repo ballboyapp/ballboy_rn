@@ -6,6 +6,7 @@ import ErrorHandling from 'error-handling-utils';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
+import get from 'lodash/get';
 import I18n from '../../../I18n';
 import privateUserFragment from '../../../GraphQL/Users/Fragments/privateUser';
 import Row from '../Row';
@@ -22,11 +23,11 @@ class AvatarPickerForm extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const { avatar } = props.user.profile;
+    const avatar = get(props, 'user.profile.avatar', '');
 
     // Initialize state based on current user data
     this.state = {
-      avatar: avatar || '',
+      avatar,
       errors: {
         avatar: [],
       },
