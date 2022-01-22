@@ -99,7 +99,7 @@
     "faker": "^4.1.0",
     "get-graphql-schema": "^2.1.2",
     "graphql-tools": "^4.0.5",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "react-native-storybook-loader": "^1.8.1",
     "typescript": "^3.4.5"
   },
